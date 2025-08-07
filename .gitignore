@@ -1,0 +1,76 @@
+# Dependencies
+node_modules/
+.expo/
+npm-debug.*
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig.*
+web-build/
+
+# macOS
+.DS_Store
+
+# Temporary files
+*.log
+*.tmp
+*.temp
+
+# Environment variables
+.env
+.env.local
+.env.production
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
+.nyc_output
+
+# Build files
+dist/
+build/
+*.zip
+
+# AWS
+*.pem
+.aws/
+
+# Misc
+.cache/
+.parcel-cache/
+.next/
+out/
+.nuxt/
+.cache/
+.output
+.env
+.env.*
+!.env.example
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Expo
+.expo-shared/
+*.expo
+
+# React Native
+*.xcodeproj
+*.xcworkspace
+ios/Pods/
+android/.gradle/
+android/app/build/
+android/build/
+
+# Lambda deployment packages
+lambda-functions/*.zip
+backend-api-deployment/*.zip

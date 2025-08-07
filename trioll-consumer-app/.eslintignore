@@ -1,0 +1,12 @@
+node_modules
+build
+dist
+coverage
+.expo
+android
+ios
+*.config.js
+scripts/*.js
+__tests__
+*.test.ts
+*.test.tsx

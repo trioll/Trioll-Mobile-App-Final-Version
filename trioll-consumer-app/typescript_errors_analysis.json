@@ -1,0 +1,200 @@
+{
+  "summary": {
+    "total_errors": 1056,
+    "backend_errors": 486,
+    "frontend_errors": 570
+  },
+  "by_category": {
+    "Property does not exist": 650,
+    "Module not found": 92,
+    "Type mismatch": 58,
+    "Expected arguments mismatch": 37,
+    "Cannot find name (suggestion provided)": 4,
+    "Cannot find name": 22,
+    "Expression not callable": 4,
+    "Type has no properties in common": 1,
+    "No exported member": 3,
+    "Property is private": 5,
+    "Type assignment error": 30,
+    "Other": 57,
+    "Unknown property in object literal": 76,
+    "JSX element class error": 2,
+    "Cannot be used as JSX component": 2,
+    "Property name typo": 8,
+    "Void expression cannot be tested": 4,
+    "Spread types error": 1
+  },
+  "by_screen": {
+    "Tests": 121,
+    "Component:archive": 21,
+    "Component:CardSwipeStackOptimized.tsx": 1,
+    "Component:CardSwipeStackSafe.tsx": 2,
+    "Component:game": 2,
+    "Component:gameDetail": 2,
+    "Component:guest": 1,
+    "Component:OrientationAwareGameCardOptimized.tsx": 1,
+    "Component:profile": 1,
+    "Component:search": 2,
+    "data": 9,
+    "docs": 7,
+    "hooks": 40,
+    "archive": 69,
+    "FeedScreen": 1,
+    "GameDetailScreen": 1,
+    "ProfileScreen": 3,
+    "TrialPlayerScreen": 12,
+    "Module:api": 182,
+    "Component:diagnostics": 3,
+    "Module:config": 9,
+    "Module:contexts": 1,
+    "Module:hooks": 28,
+    "Module:services": 96,
+    "Module:testing": 378,
+    "Module:types": 3,
+    "Module:utils": 46,
+    "types": 3,
+    "utils": 11
+  },
+  "top_5_screens": [
+    {
+      "screen": "Module:testing",
+      "count": 378
+    },
+    {
+      "screen": "Module:api",
+      "count": 182
+    },
+    {
+      "screen": "Tests",
+      "count": 121
+    },
+    {
+      "screen": "Module:services",
+      "count": 96
+    },
+    {
+      "screen": "archive",
+      "count": 69
+    }
+  ],
+  "error_distribution": [
+    {
+      "type": "Backend",
+      "count": 486
+    },
+    {
+      "type": "Frontend",
+      "count": 570
+    }
+  ],
+  "common_patterns": [
+    {
+      "pattern": "Property does not exist",
+      "count": 650
+    },
+    {
+      "pattern": "Module not found",
+      "count": 92
+    },
+    {
+      "pattern": "Unknown property in object literal",
+      "count": 76
+    },
+    {
+      "pattern": "Type mismatch",
+      "count": 58
+    },
+    {
+      "pattern": "Other",
+      "count": 57
+    }
+  ],
+  "missing_properties": [
+    {
+      "property": "message",
+      "count": 78,
+      "files": [
+        "src/services/environment/healthCheckService.ts",
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/components/diagnostics/StartupDiagnostics.tsx"
+      ]
+    },
+    {
+      "property": "id",
+      "count": 24,
+      "files": [
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/testing/e2e/suites/WebSocketTests.ts",
+        "src/api/adapters/userAdapter.ts"
+      ]
+    },
+    {
+      "property": "getQueueStatus",
+      "count": 21,
+      "files": [
+        "src/services/environment/environmentActivator.ts",
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/services/environment/stagingValidator.ts"
+      ]
+    },
+    {
+      "property": "success",
+      "count": 15,
+      "files": [
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/testing/e2e/suites/AuthenticationTests.ts"
+      ]
+    },
+    {
+      "property": "statusCode",
+      "count": 12,
+      "files": [
+        "hooks/useFriends.ts"
+      ]
+    },
+    {
+      "property": "isGuest",
+      "count": 12,
+      "files": [
+        "src/api/adapters/userAdapter.ts",
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/testing/e2e/suites/GameDataTests.ts"
+      ]
+    },
+    {
+      "property": "mockResolvedValue",
+      "count": 11,
+      "files": [
+        "__tests__/integration/e2e.test.ts",
+        "__tests__/integration/dataIntegration.test.ts",
+        "__tests__/integration/websocket.test.ts"
+      ]
+    },
+    {
+      "property": "gameId",
+      "count": 10,
+      "files": [
+        "src/hooks/useGameActions.ts",
+        "src/api/adapters/gameAdapter.ts",
+        "src/testing/e2e/suites/GameDataTests.ts"
+      ]
+    },
+    {
+      "property": "error",
+      "count": 9,
+      "files": [
+        "src/testing/e2e/suites/UserJourneyTests.ts",
+        "src/testing/e2e/suites/AuthenticationTests.ts",
+        "src/utils/comprehensiveTestRunner.ts"
+      ]
+    },
+    {
+      "property": "gameUrl",
+      "count": 8,
+      "files": [
+        "src/api/adapters/gameAdapter.ts",
+        "screens/TrialPlayerScreen.tsx"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1199 @@
+__tests__/integration/authentication.test.ts(7,46): error TS2307: Cannot find module 'amazon-cognito-identity-js' or its corresponding type declarations.
+__tests__/integration/authentication.test.ts(58,20): error TS2339: Property 'onSuccess' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(90,20): error TS2339: Property 'mfaRequired' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(94,20): error TS2339: Property 'onSuccess' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(119,26): error TS2339: Property 'mfaRequired' does not exist on type 'LoginResponse'.
+__tests__/integration/authentication.test.ts(120,26): error TS2339: Property 'mfaType' does not exist on type 'LoginResponse'.
+__tests__/integration/authentication.test.ts(132,20): error TS2339: Property 'newPasswordRequired' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(136,20): error TS2339: Property 'onSuccess' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(161,26): error TS2339: Property 'newPasswordRequired' does not exist on type 'LoginResponse'.
+__tests__/integration/authentication.test.ts(173,9): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+__tests__/integration/authentication.test.ts(524,22): error TS2339: Property 'onFailure' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(565,20): error TS2339: Property 'onFailure' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(591,20): error TS2339: Property 'response' does not exist on type 'unknown'.
+__tests__/integration/authentication.test.ts(601,20): error TS2339: Property 'onFailure' does not exist on type 'unknown'.
+__tests__/integration/dataIntegration.test.ts(5,42): error TS2307: Cannot find module '@testing-library/react-native' or its corresponding type declarations.
+__tests__/integration/dataIntegration.test.ts(54,67): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/dataIntegration.test.ts(55,13): error TS2339: Property 'USE_MOCK_API' does not exist on type '{ API_URL: string; }'.
+__tests__/integration/dataIntegration.test.ts(69,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(73,52): error TS2554: Expected 0 arguments, but got 1.
+__tests__/integration/dataIntegration.test.ts(91,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(97,52): error TS2554: Expected 0 arguments, but got 1.
+__tests__/integration/dataIntegration.test.ts(110,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(114,52): error TS2554: Expected 0 arguments, but got 1.
+__tests__/integration/dataIntegration.test.ts(134,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(136,52): error TS2554: Expected 0 arguments, but got 1.
+__tests__/integration/dataIntegration.test.ts(165,13): error TS2552: Cannot find name 'CacheManager'. Did you mean 'cacheManager'?
+__tests__/integration/dataIntegration.test.ts(168,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/dataIntegration.test.ts(182,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/dataIntegration.test.ts(184,43): error TS2304: Cannot find name 'useUserInteractions'.
+__tests__/integration/dataIntegration.test.ts(193,47): error TS2339: Property 'getQueue' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(204,33): error TS2339: Property 'add' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(210,33): error TS2339: Property 'add' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(218,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(221,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/dataIntegration.test.ts(222,33): error TS2339: Property 'sync' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(226,47): error TS2339: Property 'getQueue' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(232,33): error TS2339: Property 'add' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(233,33): error TS2339: Property 'add' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(237,10): error TS2339: Property 'mockResolvedValueOnce' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(240,33): error TS2339: Property 'sync' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(242,47): error TS2339: Property 'getQueue' does not exist on type 'OfflineQueueManagerClass'.
+__tests__/integration/dataIntegration.test.ts(250,43): error TS2304: Cannot find name 'useUserInteractions'.
+__tests__/integration/dataIntegration.test.ts(273,63): error TS2339: Property 'mockRejectedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(275,43): error TS2304: Cannot find name 'useUserInteractions'.
+__tests__/integration/dataIntegration.test.ts(301,63): error TS2339: Property 'mockImplementation' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(306,43): error TS2304: Cannot find name 'useUserInteractions'.
+__tests__/integration/dataIntegration.test.ts(329,43): error TS2304: Cannot find name 'useUserInteractions'.
+__tests__/integration/dataIntegration.test.ts(338,14): error TS2552: Cannot find name 'AnalyticsService'. Did you mean 'analyticsService'?
+__tests__/integration/dataIntegration.test.ts(350,15): error TS2552: Cannot find name 'AnalyticsService'. Did you mean 'analyticsService'?
+__tests__/integration/dataIntegration.test.ts(372,63): error TS2339: Property 'mockImplementation' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(382,14): error TS2552: Cannot find name 'AnalyticsService'. Did you mean 'analyticsService'?
+__tests__/integration/dataIntegration.test.ts(398,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(406,83): error TS2349: This expression is not callable.
+  Type '{}' has no call signatures.
+__tests__/integration/dataIntegration.test.ts(414,43): error TS2304: Cannot find name 'useGameDetail'.
+__tests__/integration/dataIntegration.test.ts(450,63): error TS2339: Property 'mockImplementation' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(468,63): error TS2339: Property 'mockRejectedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/dataIntegration.test.ts(475,43): error TS2304: Cannot find name 'useGameDetail'.
+__tests__/integration/dataIntegration.test.ts(489,37): error TS2559: Type 'string[]' has no properties in common with type 'InvalidateQueryFilters<readonly unknown[]>'.
+__tests__/integration/e2e.test.ts(4,49): error TS2307: Cannot find module '@testing-library/react-native' or its corresponding type declarations.
+__tests__/integration/e2e.test.ts(9,36): error TS2307: Cannot find module '../../src/context/AppContext' or its corresponding type declarations.
+__tests__/integration/e2e.test.ts(13,34): error TS2307: Cannot find module '../../src/services/analyticsService' or its corresponding type declarations.
+__tests__/integration/e2e.test.ts(14,10): error TS2724: '"../../src/config/environment"' has no exported member named 'Config'. Did you mean 'config'?
+__tests__/integration/e2e.test.ts(53,67): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/e2e.test.ts(55,68): error TS2339: Property 'mockReturnValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(56,44): error TS2345: Argument of type 'true' is not assignable to parameter of type 'never'.
+__tests__/integration/e2e.test.ts(67,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(74,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(157,62): error TS2339: Property 'mockImplementation' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(182,10): error TS2339: Property 'mockResolvedValueOnce' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(246,85): error TS2339: Property 'mock' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(266,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/e2e.test.ts(278,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/e2e.test.ts(301,69): error TS2345: Argument of type '{ isConnected: boolean; isInternetReachable: boolean; type: Network.NetworkStateType; }' is not assignable to parameter of type 'never'.
+__tests__/integration/e2e.test.ts(369,63): error TS2339: Property 'mockRejectedValueOnce' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(381,63): error TS2339: Property 'mockResolvedValueOnce' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(397,63): error TS2339: Property 'mockReturnValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(409,63): error TS2339: Property 'mockReturnValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(410,40): error TS2339: Property 'onConnectionStateChange' does not exist on type 'WebSocketManager'.
+__tests__/integration/e2e.test.ts(410,97): error TS2339: Property 'mock' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(428,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/e2e.test.ts(444,63): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/websocket.test.ts(4,42): error TS2307: Cannot find module '@testing-library/react-native' or its corresponding type declarations.
+__tests__/integration/websocket.test.ts(5,16): error TS2307: Cannot find module 'jest-websocket-mock' or its corresponding type declarations.
+__tests__/integration/websocket.test.ts(8,34): error TS2307: Cannot find module '../../src/utils/authTokenManager' or its corresponding type declarations.
+__tests__/integration/websocket.test.ts(9,10): error TS2724: '"../../src/config/environment"' has no exported member named 'Config'. Did you mean 'config'?
+__tests__/integration/websocket.test.ts(35,71): error TS2339: Property 'mockResolvedValue' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/websocket.test.ts(50,28): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(101,22): error TS2339: Property 'toHaveReceivedMessages' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(114,17): error TS2339: Property 'onConnectionStateChange' does not exist on type 'WebSocketManager'.
+__tests__/integration/websocket.test.ts(137,33): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(139,28): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(153,34): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(159,50): error TS2554: Expected 1 arguments, but got 2.
+__tests__/integration/websocket.test.ts(183,33): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(186,23): error TS2554: Expected 2 arguments, but got 1.
+__tests__/integration/websocket.test.ts(188,28): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(195,34): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(200,17): error TS2341: Property 'onError' is private and only accessible within class 'WebSocketManager'.
+__tests__/integration/websocket.test.ts(200,25): error TS2345: Argument of type 'Mock<UnknownFunction>' is not assignable to parameter of type 'Event'.
+  Type 'Mock<UnknownFunction>' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 18 more.
+__tests__/integration/websocket.test.ts(202,33): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(232,24): error TS2339: Property 'toHaveReceivedMessages' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(264,24): error TS2339: Property 'toHaveReceivedMessages' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(289,36): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(295,24): error TS2339: Property 'toHaveReceivedMessages' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(318,31): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, any> & SnapshotMatchers<void, any> & Inverse<JestMatchers<void, any>> & PromiseMatchers<any>'.
+__tests__/integration/websocket.test.ts(333,28): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(368,92): error TS2339: Property 'mock' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/websocket.test.ts(384,92): error TS2339: Property 'mock' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/integration/websocket.test.ts(420,28): error TS2339: Property 'toReceiveMessage' does not exist on type 'Matchers<void, WS> & SnapshotMatchers<void, WS> & Inverse<JestMatchers<void, WS>> & PromiseMatchers<WS>'.
+__tests__/integration/websocket.test.ts(438,48): error TS2345: Argument of type 'string' is not assignable to parameter of type 'SubscriptionOptions'.
+__tests__/integration/websocket.test.ts(457,22): error TS2345: Argument of type '{ data: string; }' is not assignable to parameter of type 'WebSocketMessage'.
+  Property 'type' is missing in type '{ data: string; }' but required in type 'WebSocketMessage'.
+__tests__/integration/websocket.test.ts(470,17): error TS2341: Property 'onError' is private and only accessible within class 'WebSocketManager'.
+__tests__/integration/websocket.test.ts(470,25): error TS2345: Argument of type 'Mock<UnknownFunction>' is not assignable to parameter of type 'Event'.
+  Type 'Mock<UnknownFunction>' is missing the following properties from type 'Event': bubbles, cancelBubble, cancelable, composed, and 18 more.
+__tests__/security/credentials.test.ts(11,39): error TS2307: Cannot find module '@aws-sdk/client-cognito-identity' or its corresponding type declarations.
+__tests__/security/credentials.test.ts(152,10): error TS2339: Property 'mockResolvedValueOnce' does not exist on type '(fn: UnknownFunction) => Mock<UnknownFunction>'.
+__tests__/security/credentials.test.ts(159,55): error TS2554: Expected 0 arguments, but got 1.
+__tests__/security/credentials.test.ts(163,26): error TS2339: Property 'expiration' does not exist on type '{ accessKeyId: string; secretAccessKey: string; sessionToken: string; }'.
+__tests__/security/credentials.test.ts(197,30): error TS2554: Expected 0 arguments, but got 2.
+__tests__/security/credentials.test.ts(204,30): error TS2554: Expected 0 arguments, but got 2.
+__tests__/security/credentials.test.ts(211,36): error TS2339: Property 'initialize' does not exist on type 'SecureS3Service'.
+__tests__/security/credentials.test.ts(215,29): error TS2339: Property 'initialize' does not exist on type 'SecureS3Service'.
+__tests__/security/credentials.test.ts(217,36): error TS2339: Property 'uploadUserContent' does not exist on type 'SecureS3Service'.
+__tests__/security/credentials.test.ts(227,42): error TS2345: Argument of type 'string' is not assignable to parameter of type 'symbol'.
+__tests__/security/credentials.test.ts(233,52): error TS2345: Argument of type '{ identityId: string; }' is not assignable to parameter of type 'never'.
+__tests__/security/credentials.test.ts(237,29): error TS2339: Property 'initialize' does not exist on type 'SecureS3Service'.
+__tests__/security/credentials.test.ts(238,29): error TS2339: Property 'uploadUserContent' does not exist on type 'SecureS3Service'.
+__tests__/security/credentials.test.ts(247,53): error TS2345: Argument of type '{ ok: boolean; status: number; json: () => Promise<{ success: boolean; }>; headers: Headers; }' is not assignable to parameter of type 'never'.
+__tests__/security/credentials.test.ts(253,7): error TS2322: Type 'Mock<UnknownFunction>' is not assignable to type '{ (input: URL | RequestInfo, init?: RequestInit): Promise<Response>; (input: string | Request | URL, init?: RequestInit): Promise<...>; (input: RequestInfo, init?: RequestInit): Promise<...>; }'.
+  Type '{}' is missing the following properties from type 'Promise<Response>': then, catch, finally, [Symbol.toStringTag]
+__tests__/security/credentials.test.ts(260,22): error TS2339: Property 'headers' does not exist on type 'unknown'.
+__tests__/security/credentials.test.ts(261,22): error TS2339: Property 'headers' does not exist on type 'unknown'.
+__tests__/security/credentials.test.ts(283,45): error TS2345: Argument of type 'string' is not assignable to parameter of type 'symbol'.
+components/archive/social/AchievementsShowcase.tsx(5,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+components/archive/social/AchievementsShowcase.tsx(6,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+components/archive/social/FriendsSocial.tsx(5,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+components/archive/social/FriendsSocial.tsx(6,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+components/archive/social/FriendsSocial.tsx(8,37): error TS2307: Cannot find module '../../hooks/useResponsiveLayout' or its corresponding type declarations.
+components/archive/social/FriendsSocial.tsx(9,20): error TS2307: Cannot find module '../../src/styles/TriollDesignSystem' or its corresponding type declarations.
+components/archive/social/HorizontalFriendsList.tsx(13,20): error TS2307: Cannot find module '../../src/styles/TriollDesignSystem' or its corresponding type declarations.
+components/archive/social/HorizontalFriendsList.tsx(14,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+components/archive/social/HorizontalFriendsList.tsx(15,42): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+components/archive/social/MinimalCommentOverlay.tsx(7,22): error TS2307: Cannot find module './base' or its corresponding type declarations.
+components/archive/social/MinimalCommentOverlay.tsx(8,32): error TS2307: Cannot find module '../hooks' or its corresponding type declarations.
+components/archive/social/RecentActivityFeed.tsx(5,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+components/BottomSheet.tsx(168,39): error TS2339: Property '_value' does not exist on type 'AnimatedInterpolation<string | number>'.
+components/BottomSheet.tsx(198,41): error TS2339: Property '_value' does not exist on type 'Value'.
+components/BottomSheet.tsx(367,21): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+components/BottomSheet.tsx(367,57): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+components/BottomSheet.tsx(382,48): error TS2551: Property 'ageRating' does not exist on type 'Game'. Did you mean 'rating'?
+components/CardSwipeStack.tsx(59,53): error TS2339: Property 'isPortrait' does not exist on type 'OrientationData'.
+components/CardSwipeStack.tsx(147,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+components/CardSwipeStack.tsx(168,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+components/CardSwipeStackOptimized.tsx(67,53): error TS2339: Property 'isPortrait' does not exist on type 'OrientationData'.
+components/CardSwipeStackOptimized.tsx(193,29): error TS2345: Argument of type '() => { opacity: number; transform: ({ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { ...; } | { ...; })[]; }' is not assignable to parameter of type '() => DefaultStyle'.
+  Type '{ opacity: number; transform: ({ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { ...; } | { ...; })[]; }' is not assignable to type 'DefaultStyle'.
+    Type '{ opacity: number; transform: ({ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { ...; } | { ...; })[]; }' is not assignable to type 'ImageStyle'.
+      Types of property 'transform' are incompatible.
+        Type '({ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { scale: number; translateX?: undefined; translateY?: undefined; rotate?: undefined; } | { ...; })[]' is not assignable to type 'string | readonly (({ perspective: AnimatableNumericValue; } & { rotate?: never; rotateX?: never; rotateY?: never; rotateZ?: never; scale?: never; scaleX?: never; scaleY?: never; ... 4 more ...; matrix?: never; }) | ... 11 more ... | ({ ...; } & { ...; }))[]'.
+          Type '({ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { scale: number; translateX?: undefined; translateY?: undefined; rotate?: undefined; } | { ...; })[]' is not assignable to type 'readonly (({ perspective: AnimatableNumericValue; } & { rotate?: never; rotateX?: never; rotateY?: never; rotateZ?: never; scale?: never; scaleX?: never; scaleY?: never; translateX?: never; translateY?: never; skewX?: never; skewY?: never; matrix?: never; }) | ... 11 more ... | ({ ...; } & { ...; }))[]'.
+            Type '{ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; } | { translateY: number; translateX?: undefined; scale?: undefined; rotate?: undefined; } | { scale: number; translateX?: undefined; translateY?: undefined; rotate?: undefined; } | { ...; }' is not assignable to type '({ perspective: AnimatableNumericValue; } & { rotate?: never; rotateX?: never; rotateY?: never; rotateZ?: never; scale?: never; scaleX?: never; scaleY?: never; translateX?: never; translateY?: never; skewX?: never; skewY?: never; matrix?: never; }) | ... 11 more ... | ({ ...; } & { ...; })'.
+              Type '{ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; }' is not assignable to type '({ perspective: AnimatableNumericValue; } & { rotate?: never; rotateX?: never; rotateY?: never; rotateZ?: never; scale?: never; scaleX?: never; scaleY?: never; translateX?: never; translateY?: never; skewX?: never; skewY?: never; matrix?: never; }) | ... 11 more ... | ({ ...; } & { ...; })'.
+                Type '{ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; }' is not assignable to type '{ matrix: AnimatableNumericValue[]; } & { perspective?: never; rotate?: never; rotateX?: never; rotateY?: never; rotateZ?: never; scale?: never; scaleX?: never; scaleY?: never; translateX?: never; translateY?: never; skewX?: never; skewY?: never; }'.
+                  Property 'matrix' is missing in type '{ translateX: number; translateY?: undefined; scale?: undefined; rotate?: undefined; }' but required in type '{ matrix: AnimatableNumericValue[]; }'.
+components/CardSwipeStackSafe.tsx(54,53): error TS2339: Property 'isPortrait' does not exist on type 'OrientationData'.
+components/CardSwipeStackSafe.tsx(169,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+components/CardSwipeStackSafe.tsx(186,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+components/game/GameControlOverlay.tsx(91,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+components/game/GameControlOverlay.tsx(325,19): error TS2339: Property 'shadowLight' does not exist on type '{ borderRadius: number; borderRadiusSmall: number; borderRadiusMedium: number; borderRadiusLarge: number; borderRadiusPill: number; borderRadiusCircle: number; glassSurface: { backgroundColor: string; backdropFilter: string; borderWidth: number; borderColor: string; }; ... 5 more ...; innerShadow: { ...; }; }'.
+components/GameContainer.tsx(13,3): error TS2724: '"react-native-reanimated"' has no exported member named 'SpringConfig'. Did you mean 'WithSpringConfig'?
+components/GameContainer.tsx(143,32): error TS2339: Property 'source' does not exist on type 'unknown'.
+components/GameContainer.tsx(144,32): error TS2339: Property 'source' does not exist on type 'unknown'.
+components/GameContainer.tsx(151,34): error TS2339: Property 'style' does not exist on type 'unknown'.
+components/gameDetail/DeveloperSection.tsx(82,25): error TS2345: Argument of type '[keyof RootStackParamList, any]' is not assignable to parameter of type '[screen: "Profile", params?: { userId?: string; }, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Search", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Settings", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | ... 23 more ... | [screen: ...]'.
+  Type '[keyof RootStackParamList, any]' is not assignable to type '[screen: "DeveloperTools", params?: undefined, options?: { merge?: boolean; pop?: boolean; }]'.
+    Type at position 0 in source is not compatible with type at position 0 in target.
+      Type 'keyof RootStackParamList' is not assignable to type '"DeveloperTools"'.
+        Type '"Profile"' is not assignable to type '"DeveloperTools"'.
+components/gameDetail/ScreenshotGallery.tsx(41,27): error TS2339: Property 'nativeEvent' does not exist on type 'unknown'.
+components/gameDetail/SimilarGames.tsx(67,21): error TS2345: Argument of type '[unknown, { game: { genre: string; platform: string; ageRating: string; description: string; releaseDate: string; trialPlays: number; totalRatings: number; tags: string[]; id: string; title: string; coverImage: string; rating: number; trialDuration: number; developer: string; }; }]' is not assignable to parameter of type '[screen: string, params?: any] | [screen: number, params?: any] | [screen: symbol, params?: any]'.
+  Type '[unknown, { game: { genre: string; platform: string; ageRating: string; description: string; releaseDate: string; trialPlays: number; totalRatings: number; tags: string[]; id: string; title: string; coverImage: string; rating: number; trialDuration: number; developer: string; }; }]' is not assignable to type '[screen: symbol, params?: any]'.
+    Type at position 0 in source is not compatible with type at position 0 in target.
+      Type 'unknown' is not assignable to type 'symbol'.
+components/OrientationAwareGameCardOptimized.tsx(15,23): error TS2307: Cannot find module 'react-native-fast-image' or its corresponding type declarations.
+components/profile/ProfileEditModal.tsx(57,31): error TS2339: Property 'MediaType' does not exist on type 'typeof import("/Users/frederickcaplin/Desktop/Trioll Github App/trioll-mvp/trioll-consumer-app/node_modules/expo-image-picker/build/ImagePicker")'.
+components/search/SearchResults.tsx(243,30): error TS2345: Argument of type 'SortOption' is not assignable to parameter of type '"rating" | "alphabetical" | "relevance" | "popular" | "newest"'.
+components/search/SearchResults.tsx(243,30): error TS2352: Conversion of type 'string' to type 'SortOption' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+data/dummyGames.ts(21,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(41,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(61,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(81,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(101,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(121,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(141,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(161,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+data/dummyGames.ts(181,5): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+docs/bottomsheet-redesign-demo.tsx(129,4): error TS2304: Cannot find name 'LinearGradient'.
+docs/bottomsheet-redesign-demo.tsx(139,6): error TS2304: Cannot find name 'Ionicons'.
+docs/bottomsheet-redesign-demo.tsx(140,5): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+docs/bottomsheet-redesign-demo.tsx(140,6): error TS2786: 'Text' cannot be used as a JSX component.
+  Its type '{ new (data?: string): Text; prototype: Text; }' is not a valid JSX element type.
+    Type '{ new (data?: string): Text; prototype: Text; }' is not assignable to type 'new (props: any) => Component<any, any, any>'.
+      Type 'Text' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, render, and 2 more.
+docs/bottomsheet-redesign-demo.tsx(143,5): error TS2607: JSX element class does not support attributes because it does not have a 'props' property.
+docs/bottomsheet-redesign-demo.tsx(143,6): error TS2786: 'Text' cannot be used as a JSX component.
+  Its type '{ new (data?: string): Text; prototype: Text; }' is not a valid JSX element type.
+    Type '{ new (data?: string): Text; prototype: Text; }' is not assignable to type 'new (props: any) => Component<any, any, any>'.
+      Type 'Text' is missing the following properties from type 'Component<any, any, any>': context, setState, forceUpdate, render, and 2 more.
+docs/bottomsheet-redesign-demo.tsx(146,5): error TS2304: Cannot find name 'LinearGradient'.
+hooks/useAsyncError.ts(45,27): error TS2554: Expected 1 arguments, but got 0.
+hooks/useFriends.ts(221,37): error TS2339: Property 'friends' does not exist on type 'unknown'.
+hooks/useFriends.ts(222,45): error TS2339: Property 'requests' does not exist on type 'unknown'.
+hooks/useFriends.ts(223,41): error TS2339: Property 'activities' does not exist on type 'unknown'.
+hooks/useFriends.ts(224,45): error TS2339: Property 'friends' does not exist on type 'unknown'.
+hooks/useFriends.ts(252,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(252,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(252,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(275,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(275,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(275,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(296,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(296,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(296,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(317,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(317,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(317,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(339,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(339,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(339,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(355,30): error TS2339: Property 'results' does not exist on type 'unknown'.
+hooks/useFriends.ts(357,16): error TS2339: Property 'code' does not exist on type 'unknown'.
+hooks/useFriends.ts(357,46): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useFriends.ts(357,73): error TS2339: Property 'statusCode' does not exist on type 'unknown'.
+hooks/useGameLiveData.ts(19,24): error TS2554: Expected 1 arguments, but got 2.
+hooks/useGameLiveData.ts(22,19): error TS2345: Argument of type 'string' is not assignable to parameter of type 'string[]'.
+hooks/useGamesLoader.ts(32,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+hooks/useOrientationTransition.ts(20,11): error TS2339: Property 'isPortrait' does not exist on type 'OrientationData'.
+hooks/useUserInteractions.ts(13,17): error TS2345: Argument of type '{ message: string; type: string; }' is not assignable to parameter of type 'string'.
+hooks/useUserInteractions.ts(15,17): error TS2345: Argument of type '{ message: string; type: string; }' is not assignable to parameter of type 'string'.
+hooks/useWebSocket.ts(8,28): error TS2305: Module '"../src/services/websocket/WebSocketService"' has no exported member 'WebSocketEvents'.
+hooks/useWebSocket.ts(85,24): error TS2339: Property 'sendNotification' does not exist on type 'WebSocketService'.
+hooks/useWebSocket.ts(92,22): error TS2339: Property 'broadcastActivity' does not exist on type 'WebSocketService'.
+hooks/useWebSocket.ts(97,22): error TS2339: Property 'updateGameState' does not exist on type 'WebSocketService'.
+hooks/useWebSocket.ts(102,22): error TS2339: Property 'sendTypingIndicator' does not exist on type 'WebSocketService'.
+hooks/useWebSocket.ts(107,32): error TS2345: Argument of type 'string[]' is not assignable to parameter of type 'string'.
+hooks/useWebSocket.ts(112,34): error TS2345: Argument of type 'string[]' is not assignable to parameter of type 'string'.
+hooks/useWebSocket.ts(118,27): error TS2345: Argument of type 'string | number | symbol' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+hooks/useWebSocket.ts(120,30): error TS2345: Argument of type 'string | number | symbol' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+hooks/useWebSocket.ts(195,45): error TS2345: Argument of type 'string | number | symbol' is not assignable to parameter of type 'string'.
+  Type 'number' is not assignable to type 'string'.
+hooks/useWebSocket.ts(259,24): error TS2339: Property 'sendTypingIndicator' does not exist on type 'WebSocketService'.
+screens/archive/admin/AdminDashboard.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/AdminDashboard.tsx(9,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/AuditLogs.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/AuditLogs.tsx(9,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/ContentModeration.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/ContentModeration.tsx(9,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/DetailedReview.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/DetailedReview.tsx(9,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/GameReviewQueue.tsx(7,32): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/admin/GameReviewQueue.tsx(10,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/GameReviewQueue.tsx(11,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/GameReviewQueue.tsx(12,41): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/admin/PlatformAnalytics.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/PlatformAnalytics.tsx(9,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/SystemControls.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/SystemControls.tsx(9,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/admin/UserManagement.tsx(1,27): error TS2307: Cannot find module './../../src/types/api.types' or its corresponding type declarations.
+screens/archive/admin/UserManagement.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/admin/UserManagement.tsx(9,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/developer/GameUploadWizard.tsx(7,32): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/developer/GameUploadWizard.tsx(12,30): error TS2307: Cannot find module '../../components/developer/CustomSlider' or its corresponding type declarations.
+screens/archive/developer/GameUploadWizard.tsx(13,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/developer/GameUploadWizard.tsx(14,43): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/developer/GameUploadWizard.tsx(202,31): error TS2339: Property 'MediaType' does not exist on type 'typeof import("/Users/frederickcaplin/Desktop/Trioll Github App/trioll-mvp/trioll-consumer-app/node_modules/expo-image-picker/build/ImagePicker")'.
+screens/archive/GameLibraryScreen.tsx(3,32): error TS2307: Cannot find module '../navigation/types' or its corresponding type declarations.
+screens/archive/GameLibraryScreen.tsx(10,28): error TS2307: Cannot find module '../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/GameLibraryScreen.tsx(11,43): error TS2307: Cannot find module '../constants/animations' or its corresponding type declarations.
+screens/archive/GameLibraryScreen.tsx(12,28): error TS2307: Cannot find module '../data/dummyGames' or its corresponding type declarations.
+screens/archive/GameLibraryScreen.tsx(291,32): error TS2339: Property 'id' does not exist on type 'unknown'.
+screens/archive/settings/ActiveSessions.tsx(9,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/settings/ActiveSessions.tsx(10,26): error TS2307: Cannot find module '../../hooks/useToast' or its corresponding type declarations.
+screens/archive/settings/ActiveSessions.tsx(11,32): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/settings/DebugMenuScreen.tsx(9,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/settings/DebugMenuScreen.tsx(10,26): error TS2307: Cannot find module '../../hooks/useToast' or its corresponding type declarations.
+screens/archive/settings/DebugMenuScreen.tsx(11,27): error TS2307: Cannot find module '../../constants/animations' or its corresponding type declarations.
+screens/archive/settings/LinkedAccounts.tsx(9,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/settings/LinkedAccounts.tsx(10,26): error TS2307: Cannot find module '../../hooks/useToast' or its corresponding type declarations.
+screens/archive/settings/LinkedAccounts.tsx(11,32): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/settings/OpenSourceLicenses.tsx(8,28): error TS2307: Cannot find module '../../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/settings/OpenSourceLicenses.tsx(9,32): error TS2307: Cannot find module '../../navigation/types' or its corresponding type declarations.
+screens/archive/social/AchievementsScreen.tsx(9,28): error TS2307: Cannot find module '../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/social/AchievementsScreen.tsx(10,43): error TS2307: Cannot find module '../constants/animations' or its corresponding type declarations.
+screens/archive/social/FriendsScreen.tsx(8,28): error TS2307: Cannot find module '../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/social/FriendsScreen.tsx(9,43): error TS2307: Cannot find module '../constants/animations' or its corresponding type declarations.
+screens/archive/social/FriendsScreen.tsx(10,28): error TS2307: Cannot find module '../hooks/useFriends' or its corresponding type declarations.
+screens/archive/social/FriendsScreen.tsx(11,49): error TS2307: Cannot find module '../hooks/useWebSocket' or its corresponding type declarations.
+screens/archive/social/NotificationScreen.tsx(3,32): error TS2307: Cannot find module '../navigation/types' or its corresponding type declarations.
+screens/archive/social/NotificationScreen.tsx(9,28): error TS2307: Cannot find module '../hooks/useHaptics' or its corresponding type declarations.
+screens/archive/social/NotificationScreen.tsx(10,34): error TS2307: Cannot find module '../hooks/useWebSocket' or its corresponding type declarations.
+screens/archive/social/NotificationScreen.tsx(11,37): error TS2307: Cannot find module '../utils/dateUtils' or its corresponding type declarations.
+screens/archive/social/NotificationScreen.tsx(174,9): error TS2322: Type 'unknown' is not assignable to type 'ListRenderItem<any>'.
+  Type '{}' provides no match for the signature '(info: ListRenderItemInfo<any>): ReactElement<unknown, string | JSXElementConstructor<any>>'.
+screens/ComplianceGateScreen.tsx(163,23): error TS2345: Argument of type '(prev: { age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; consents: { essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }; termsAccepted: boolean; privacyAccepted: boolean; }) => { ...; }' is not assignable to parameter of type 'SetStateAction<{ age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; consents: { essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }; termsAccepted: boolean; privacyAccepted: boolean; }>'.
+  Type '(prev: { age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; consents: { essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }; termsAccepted: boolean; privacyAccepted: boolean; }) => { ...; }' is not assignable to type '(prevState: { age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; consents: { essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }; termsAccepted: boolean; privacyAccepted: boolean; }) => { ...; }'.
+    Call signature return types '{ consents: unknown; age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; termsAccepted: boolean; privacyAccepted: boolean; }' and '{ age: number; birthDate: Date; isTeenMode: boolean; region: string; isGDPR: boolean; consents: { essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }; termsAccepted: boolean; privacyAccepted: boolean; }' are incompatible.
+      The types of 'consents' are incompatible between these types.
+        Type '{}' is missing the following properties from type '{ essential: boolean; analytics: boolean; recommendations: boolean; marketing: boolean; }': essential, analytics, recommendations, marketing
+screens/developer/DeveloperDashboard.tsx(156,25): error TS2345: Argument of type '[string | number | symbol, any]' is not assignable to parameter of type '[screen: "Profile", params?: { userId?: string; }, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Search", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Settings", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | ... 23 more ... | [screen: ...]'.
+  Type '[string | number | symbol, any]' is not assignable to type '[screen: "DeveloperTools", params?: undefined, options?: { merge?: boolean; pop?: boolean; }]'.
+    Type at position 0 in source is not compatible with type at position 0 in target.
+      Type 'string | number | symbol' is not assignable to type '"DeveloperTools"'.
+        Type 'string' is not assignable to type '"DeveloperTools"'.
+screens/developer/DeveloperDashboard.tsx(156,51): error TS2304: Cannot find name 'RootStackParamList'.
+screens/developer/DeveloperDashboard.tsx(246,33): error TS2551: Property 'coverImageUrl' does not exist on type 'DeveloperGame'. Did you mean 'coverImage'?
+screens/developer/GameManagement.tsx(198,42): error TS2551: Property 'coverImageUrl' does not exist on type '{ id: string; title: string; oneLiner: string; description: string; icon: string; coverImage: string; status: { status: "published"; lastUpdated: Date; }; visibility: boolean; genres: string[]; ... 7 more ...; activeUsers: number; }'. Did you mean 'coverImage'?
+screens/developer/GameManagement.tsx(198,73): error TS2551: Property 'coverImageUrl' does not exist on type '{ container: { flex: number; backgroundColor: string; }; content: { flex: number; }; header: { flexDirection: "row"; alignItems: "center"; justifyContent: "space-between"; paddingHorizontal: number; paddingVertical: number; }; ... 97 more ...; feedbackHelpfulText: { ...; }; }'. Did you mean 'coverImage'?
+screens/developer/GameManagement.tsx(238,48): error TS2345: Argument of type '[string | number | symbol, any]' is not assignable to parameter of type '[screen: "Profile", params?: { userId?: string; }, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Search", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | [screen: "Settings", params?: undefined, options?: { merge?: boolean; pop?: boolean; }] | ... 23 more ... | [screen: ...]'.
+  Type '[string | number | symbol, any]' is not assignable to type '[screen: "DeveloperTools", params?: undefined, options?: { merge?: boolean; pop?: boolean; }]'.
+    Type at position 0 in source is not compatible with type at position 0 in target.
+      Type 'string | number | symbol' is not assignable to type '"DeveloperTools"'.
+        Type 'string' is not assignable to type '"DeveloperTools"'.
+screens/developer/GameManagement.tsx(238,78): error TS2304: Cannot find name 'RootStackParamList'.
+screens/FeedScreen.tsx(474,9): error TS2304: Cannot find name 'setCommentIconPosition'.
+screens/FeedScreen.tsx(478,9): error TS2304: Cannot find name 'setShowComments'.
+screens/FeedScreen.tsx(853,42): error TS2339: Property 'coverUrl' does not exist on type 'Game'.
+screens/FeedScreen.tsx(902,43): error TS2339: Property 'coverUrl' does not exist on type 'Game'.
+screens/FeedScreen.tsx(1289,5): error TS2345: Argument of type '{ container: { flex: number; backgroundColor: string; }; header: { paddingTop: number; paddingHorizontal: number; paddingBottom: number; }; headerContent: { flexDirection: "row"; justifyContent: "space-between"; alignItems: "flex-start"; marginBottom: number; }; ... 101 more ...; actionButtonPortrait: { ...; }; }' is not assignable to parameter of type '{ container: { flex: number; backgroundColor: string; }; header: { paddingTop: number; paddingHorizontal: number; paddingBottom: number; }; headerContent: { flexDirection: "row"; justifyContent: "space-between"; alignItems: "flex-start"; marginBottom: number; }; ... 101 more ...; actionButtonPortrait: { ...; }; } & ...'.
+  Property 'trendingBadge' is incompatible with index signature.
+    Object literal may only specify known properties, and 'backdropFilter' does not exist in type 'ViewStyle | TextStyle | ImageStyle'.
+screens/GameDetailScreen.tsx(103,67): error TS2339: Property '_value' does not exist on type 'Value'.
+screens/GameDetailScreen.tsx(110,39): error TS2339: Property '_value' does not exist on type 'Value'.
+screens/GameDetailScreen.tsx(169,49): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'number'.
+screens/GameDetailScreen.tsx(296,32): error TS2339: Property 'icon' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(297,40): error TS2339: Property 'icon' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(306,23): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+screens/GameDetailScreen.tsx(306,69): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+screens/GameDetailScreen.tsx(313,15): error TS2339: Property 'hasVideo' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(368,54): error TS2339: Property 'totalRatings' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(380,23): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+screens/GameDetailScreen.tsx(380,67): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+screens/GameDetailScreen.tsx(411,21): error TS2339: Property 'hasVideo' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(426,52): error TS2339: Property 'screenshots' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(426,84): error TS2339: Property 'videos' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(435,36): error TS2339: Property 'totalRatings' does not exist on type 'Game'.
+screens/GameDetailScreen.tsx(453,60): error TS2551: Property 'ageRating' does not exist on type 'Game'. Did you mean 'rating'?
+screens/GameDetailScreen.tsx(463,78): error TS2551: Property 'developerId' does not exist on type 'Game'. Did you mean 'developer'?
+screens/GameDetailScreen.tsx(469,47): error TS2551: Property 'platform' does not exist on type 'Game'. Did you mean 'platforms'?
+screens/ProfileScreen.tsx(458,12): error TS2741: Property 'children' is missing in type '{}' but required in type 'ResponsiveGridProps'.
+screens/ProfileScreen.tsx(565,60): error TS2339: Property 'all' does not exist on type 'unknown'.
+screens/ProfileScreen.tsx(566,60): error TS2339: Property 'recent' does not exist on type 'unknown'.
+screens/TrialPlayerScreen.tsx(107,11): error TS2339: Property 'trialDuration' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(107,32): error TS2339: Property 'trialDuration' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(233,25): error TS2339: Property 'trialType' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(235,23): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(239,46): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(240,60): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(245,23): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(341,46): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(523,62): error TS2339: Property 'data' does not exist on type 'unknown'.
+screens/TrialPlayerScreen.tsx(585,28): error TS2339: Property 'trialDuration' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(585,49): error TS2339: Property 'trialDuration' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(636,33): error TS2339: Property 'coverUrl' does not exist on type 'Game'.
+screens/TrialPlayerScreen.tsx(713,17): error TS2339: Property 'trialType' does not exist on type 'Game'.
+src/api/adapters/gameAdapter.ts(61,18): error TS2339: Property 'id' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(65,7): error TS2353: Object literal may only specify known properties, and 'image' does not exist in type 'Game'.
+src/api/adapters/gameAdapter.ts(65,44): error TS2339: Property 'image' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(67,16): error TS2551: Property 'coverImageUrlUrl' does not exist on type 'DynamoDBGame'. Did you mean 'coverImageUrl'?
+src/api/adapters/gameAdapter.ts(69,16): error TS2339: Property 'image' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(75,21): error TS2339: Property 'likes' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(76,21): error TS2339: Property 'plays' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(78,24): error TS2339: Property 'trending' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(83,23): error TS2339: Property 'gameUrl' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(83,41): error TS2339: Property 'demoUrl' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(84,26): error TS2339: Property 'minPlayers' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(85,26): error TS2339: Property 'maxPlayers' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(86,24): error TS2339: Property 'duration' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(87,26): error TS2339: Property 'difficulty' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(88,26): error TS2551: Property 'ageRating' does not exist on type 'DynamoDBGame'. Did you mean 'rating'?
+src/api/adapters/gameAdapter.ts(95,28): error TS2339: Property 'lastPlayedAt' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(101,21): error TS2339: Property 'price' does not exist on type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(111,7): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(126,23): error TS2339: Property 'lastUpdated' does not exist on type 'Game'.
+src/api/adapters/gameAdapter.ts(127,21): error TS2339: Property 'gameUrl' does not exist on type 'Game'.
+src/api/adapters/gameAdapter.ts(130,22): error TS2339: Property 'trialDuration' does not exist on type 'Game'.
+src/api/adapters/gameAdapter.ts(132,23): error TS2551: Property 'ageRating' does not exist on type 'Game'. Did you mean 'rating'?
+src/api/adapters/gameAdapter.ts(160,7): error TS2353: Object literal may only specify known properties, and 'userRating' does not exist in type 'Game'.
+src/api/adapters/gameAdapter.ts(205,7): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'DynamoDBGame'.
+src/api/adapters/gameAdapter.ts(205,16): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(205,27): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(205,42): error TS2339: Property '_id' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(206,19): error TS2339: Property 'title' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(206,33): error TS2339: Property 'title' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(206,47): error TS2339: Property 'gameName' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(207,25): error TS2339: Property 'description' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(207,45): error TS2339: Property 'desc' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(207,58): error TS2339: Property 'summary' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(208,58): error TS2339: Property 'developer' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(208,76): error TS2339: Property 'studio' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(208,91): error TS2339: Property 'publisher' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(209,26): error TS2339: Property 'thumbnailUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(209,47): error TS2339: Property 'thumbnail' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(209,65): error TS2339: Property 'image' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(209,79): error TS2339: Property 'thumbnailUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(210,27): error TS2339: Property 'coverImageUrlUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(210,52): error TS2339: Property 'coverImageUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(210,74): error TS2339: Property 'banner' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(210,89): error TS2339: Property 'headerImage' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(211,19): error TS2339: Property 'genre' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(211,33): error TS2339: Property 'genre' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(211,47): error TS2339: Property 'type' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(212,18): error TS2339: Property 'tags' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(212,31): error TS2339: Property 'keywords' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(213,31): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(213,46): error TS2339: Property 'averageRating' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(213,68): error TS2339: Property 'score' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(214,34): error TS2339: Property 'ratingCount' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(214,54): error TS2339: Property 'totalRatings' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(214,75): error TS2339: Property 'reviewCount' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(215,28): error TS2339: Property 'likes' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(215,42): error TS2339: Property 'likeCount' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(215,60): error TS2339: Property 'favorites' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(216,28): error TS2339: Property 'plays' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(216,42): error TS2339: Property 'playCount' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(217,22): error TS2339: Property 'featured' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(217,39): error TS2339: Property 'featured' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(218,22): error TS2339: Property 'trending' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(218,39): error TS2339: Property 'isTrending' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(219,23): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(219,41): error TS2339: Property 'created' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(219,57): error TS2339: Property 'addedAt' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(220,23): error TS2339: Property 'updatedAt' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(220,41): error TS2339: Property 'updated' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(220,57): error TS2339: Property 'modifiedAt' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(221,21): error TS2339: Property 'gameUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(221,37): error TS2339: Property 'url' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(221,49): error TS2339: Property 'playUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(222,21): error TS2339: Property 'demoUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(222,37): error TS2339: Property 'trialUrl' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(222,54): error TS2339: Property 'demoLink' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(223,40): error TS2339: Property 'minPlayers' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(223,59): error TS2339: Property 'minimumPlayers' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(224,40): error TS2339: Property 'maxPlayers' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(224,59): error TS2339: Property 'maximumPlayers' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(225,22): error TS2339: Property 'duration' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(225,39): error TS2339: Property 'playTime' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(225,56): error TS2339: Property 'estimatedTime' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(226,24): error TS2339: Property 'difficulty' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(226,43): error TS2339: Property 'level' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(227,24): error TS2339: Property 'ageRating' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(227,42): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(227,57): error TS2339: Property 'esrb' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(234,30): error TS2339: Property 'price' does not exist on type 'unknown'.
+src/api/adapters/gameAdapter.ts(234,44): error TS2339: Property 'cost' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(66,7): error TS2322: Type 'string[]' is not assignable to type 'Achievement[]'.
+  Type 'string' is not assignable to type 'Achievement'.
+src/api/adapters/userAdapter.ts(71,28): error TS2339: Property 'lastActiveAt' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(74,23): error TS2339: Property 'isGuest' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(75,25): error TS2339: Property 'isPremium' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(76,27): error TS2339: Property 'isDeveloper' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(77,26): error TS2339: Property 'isVerified' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(78,29): error TS2339: Property 'emailVerified' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(81,32): error TS2339: Property 'twoFactorEnabled' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(82,32): error TS2339: Property 'biometricEnabled' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(86,22): error TS2339: Property 'notificationSettings' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(87,32): error TS2339: Property 'notificationSettings' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(88,29): error TS2339: Property 'notificationSettings' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(99,24): error TS2339: Property 'settings' does not exist on type 'DynamoDBUser'.
+src/api/adapters/userAdapter.ts(116,27): error TS2339: Property 'totalPlayTime' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(117,7): error TS2322: Type 'Achievement[]' is not assignable to type 'string[]'.
+  Type 'Achievement' is not assignable to type 'string'.
+src/api/adapters/userAdapter.ts(119,23): error TS2339: Property 'following' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(120,23): error TS2339: Property 'followers' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(123,26): error TS2551: Property 'lastActiveAt' does not exist on type 'User'. Did you mean 'lastActive'?
+src/api/adapters/userAdapter.ts(124,21): error TS2339: Property 'isGuest' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(125,23): error TS2339: Property 'isPremium' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(126,25): error TS2339: Property 'isDeveloper' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(127,24): error TS2339: Property 'isVerified' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(128,27): error TS2339: Property 'emailVerified' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(129,30): error TS2339: Property 'twoFactorEnabled' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(130,30): error TS2339: Property 'biometricEnabled' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(131,34): error TS2339: Property 'notificationSettings' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(132,21): error TS2339: Property 'privacy' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(134,22): error TS2339: Property 'settings' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(147,50): error TS2339: Property 'totalPlayTime' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(152,9): error TS2353: Object literal may only specify known properties, and 'totalLikes' does not exist in type 'UserStats'.
+src/api/adapters/userAdapter.ts(181,7): error TS2353: Object literal may only specify known properties, and 'totalPlayTime' does not exist in type 'User'.
+src/api/adapters/userAdapter.ts(246,20): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(246,31): error TS2339: Property 'userId' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(246,46): error TS2339: Property '_id' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(247,22): error TS2339: Property 'username' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(247,39): error TS2339: Property 'email' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(248,19): error TS2339: Property 'email' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(248,33): error TS2339: Property 'emailAddress' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(249,18): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(249,31): error TS2339: Property 'displayName' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(249,51): error TS2339: Property 'fullName' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(250,23): error TS2339: Property 'avatarUrl' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(250,41): error TS2339: Property 'avatar' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(250,56): error TS2339: Property 'profilePicture' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(250,79): error TS2339: Property 'photo' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(254,7): error TS2561: Object literal may only specify known properties, but 'totalGamesPlayed' does not exist in type 'DynamoDBUser'. Did you mean to write 'gamesPlayed'?
+src/api/adapters/userAdapter.ts(254,39): error TS2339: Property 'totalGamesPlayed' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(254,64): error TS2339: Property 'gamesPlayed' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(254,84): error TS2339: Property 'gameCount' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(255,36): error TS2339: Property 'totalPlayTime' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(255,58): error TS2339: Property 'playTime' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(255,75): error TS2339: Property 'hoursPlayed' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(256,26): error TS2339: Property 'achievements' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(256,47): error TS2339: Property 'badges' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(256,62): error TS2339: Property 'trophies' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(257,21): error TS2339: Property 'friends' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(257,37): error TS2339: Property 'friendList' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(257,56): error TS2339: Property 'connections' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(258,23): error TS2339: Property 'following' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(258,41): error TS2339: Property 'follows' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(259,23): error TS2339: Property 'followers' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(259,41): error TS2339: Property 'followedBy' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(260,23): error TS2339: Property 'createdAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(260,41): error TS2339: Property 'created' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(260,57): error TS2339: Property 'joinedAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(260,74): error TS2339: Property 'registeredAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(261,23): error TS2339: Property 'updatedAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(261,41): error TS2339: Property 'updated' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(261,57): error TS2339: Property 'modifiedAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(262,26): error TS2339: Property 'lastActiveAt' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(262,47): error TS2339: Property 'lastActive' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(262,66): error TS2339: Property 'lastSeen' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(262,83): error TS2339: Property 'lastLogin' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(263,21): error TS2339: Property 'isGuest' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(263,37): error TS2339: Property 'guest' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(264,23): error TS2339: Property 'isPremium' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(264,41): error TS2339: Property 'premium' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(264,57): error TS2339: Property 'pro' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(265,25): error TS2339: Property 'isDeveloper' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(265,45): error TS2339: Property 'developer' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(266,24): error TS2339: Property 'isVerified' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(266,43): error TS2339: Property 'verified' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(267,27): error TS2339: Property 'emailVerified' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(267,49): error TS2339: Property 'emailConfirmed' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(268,25): error TS2339: Property 'preferences' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(268,45): error TS2339: Property 'prefs' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(269,22): error TS2339: Property 'settings' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(269,39): error TS2339: Property 'config' does not exist on type 'unknown'.
+src/api/adapters/userAdapter.ts(319,7): error TS2353: Object literal may only specify known properties, and 'isGuest' does not exist in type 'Partial<User>'.
+src/api/adapters/userAdapter.ts(319,21): error TS2339: Property 'isGuest' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(320,23): error TS2339: Property 'isPremium' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(321,25): error TS2339: Property 'isDeveloper' does not exist on type 'User'.
+src/api/adapters/userAdapter.ts(322,24): error TS2339: Property 'isVerified' does not exist on type 'User'.
+src/components/diagnostics/StartupDiagnostics.tsx(38,24): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/diagnostics/StartupDiagnostics.tsx(62,24): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/components/diagnostics/StartupDiagnostics.tsx(81,24): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/config/environments/development.ts(50,3): error TS2741: Property 'REQUEST_TIMEOUT' is missing in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; }' but required in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; REQUEST_TIMEOUT: number; }'.
+src/config/environments/development.ts(61,5): error TS2353: Object literal may only specify known properties, and 'ENABLE_REDUX_DEVTOOLS' does not exist in type '{ ENABLE_LOGGING: boolean; LOG_LEVEL: string; ENABLE_NETWORK_LOGGING: boolean; ENABLE_REDUX_LOGGER: boolean; }'.
+src/config/environments/development.ts(62,16): error TS1355: A 'const' assertions can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+src/config/environments/production.ts(50,3): error TS2741: Property 'REQUEST_TIMEOUT' is missing in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; }' but required in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; REQUEST_TIMEOUT: number; }'.
+src/config/environments/production.ts(61,5): error TS2353: Object literal may only specify known properties, and 'ENABLE_REDUX_DEVTOOLS' does not exist in type '{ ENABLE_LOGGING: boolean; LOG_LEVEL: string; ENABLE_NETWORK_LOGGING: boolean; ENABLE_REDUX_LOGGER: boolean; }'.
+src/config/environments/production.ts(62,16): error TS1355: A 'const' assertions can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+src/config/environments/staging.ts(59,3): error TS2741: Property 'REQUEST_TIMEOUT' is missing in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; }' but required in type '{ IMAGE_QUALITY: number; MAX_CONCURRENT_REQUESTS: number; REQUEST_RETRY_COUNT: number; REQUEST_TIMEOUT: number; }'.
+src/config/environments/staging.ts(70,5): error TS2353: Object literal may only specify known properties, and 'ENABLE_REDUX_DEVTOOLS' does not exist in type '{ ENABLE_LOGGING: boolean; LOG_LEVEL: string; ENABLE_NETWORK_LOGGING: boolean; ENABLE_REDUX_LOGGER: boolean; }'.
+src/config/environments/staging.ts(71,16): error TS1355: A 'const' assertions can only be applied to references to enum members, or string, number, boolean, array, or object literals.
+src/contexts/WebSocketContext.tsx(91,5): error TS2322: Type '(action: string, data: any) => void' is not assignable to type '(action: string, data: any) => boolean'.
+  Type 'void' is not assignable to type 'boolean'.
+src/hooks/useGameActions.ts(111,59): error TS2353: Object literal may only specify known properties, and 'sessionId' does not exist in type 'AnalyticsEventData'.
+src/hooks/useGameActions.ts(148,58): error TS2353: Object literal may only specify known properties, and 'rating' does not exist in type 'AnalyticsEventData'.
+src/hooks/useGameActions.ts(180,24): error TS2339: Property 'action' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(182,24): error TS2339: Property 'isLiked' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(183,47): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(185,49): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(189,24): error TS2339: Property 'isBookmarked' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(190,51): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(192,49): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(196,45): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(199,45): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(199,60): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/hooks/useGameActions.ts(205,65): error TS2304: Cannot find name 'error'.
+src/hooks/useGames.ts(79,15): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/hooks/useGames.ts(79,15): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/hooks/useGames.ts(79,36): error TS2339: Property 'games' does not exist on type 'never'.
+src/hooks/useGames.ts(80,42): error TS2339: Property 'games' does not exist on type 'never'.
+src/hooks/useUserProfile.ts(159,28): error TS2352: Conversion of type 'UserProfile' to type 'UserProfileResponse' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Property 'user' is missing in type 'UserProfile' but required in type 'UserProfileResponse'.
+src/hooks/websocket.ts(24,40): error TS2339: Property 'onConnectionStateChange' does not exist on type 'WebSocketManager'.
+src/hooks/websocket.ts(25,40): error TS2341: Property 'onError' is private and only accessible within class 'WebSocketManager'.
+src/hooks/websocket.ts(25,48): error TS2345: Argument of type 'Dispatch<SetStateAction<Error>>' is not assignable to parameter of type 'Event'.
+src/hooks/websocket.ts(29,7): error TS2349: This expression is not callable.
+  Type 'void' has no call signatures.
+src/hooks/websocket.ts(43,27): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'WebSocketMessage'.
+  Property 'type' is missing in type '{}' but required in type 'WebSocketMessage'.
+src/hooks/websocket.ts(89,34): error TS2554: Expected 1 arguments, but got 2.
+src/hooks/websocket.ts(92,40): error TS2341: Property 'onError' is private and only accessible within class 'WebSocketManager'.
+src/hooks/websocket.ts(92,48): error TS2345: Argument of type '(err: Error) => void' is not assignable to parameter of type 'Event'.
+src/hooks/websocket.ts(96,7): error TS2349: This expression is not callable.
+  Type 'void' has no call signatures.
+src/hooks/websocket.ts(327,9): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+src/services/api/offlineQueue.ts(284,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+src/services/api/retryMechanism.ts(35,57): error TS2588: Cannot assign to 'attempt' because it is a constant.
+src/services/api/retryMechanism.ts(103,35): error TS2345: Argument of type '"UNKNOWN_ERROR"' is not assignable to parameter of type 'ApiErrorCode'.
+src/services/api/retryMechanism.ts(168,11): error TS2345: Argument of type '"CIRCUIT_OPEN"' is not assignable to parameter of type 'ApiErrorCode'.
+src/services/api/SafeTriollAPI.ts(108,9): error TS2322: Type '{ games: undefined[]; isUsingFallback: boolean; }' is not assignable to type 'void'.
+src/services/api/SafeTriollAPI.ts(115,7): error TS2322: Type '{ games: Game[]; pagination?: PaginationMeta; filters?: { category?: string; sortBy?: string; }; }' is not assignable to type 'void'.
+src/services/api/SafeTriollAPI.ts(122,7): error TS2322: Type '{ games: undefined[]; isUsingFallback: boolean; }' is not assignable to type 'void'.
+src/services/api/SafeTriollAPI.ts(138,25): error TS2339: Property 'games' does not exist on type 'SearchResponse'.
+src/services/api/SafeTriollAPI.ts(262,9): error TS2322: Type 'undefined[]' is not assignable to type 'void'.
+src/services/api/SafeTriollAPI.ts(264,7): error TS2322: Type 'FriendRequestsResponse' is not assignable to type 'void'.
+src/services/api/SafeTriollAPI.ts(267,7): error TS2322: Type 'undefined[]' is not assignable to type 'void'.
+src/services/api/types.ts(1,15): error TS2440: Import declaration conflicts with local declaration of 'ApiResponse'.
+src/services/api/types.ts(38,18): error TS2430: Interface 'UserProfile' incorrectly extends interface 'User'.
+  Types of property 'achievements' are incompatible.
+    Type 'number' is not assignable to type 'Achievement[]'.
+src/services/auth/authAPI.ts(198,7): error TS2322: Type 'unknown' is not assignable to type 'void'.
+src/services/auth/authServiceAdapter.ts(202,7): error TS2322: Type '{ success: boolean; message?: string; }' is not assignable to type '{ success: boolean; message: string; }'.
+  Property 'message' is optional in type '{ success: boolean; message?: string; }' but required in type '{ success: boolean; message: string; }'.
+src/services/auth/authServiceAdapter.ts(290,7): error TS2322: Type '{ id: string; email: string; name: string; emailVerified: boolean; }' is not assignable to type 'void'.
+src/services/auth/authServiceAdapter.ts(304,34): error TS2339: Property 'getUserAttributes' does not exist on type 'unknown'.
+src/services/auth/authServiceAdapter.ts(310,23): error TS2339: Property 'getUserAttributes' does not exist on type 'unknown'.
+src/services/auth/authServiceAdapter.ts(326,15): error TS2353: Object literal may only specify known properties, and 'id' does not exist in type 'PromiseLike<void>'.
+src/services/auth/authServiceAdapter.ts(353,27): error TS2339: Property 'getUserAttributes' does not exist on type 'unknown'.
+src/services/auth/authServiceAdapter.ts(359,16): error TS2339: Property 'getUserAttributes' does not exist on type 'unknown'.
+src/services/auth/authServiceAdapter.ts(393,33): error TS2339: Property 'getIdToken' does not exist on type 'unknown'.
+src/services/auth/cognitoAuthService.ts(312,19): error TS2353: Object literal may only specify known properties, and 'emailVerified' does not exist in type 'AuthUser'.
+src/services/auth/cognitoAuthService.ts(409,19): error TS2353: Object literal may only specify known properties, and 'emailVerified' does not exist in type 'AuthUser'.
+src/services/auth/cognitoAuthService.ts(663,5): error TS2322: Type 'AuthTokens' is not assignable to type 'void'.
+src/services/auth/cognitoAuthService.ts(683,5): error TS2322: Type 'number' is not assignable to type 'void'.
+src/services/auth/cognitoConfig.ts(25,22): error TS2339: Property 'AWS_COGNITO_USER_POOL_ID' does not exist on type 'EnvironmentConfig'.
+src/services/auth/cognitoConfig.ts(26,28): error TS2339: Property 'AWS_COGNITO_CLIENT_ID' does not exist on type 'EnvironmentConfig'.
+src/services/auth/cognitoConfig.ts(29,26): error TS2339: Property 'AWS_COGNITO_IDENTITY_POOL_ID' does not exist on type 'EnvironmentConfig'.
+src/services/auth/cognitoConfig.ts(33,36): error TS2339: Property 'AWS_ACCOUNT_ID' does not exist on type 'EnvironmentConfig'.
+src/services/auth/cognitoConfig.ts(34,37): error TS2339: Property 'AWS_ACCOUNT_ID' does not exist on type 'EnvironmentConfig'.
+src/services/auth/mockAuthService.ts(160,11): error TS2353: Object literal may only specify known properties, and 'emailVerified' does not exist in type 'AuthUser'.
+src/services/auth/mockAuthService.ts(202,9): error TS2353: Object literal may only specify known properties, and 'emailVerified' does not exist in type 'AuthUser'.
+src/services/auth/mockAuthService.ts(279,17): error TS2339: Property 'expiresAt' does not exist on type '{ token: string; user: AuthUser; }'.
+src/services/auth/mockAuthService.ts(279,51): error TS2339: Property 'expiresAt' does not exist on type '{ token: string; user: AuthUser; }'.
+src/services/auth/mockAuthService.ts(290,33): error TS2339: Property 'refreshToken' does not exist on type '{ token: string; user: AuthUser; }'.
+src/services/auth/safeAuthService.ts(36,11): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/services/auth/safeAuthService.ts(111,38): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'LoginCredentials'.
+  Type '{}' is missing the following properties from type 'LoginCredentials': emailOrUsername, password
+src/services/auth/SessionManager.ts(42,23): error TS2339: Property 'sessions' does not exist on type 'unknown'.
+src/services/backend/awsConnectionChecker.ts(76,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/backend/awsConnectionChecker.ts(114,24): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/services/backend/awsConnectionChecker.ts(122,22): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/backend/backendReadinessValidator.ts(284,38): error TS2339: Property 'getAuthMode' does not exist on type 'SafeAuthService'.
+src/services/backend/backendReadinessValidator.ts(302,47): error TS2339: Property 'refreshTokens' does not exist on type 'SafeAuthService'.
+src/services/backend/backendReadinessValidator.ts(330,29): error TS2339: Property 'register' does not exist on type 'SafeAuthService'.
+src/services/backend/backendReadinessValidator.ts(337,21): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/backend/backendReadinessValidator.ts(502,61): error TS2554: Expected 1 arguments, but got 2.
+src/services/backend/backendReadinessValidator.ts(793,54): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/backend/backendReadinessValidator.ts(829,28): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/backend/backendReadinessValidator.ts(836,36): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/database/dynamoDBService.ts(364,52): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'string'.
+src/services/database/dynamoDBService.ts(374,29): error TS2339: Property 'startsWith' does not exist on type 'unknown'.
+src/services/database/dynamoDBService.ts(509,53): error TS2588: Cannot assign to 'i' because it is a constant.
+src/services/database/dynamoDBService.ts(512,13): error TS2588: Cannot assign to 'deletedCount' because it is a constant.
+src/services/database/dynamoDBService.ts(531,35): error TS2304: Cannot find name 'authService'.
+src/services/database/dynamoDBService.ts(537,26): error TS2304: Cannot find name 'authService'.
+src/services/environment/environmentActivator.ts(151,49): error TS2339: Property 'database' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(194,41): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(314,43): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(315,67): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(329,15): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(330,15): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(336,45): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(337,70): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(346,41): error TS2339: Property 'database' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(349,40): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(350,41): error TS2339: Property 'database' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(350,85): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(362,45): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(363,75): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(380,45): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/services/environment/environmentActivator.ts(396,21): error TS2339: Property 'enableTestMode' does not exist on type 'SafeAuthService'.
+src/services/environment/environmentActivator.ts(425,40): error TS2339: Property 'getAuthMode' does not exist on type 'SafeAuthService'.
+src/services/environment/environmentActivator.ts(434,47): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/environmentActivator.ts(451,23): error TS2339: Property 'switchToMockAuth' does not exist on type 'SafeAuthService'.
+src/services/environment/environmentActivator.ts(530,21): error TS2339: Property 'switchToMockAuth' does not exist on type 'SafeAuthService'.
+src/services/environment/healthCheckService.ts(203,37): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(241,37): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(291,37): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(335,37): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(381,17): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(386,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/environment/healthCheckService.ts(408,7): error TS2322: Type '"unknown"' is not assignable to type '"healthy" | "degraded" | "unavailable"'.
+src/services/environment/stagingValidator.ts(110,22): error TS2304: Cannot find name 'authService'.
+src/services/environment/stagingValidator.ts(127,30): error TS2304: Cannot find name 'authService'.
+src/services/environment/stagingValidator.ts(138,33): error TS2304: Cannot find name 'authService'.
+src/services/environment/stagingValidator.ts(197,19): error TS2339: Property 'name' does not exist on type 'Game'.
+src/services/environment/stagingValidator.ts(197,33): error TS2339: Property 'category' does not exist on type 'Game'.
+src/services/environment/stagingValidator.ts(197,51): error TS2339: Property 'image' does not exist on type 'Game'.
+src/services/environment/stagingValidator.ts(240,11): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/services/environment/stagingValidator.ts(263,11): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/services/environment/stagingValidator.ts(283,44): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/services/environment/stagingValidator.ts(328,56): error TS2554: Expected 1 arguments, but got 2.
+src/services/environment/stagingValidator.ts(354,50): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/services/environment/stagingValidator.ts(365,45): error TS2339: Property 'getUserOperations' does not exist on type 'OfflineQueueManager'.
+src/services/environment/stagingValidator.ts(369,37): error TS2339: Property 'cancelOperation' does not exist on type 'OfflineQueueManager'.
+src/services/environment/stagingValidator.ts(454,28): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/services/monitoring/analyticsEnhanced.ts(191,43): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'Record<string, unknown>'.
+  Index signature for type 'string' is missing in type '{}'.
+src/services/monitoring/crashReporter.ts(2,25): error TS2307: Cannot find module '@sentry/react-native' or its corresponding type declarations.
+src/services/monitoring/crashReporter.ts(75,38): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/services/monitoring/crashReporter.ts(76,36): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/services/monitoring/crashReporter.ts(76,90): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/services/monitoring/crashReporter.ts(276,46): error TS2345: Argument of type 'unknown' is not assignable to parameter of type '"debug" | "error" | "info" | "warning"'.
+src/services/monitoring/crashReporter.ts(304,30): error TS2339: Property 'memory' does not exist on type 'Performance'.
+src/services/monitoring/crashReporterStub.ts(30,48): error TS2554: Expected 1-2 arguments, but got 3.
+src/services/monitoring/performanceMonitor.ts(254,11): error TS2322: Type 'MemoryInfo' is not assignable to type 'Record<string, unknown>'.
+  Index signature for type 'string' is missing in type 'MemoryInfo'.
+src/services/monitoring/performanceMonitor.ts(270,9): error TS2578: Unused '@ts-expect-error' directive.
+src/services/monitoring/performanceMonitor.ts(272,46): error TS2339: Property 'memory' does not exist on type 'Performance'.
+src/services/monitoring/performanceMonitor.ts(273,47): error TS2339: Property 'memory' does not exist on type 'Performance'.
+src/services/storage/mockS3Service.ts(102,7): error TS2322: Type 'ArrayBufferLike' is not assignable to type 'ArrayBuffer'.
+  Type 'SharedArrayBuffer' is missing the following properties from type 'ArrayBuffer': resizable, resize, detached, transfer, transferToFixedLength
+src/services/storage/secureS3Service.ts(14,8): error TS2307: Cannot find module '@aws-sdk/client-s3' or its corresponding type declarations.
+src/services/storage/secureS3Service.ts(15,41): error TS2307: Cannot find module '@aws-sdk/credential-providers' or its corresponding type declarations.
+src/services/storage/secureS3Service.ts(16,53): error TS2307: Cannot find module '@aws-sdk/client-cognito-identity' or its corresponding type declarations.
+src/services/websocket/WebSocketService.ts(109,13): error TS2339: Property 'type' does not exist on type 'WebSocketMessage'.
+src/services/websocket/WebSocketService.ts(109,19): error TS2339: Property 'payload' does not exist on type 'WebSocketMessage'.
+src/services/websocket/WebSocketService.ts(126,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+src/testing/e2e/suites/AuthenticationTests.ts(73,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(77,44): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(78,77): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(79,57): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(85,31): error TS2339: Property 'confirmationRequired' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(90,58): error TS2339: Property 'confirmationRequired' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(96,55): error TS2339: Property 'confirmRegistration' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/AuthenticationTests.ts(115,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(119,42): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(119,68): error TS2339: Property 'confirmationRequired' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(128,43): error TS2339: Property 'confirmationRequired' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(140,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(150,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(151,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(181,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(188,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(191,43): error TS2339: Property 'successfulLoginTime' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(193,42): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(193,67): error TS2339: Property 'confirmationRequired' does not exist on type 'LoginResponse'.
+src/testing/e2e/suites/AuthenticationTests.ts(200,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(205,43): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(212,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(216,40): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(221,41): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(229,18): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/AuthenticationTests.ts(238,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(243,36): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(244,36): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(274,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(284,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(285,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(331,15): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(335,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(353,15): error TS2554: Expected 3 arguments, but got 4.
+src/testing/e2e/suites/AuthenticationTests.ts(354,41): error TS2339: Property 'ACCESS_CONTROL' does not exist on type 'typeof import("/Users/frederickcaplin/Desktop/Trioll Github App/trioll-mvp/trioll-consumer-app/src/utils/keychainCompat")'.
+src/testing/e2e/suites/AuthenticationTests.ts(355,38): error TS2339: Property 'ACCESSIBLE' does not exist on type 'typeof import("/Users/frederickcaplin/Desktop/Trioll Github App/trioll-mvp/trioll-consumer-app/src/utils/keychainCompat")'.
+src/testing/e2e/suites/AuthenticationTests.ts(362,23): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(365,65): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(382,57): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(408,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(436,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(441,64): error TS2345: Argument of type 'string' is not assignable to parameter of type 'ForgotPasswordCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(443,41): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(448,28): error TS2339: Property 'codeSent' does not exist on type '{ success: boolean; message: string; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(453,65): error TS2345: Argument of type 'string' is not assignable to parameter of type 'ForgotPasswordCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(454,41): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(461,53): error TS2339: Property 'confirmPasswordReset' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/AuthenticationTests.ts(476,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(481,45): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(481,68): error TS2339: Property 'codeSent' does not exist on type '{ success: boolean; message: string; }'.
+src/testing/e2e/suites/AuthenticationTests.ts(488,62): error TS2345: Argument of type 'string' is not assignable to parameter of type 'ForgotPasswordCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(489,38): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(516,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(545,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(549,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(553,41): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(553,65): error TS2339: Property 'confirmationRequired' does not exist on type 'LoginResponse'.
+src/testing/e2e/suites/AuthenticationTests.ts(617,58): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(640,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(650,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(651,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/AuthenticationTests.ts(681,15): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(685,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(734,16): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/AuthenticationTests.ts(762,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(803,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(816,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(820,27): error TS2339: Property 'mfaRequired' does not exist on type 'LoginResponse'.
+src/testing/e2e/suites/AuthenticationTests.ts(823,51): error TS2339: Property 'confirmMFA' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/AuthenticationTests.ts(852,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(934,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(965,17): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(968,39): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(981,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(989,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/AuthenticationTests.ts(994,36): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(995,36): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/AuthenticationTests.ts(1081,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(115,22): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(116,22): error TS2339: Property 'description' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(127,53): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'DynamoDBGame'.
+  Property 'gameId' is missing in type '{}' but required in type 'DynamoDBGame'.
+src/testing/e2e/suites/GameDataTests.ts(129,39): error TS2339: Property 'name' does not exist on type 'Game'.
+src/testing/e2e/suites/GameDataTests.ts(129,55): error TS2339: Property 'category' does not exist on type 'Game'.
+src/testing/e2e/suites/GameDataTests.ts(150,29): error TS2339: Property 'playCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(150,50): error TS2339: Property 'playCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(152,29): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(152,47): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(155,32): error TS2339: Property 'releaseDate' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(155,73): error TS2339: Property 'releaseDate' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(169,14): error TS2365: Operator '+' cannot be applied to types 'unknown' and 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(182,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(192,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(193,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(224,35): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(248,57): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'DynamoDBGame'.
+  Property 'gameId' is missing in type '{}' but required in type 'DynamoDBGame'.
+src/testing/e2e/suites/GameDataTests.ts(257,66): error TS2339: Property 'GAME_STATS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(262,50): error TS2339: Property 'GAME_STATS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(275,17): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/GameDataTests.ts(278,30): error TS2339: Property 'id' does not exist on type 'never'.
+src/testing/e2e/suites/GameDataTests.ts(301,38): error TS2339: Property 'category' does not exist on type 'Game'.
+src/testing/e2e/suites/GameDataTests.ts(319,63): error TS2339: Property 'name' does not exist on type 'Game'.
+src/testing/e2e/suites/GameDataTests.ts(321,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(331,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(332,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(360,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/GameDataTests.ts(361,34): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/GameDataTests.ts(372,35): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(383,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(391,56): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/GameDataTests.ts(398,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(411,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(434,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(435,27): error TS2339: Property 'COMMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(442,55): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/GameDataTests.ts(453,31): error TS2339: Property 'liked' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(454,31): error TS2339: Property 'bookmarked' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(455,30): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(460,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(471,66): error TS2339: Property 'GAME_STATS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(475,22): error TS2339: Property 'GAME_STATS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(478,39): error TS2339: Property 'likeCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(479,41): error TS2339: Property 'ratingCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(481,31): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(481,57): error TS2339: Property 'ratingCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(482,31): error TS2339: Property 'ratingCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(505,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(533,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/GameDataTests.ts(534,34): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/GameDataTests.ts(545,35): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(562,48): error TS2339: Property 'TRIAL_SESSIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(575,22): error TS2339: Property 'TRIAL_SESSIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(594,20): error TS2339: Property 'TRIAL_SESSIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(609,48): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(619,27): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/GameDataTests.ts(632,67): error TS2339: Property 'TRIAL_SESSIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(639,29): error TS2339: Property 'completed' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(640,28): error TS2339: Property 'finalScore' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(651,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(661,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(662,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(692,35): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(702,50): error TS2339: Property 'LEADERBOARDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(712,50): error TS2339: Property 'LEADERBOARDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(724,20): error TS2339: Property 'LEADERBOARDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(729,15): error TS2353: Object literal may only specify known properties, and 'scanIndexForward' does not exist in type 'QueryOptions'.
+src/testing/e2e/suites/GameDataTests.ts(738,61): error TS2339: Property 'score' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(738,71): error TS2339: Property 'score' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(739,26): error TS2339: Property 'score' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(744,60): error TS2339: Property 'userId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(752,17): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/GameDataTests.ts(755,24): error TS2339: Property 'FRIENDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(756,32): error TS2339: Property 'id' does not exist on type 'never'.
+src/testing/e2e/suites/GameDataTests.ts(761,58): error TS2339: Property 'friendId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(763,42): error TS2339: Property 'userId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(778,22): error TS2339: Property 'LEADERBOARDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(810,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(837,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/GameDataTests.ts(867,20): error TS2339: Property 'USER_ACHIEVEMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(872,68): error TS2339: Property 'achievementId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(877,52): error TS2339: Property 'USER_ACHIEVEMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(886,17): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(887,31): error TS2339: Property 'ACHIEVEMENT_EVENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(903,20): error TS2339: Property 'USER_ACHIEVEMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(909,34): error TS2339: Property 'points' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(933,58): error TS2339: Property 'achievementId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(977,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1005,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/GameDataTests.ts(1006,34): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/GameDataTests.ts(1018,50): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1032,20): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1047,62): error TS2339: Property 'status' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1091,48): error TS2339: Property 'GAME_PROGRESS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1094,70): error TS2339: Property 'GAME_PROGRESS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1109,74): error TS2339: Property 'playTime' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1115,28): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/testing/e2e/suites/GameDataTests.ts(1124,53): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1126,36): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1130,71): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1132,36): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1150,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(1160,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1161,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/GameDataTests.ts(1188,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/GameDataTests.ts(1215,15): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/GameDataTests.ts(1227,56): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/GameDataTests.ts(1243,28): error TS2339: Property 'playCount' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1244,28): error TS2339: Property 'rating' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1245,28): error TS2339: Property 'liked' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1269,52): error TS2339: Property 'USER_ACTIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1275,55): error TS2339: Property 'USER_ACTIONS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/GameDataTests.ts(1322,76): error TS2339: Property 'gameId' does not exist on type 'unknown'.
+src/testing/e2e/suites/GameDataTests.ts(1344,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(12,32): error TS2307: Cannot find module '../../../utils/networkManager' or its corresponding type declarations.
+src/testing/e2e/suites/OfflineTests.ts(116,69): error TS2339: Property 'category' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(126,17): error TS2339: Property 'name' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(127,17): error TS2339: Property 'description' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(145,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/OfflineTests.ts(155,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(156,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/OfflineTests.ts(185,28): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/OfflineTests.ts(186,34): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/OfflineTests.ts(192,31): error TS2339: Property 'pause' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(194,56): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(226,19): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(241,19): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(254,19): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(270,19): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(271,33): error TS2339: Property 'COMMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/OfflineTests.ts(287,51): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(295,49): error TS2339: Property 'getAllOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(310,52): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(326,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(345,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(349,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(387,37): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(388,15): error TS2322: Type 'unknown' is not assignable to type '"high" | "normal" | "low"'.
+src/testing/e2e/suites/OfflineTests.ts(394,46): error TS2339: Property 'getAllOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(403,51): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(409,17): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(434,45): error TS2345: Argument of type '{ type: "test"; table: string; data: string; priority: "normal"; userId: string; timestamp: number; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "test"; table: string; data: string; priority: "normal"; userId: string; timestamp: number; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(437,51): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(438,37): error TS2339: Property 'cleanExpiredOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(439,50): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(446,47): error TS2339: Property 'getUserOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(454,39): error TS2339: Property 'cancelOperation' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(456,53): error TS2339: Property 'getUserOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(473,45): error TS2345: Argument of type '{ type: "test"; table: string; data: string; priority: "high"; userId: string; retryCount: number; lastRetry: number; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "test"; table: string; data: string; priority: "high"; userId: string; retryCount: number; lastRetry: number; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(495,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(537,31): error TS2339: Property 'pause' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(546,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/OfflineTests.ts(568,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(573,49): error TS2339: Property 'getAllOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(629,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(633,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(661,31): error TS2339: Property 'pause' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(678,29): error TS2339: Property 'COMMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/OfflineTests.ts(691,29): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/OfflineTests.ts(705,47): error TS2345: Argument of type '{ type: "put"; table: string; data: { userId: string; gameId: string; liked: boolean; timestamp: string; id?: undefined; text?: undefined; key?: undefined; updates?: undefined; }; priority: "high"; userId: string; } | { ...; } | { ...; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "put"; table: string; data: { userId: string; gameId: string; liked: boolean; timestamp: string; id?: undefined; text?: undefined; key?: undefined; updates?: undefined; }; priority: "high"; userId: string; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(708,55): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(712,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(716,56): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(723,39): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(724,57): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(728,54): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(739,45): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(747,44): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/testing/e2e/suites/OfflineTests.ts(755,56): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(757,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/OfflineTests.ts(767,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(768,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/OfflineTests.ts(772,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(813,47): error TS2345: Argument of type '{ type: "put"; table: string; data: { userId: string; gameId: string; liked: boolean; timestamp: string; }; priority: "normal"; userId: string; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "put"; table: string; data: { userId: string; gameId: string; liked: boolean; timestamp: string; }; priority: "normal"; userId: string; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(817,31): error TS2339: Property 'resume' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(820,51): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(829,42): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(834,52): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(842,58): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(845,40): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(845,79): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(854,57): error TS2339: Property 'successful' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(881,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(909,40): error TS2339: Property 'getAllOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(927,46): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(956,57): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(1008,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(1051,27): error TS2339: Property 'TEST' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/OfflineTests.ts(1057,45): error TS2345: Argument of type '{ type: "put"; table: any; data: { test: string; }; priority: "normal"; userId: string; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "put"; table: any; data: { test: string; }; priority: "normal"; userId: string; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(1060,55): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(1072,29): error TS2339: Property 'TEST' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/OfflineTests.ts(1079,47): error TS2345: Argument of type '{ type: "put"; table: any; data: { test: string; }; priority: "normal"; userId: string; }' is not assignable to parameter of type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+  Type '{ type: "put"; table: any; data: { test: string; }; priority: "normal"; userId: string; }' is missing the following properties from type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">': method, maxRetries, url
+src/testing/e2e/suites/OfflineTests.ts(1082,56): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(1095,53): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(1109,54): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/OfflineTests.ts(1129,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/OfflineTests.ts(1139,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/OfflineTests.ts(1140,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(70,47): error TS2339: Property 'continueAsGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(71,42): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(91,52): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(93,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/UserJourneyTests.ts(106,51): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(138,15): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(149,15): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(160,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(161,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(186,28): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(187,31): error TS2339: Property 'continueAsGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(203,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/UserJourneyTests.ts(206,44): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(207,77): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(228,17): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/UserJourneyTests.ts(231,42): error TS2339: Property 'user' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(237,40): error TS2339: Property 'user' does not exist on type '{ success: boolean; userId?: string; requiresVerification: boolean; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(270,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(300,15): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/UserJourneyTests.ts(304,43): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(309,17): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/UserJourneyTests.ts(313,17): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/UserJourneyTests.ts(317,44): error TS2339: Property 'success' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(328,16): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/UserJourneyTests.ts(336,20): error TS2339: Property 'USER_GAMES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(337,36): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/UserJourneyTests.ts(345,20): error TS2339: Property 'FRIENDS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(346,36): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/UserJourneyTests.ts(354,20): error TS2339: Property 'ACHIEVEMENTS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(355,36): error TS2339: Property 'id' does not exist on type 'void'.
+src/testing/e2e/suites/UserJourneyTests.ts(367,56): error TS2339: Property 'startSync' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(386,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(396,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(397,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(467,51): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(487,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(519,15): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/UserJourneyTests.ts(522,33): error TS2339: Property 'id' does not exist on type 'never'.
+src/testing/e2e/suites/UserJourneyTests.ts(524,53): error TS2339: Property 'displayName' does not exist on type 'never'.
+src/testing/e2e/suites/UserJourneyTests.ts(530,18): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/UserJourneyTests.ts(538,60): error TS2339: Property 'changePassword' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(591,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(663,17): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/UserJourneyTests.ts(665,17): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/UserJourneyTests.ts(666,31): error TS2339: Property 'USER_PREFERENCES' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(668,46): error TS2339: Property 'id' does not exist on type 'never'.
+src/testing/e2e/suites/UserJourneyTests.ts(672,37): error TS2339: Property 'id' does not exist on type 'never'.
+src/testing/e2e/suites/UserJourneyTests.ts(701,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(725,27): error TS2339: Property 'isGuest' does not exist on type 'AuthServiceAdapter'.
+src/testing/e2e/suites/UserJourneyTests.ts(731,49): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(735,37): error TS2339: Property 'pause' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(739,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/UserJourneyTests.ts(795,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(865,55): error TS2339: Property 'getQueueStatus' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(867,13): error TS2353: Object literal may only specify known properties, and 'type' does not exist in type 'Omit<QueuedRequest, "id" | "timestamp" | "retryCount">'.
+src/testing/e2e/suites/UserJourneyTests.ts(868,27): error TS2339: Property 'TEST' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/UserJourneyTests.ts(875,49): error TS2339: Property 'getAllOperations' does not exist on type 'OfflineQueueManager'.
+src/testing/e2e/suites/UserJourneyTests.ts(893,14): error TS2365: Operator '+' cannot be applied to types 'unknown' and 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(903,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/UserJourneyTests.ts(913,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/UserJourneyTests.ts(914,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/WebSocketTests.ts(49,13): error TS2353: Object literal may only specify known properties, and 'displayName' does not exist in type 'RegisterCredentials'.
+src/testing/e2e/suites/WebSocketTests.ts(52,13): error TS2353: Object literal may only specify known properties, and 'email' does not exist in type 'LoginCredentials'.
+src/testing/e2e/suites/WebSocketTests.ts(101,40): error TS2554: Expected 0 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(124,26): error TS2339: Property 'on' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(128,26): error TS2339: Property 'ping' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(163,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/WebSocketTests.ts(173,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(174,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/WebSocketTests.ts(222,44): error TS2339: Property 'isAuthenticated' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(230,26): error TS2339: Property 'on' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(273,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(318,70): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(333,51): error TS2339: Property 'GAME_STATS' does not exist on type '{ GAMES: string; USERS: string; ANALYTICS: string; USER_INTERACTIONS: string; }'.
+src/testing/e2e/suites/WebSocketTests.ts(352,70): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(370,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(381,13): error TS2353: Object literal may only specify known properties, and 'gameId' does not exist in type 'WebSocketMessage'.
+src/testing/e2e/suites/WebSocketTests.ts(402,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(443,16): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/WebSocketTests.ts(451,75): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(451,89): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(485,57): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(509,75): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(509,90): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(516,55): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(521,63): error TS2339: Property 'action' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(524,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(524,77): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(525,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(525,77): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(544,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(585,16): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/WebSocketTests.ts(593,46): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(594,13): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(650,15): error TS2353: Object literal may only specify known properties, and 'notificationId' does not exist in type 'WebSocketMessage'.
+src/testing/e2e/suites/WebSocketTests.ts(650,53): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(656,66): error TS2339: Property 'priority' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(672,55): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(679,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(679,77): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(698,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(739,16): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/WebSocketTests.ts(745,46): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(759,61): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(775,50): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(793,50): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(806,48): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(818,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(837,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(882,76): error TS2554: Expected 1 arguments, but got 2.
+src/testing/e2e/suites/WebSocketTests.ts(937,57): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(939,62): error TS2339: Property 'data' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(951,15): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/testing/e2e/suites/WebSocketTests.ts(954,57): error TS2339: Property 'id' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(966,13): error TS2362: The left-hand side of an arithmetic operation must be of type 'any', 'number', 'bigint' or an enum type.
+src/testing/e2e/suites/WebSocketTests.ts(969,32): error TS2554: Expected 2 arguments, but got 1.
+src/testing/e2e/suites/WebSocketTests.ts(979,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/WebSocketTests.ts(989,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/testing/e2e/suites/WebSocketTests.ts(990,13): error TS2739: Type 'Record<string, unknown>' is missing the following properties from type '{ loadTime: number; memoryUsage: number; cpuUsage: number; }': loadTime, memoryUsage, cpuUsage
+src/testing/e2e/suites/WebSocketTests.ts(1042,26): error TS2339: Property 'simulateDisconnect' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(1050,33): error TS2345: Argument of type 'unknown' is not assignable to parameter of type 'WebSocketMessage'.
+  Property 'type' is missing in type '{}' but required in type 'WebSocketMessage'.
+src/testing/e2e/suites/WebSocketTests.ts(1054,44): error TS2339: Property 'getQueueSize' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(1063,26): error TS2339: Property 'on' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(1067,26): error TS2339: Property 'on' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(1068,13): error TS2588: Cannot assign to 'reconnectAttempts' because it is a constant.
+src/testing/e2e/suites/WebSocketTests.ts(1088,49): error TS2339: Property 'getQueueSize' does not exist on type 'WebSocketManager'.
+src/testing/e2e/suites/WebSocketTests.ts(1118,39): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/types/api.types.ts(283,32): error TS2339: Property 'code' does not exist on type 'unknown'.
+src/types/api.types.ts(283,66): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(135,61): error TS2339: Property 'stored' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(154,24): error TS2322: Type 'unknown' is not assignable to type 'object'.
+src/utils/apiIntegrationTest.ts(168,24): error TS2322: Type 'unknown' is not assignable to type 'object'.
+src/utils/apiIntegrationTest.ts(278,50): error TS2339: Property 'username' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(278,74): error TS2339: Property 'email' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(286,40): error TS2339: Property 'stats' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(290,33): error TS2339: Property 'stats' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(319,24): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/apiIntegrationTest.ts(324,45): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/comprehensiveTestRunner.ts(78,58): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/comprehensiveTestRunner.ts(83,33): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/comprehensiveTestRunner.ts(121,61): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/comprehensiveTestRunner.ts(126,33): error TS2339: Property 'message' does not exist on type 'unknown'.
+src/utils/comprehensiveTestRunner.ts(187,69): error TS2339: Property 'error' does not exist on type 'unknown'.
+src/utils/dataMapper.ts(164,3): error TS2561: Object literal may only specify known properties, but 'coverImage' does not exist in type 'Game'. Did you mean to write 'coverImageUrl'?
+src/utils/dataMapper.ts(194,3): error TS1117: An object literal cannot have multiple properties with the same name.
+src/utils/errorHandling.ts(4,10): error TS2724: '"../services/analytics/analyticsService"' has no exported member named 'AnalyticsService'. Did you mean 'analyticsService'?
+src/utils/errorHandling.ts(102,7): error TS2322: Type 'ErrorContext' is not assignable to type 'Record<string, unknown>'.
+  Index signature for type 'string' is missing in type 'ErrorContext'.
+src/utils/fastImageCompat.tsx(9,21): error TS2304: Cannot find name 'ImageStyle'.
+src/utils/offlineGameAssets.ts(18,3): error TS2353: Object literal may only specify known properties, and 'downloadSize' does not exist in type 'Game'.
+src/utils/offlineQueueManager.ts(227,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+src/utils/secureStorage.ts(94,7): error TS2698: Spread types may only be created from object types.
+src/utils/websocketIntegration.ts(41,15): error TS2339: Property 'onConnectionStateChange' does not exist on type 'WebSocketManager'.
+src/utils/websocketIntegration.ts(57,15): error TS2341: Property 'onError' is private and only accessible within class 'WebSocketManager'.
+src/utils/websocketIntegration.ts(57,23): error TS2345: Argument of type '(error: any) => void' is not assignable to parameter of type 'Event'.
+src/utils/websocketIntegration.ts(80,34): error TS2554: Expected 1 arguments, but got 2.
+src/utils/websocketIntegration.ts(97,17): error TS2554: Expected 2 arguments, but got 1.
+src/utils/websocketIntegration.ts(107,34): error TS2554: Expected 1 arguments, but got 2.
+src/utils/websocketIntegration.ts(121,17): error TS2554: Expected 2 arguments, but got 1.
+src/utils/websocketIntegration.ts(129,45): error TS2554: Expected 1 arguments, but got 2.
+src/utils/websocketIntegration.ts(136,17): error TS2554: Expected 2 arguments, but got 1.
+src/utils/websocketIntegration.ts(178,10): error TS1345: An expression of type 'void' cannot be tested for truthiness.
+src/utils/websocketIntegration.ts(214,15): error TS2339: Property 'cleanup' does not exist on type 'WebSocketManager'.
+src/utils/websocketManager.ts(106,17): error TS2339: Property 'WEBSOCKET' does not exist on type 'EnvironmentConfig'.
+src/utils/websocketManager.ts(124,40): error TS2554: Expected 1-2 arguments, but got 3.
+src/utils/websocketManager.ts(131,12): error TS2339: Property 'handleError' does not exist on type 'WebSocketManager'.
+src/utils/websocketManager.ts(136,47): error TS2339: Property 'WEBSOCKET' does not exist on type 'EnvironmentConfig'.
+src/utils/websocketManager.ts(195,22): error TS2339: Property 'trackWebSocketEvent' does not exist on type '{ readonly current: EnhancedAnalyticsService; initialize: () => Promise<void>; track: (event: string, properties?: Record<string, unknown>) => Promise<...>; ... 5 more ...; cleanup: () => Promise<...>; }'.
+src/utils/websocketManager.ts(216,22): error TS2339: Property 'trackWebSocketEvent' does not exist on type '{ readonly current: EnhancedAnalyticsService; initialize: () => Promise<void>; track: (event: string, properties?: Record<string, unknown>) => Promise<...>; ... 5 more ...; cleanup: () => Promise<...>; }'.
+src/utils/websocketManager.ts(227,22): error TS2339: Property 'trackWebSocketEvent' does not exist on type '{ readonly current: EnhancedAnalyticsService; initialize: () => Promise<void>; track: (event: string, properties?: Record<string, unknown>) => Promise<...>; ... 5 more ...; cleanup: () => Promise<...>; }'.
+src/utils/websocketManager.ts(255,26): error TS2339: Property 'trackWebSocketMessage' does not exist on type 'PerformanceMonitor'.
+src/utils/websocketManager.ts(265,24): error TS2339: Property 'trackWebSocketLatency' does not exist on type 'PerformanceMonitor'.
+src/utils/websocketManager.ts(365,28): error TS2339: Property 'trackWebSocketMessage' does not exist on type 'PerformanceMonitor'.
+src/utils/websocketManager.ts(452,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+src/utils/websocketManager.ts(476,14): error TS2339: Property 'WEBSOCKET' does not exist on type 'EnvironmentConfig'.
+src/utils/websocketManager.ts(492,5): error TS2322: Type 'number' is not assignable to type 'Timeout'.
+types/index.ts(44,31): error TS2304: Cannot find name 'Game'.
+types/index.ts(53,27): error TS2304: Cannot find name 'Game'.
+types/index.ts(54,30): error TS2304: Cannot find name 'Game'.
+utils/fakeApi.ts(142,15): error TS2551: Property 'platforms' does not exist on type 'SearchFilters'. Did you mean 'platform'?
+utils/fakeApi.ts(144,56): error TS2551: Property 'platforms' does not exist on type 'SearchFilters'. Did you mean 'platform'?
+utils/fakeApi.ts(148,15): error TS2339: Property 'minAge' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(149,70): error TS2339: Property 'minAge' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(152,15): error TS2339: Property 'trialLimit' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(152,38): error TS2339: Property 'trialLimit' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(152,68): error TS2339: Property 'trialLimit' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(155,14): error TS2339: Property 'trialLimit' does not exist on type 'Game'.
+utils/fakeApi.ts(155,36): error TS2339: Property 'trialLimit' does not exist on type 'SearchFilters'.
+utils/fakeApi.ts(156,14): error TS2339: Property 'trialLimit' does not exist on type 'Game'.
+utils/fakeApi.ts(156,36): error TS2339: Property 'trialLimit' does not exist on type 'SearchFilters'.

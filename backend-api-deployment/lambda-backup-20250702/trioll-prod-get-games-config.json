@@ -1,0 +1,60 @@
+{
+    "Configuration": {
+        "FunctionName": "trioll-prod-get-games",
+        "FunctionArn": "arn:aws:lambda:us-east-1:561645284740:function:trioll-prod-get-games",
+        "Runtime": "nodejs18.x",
+        "Role": "arn:aws:iam::561645284740:role/trioll-prod-lambda-role",
+        "Handler": "index.handler",
+        "CodeSize": 1434,
+        "Description": "",
+        "Timeout": 15,
+        "MemorySize": 512,
+        "LastModified": "2025-06-28T16:20:35.000+0000",
+        "CodeSha256": "a3rqAj43+hoIK4ZLDvWGqT5PzKm1unoafjgd5Mvfbq0=",
+        "Version": "$LATEST",
+        "Environment": {
+            "Variables": {
+                "PLAYCOUNTS_TABLE": "trioll-prod-playcounts",
+                "ANALYTICS_STREAM": "trioll-prod-analytics-stream",
+                "GAMES_BUCKET": "trioll-games-us-east-1",
+                "USERS_TABLE": "trioll-prod-users",
+                "LIKES_TABLE": "trioll-prod-likes",
+                "GAMES_TABLE": "trioll-prod-games",
+                "RATINGS_TABLE": "trioll-prod-ratings",
+                "ENABLE_CACHE": "true",
+                "ANALYTICS_TABLE": "trioll-prod-analytics",
+                "CDN_DOMAIN": "dk72g9i0333mv.cloudfront.net",
+                "SESSIONS_TABLE": "trioll-prod-sessions",
+                "REGION": "us-east-1"
+            }
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "7db4fe2d-f711-42c7-affe-a4474c7b1d34",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:65487f7287f6cbcecddd42f370b3113f0a16f3fa301e5b1158f7d924b2ce4425"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/trioll-prod-get-games"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-04-2014-tasks.s3.us-east-1.amazonaws.com/snapshots/561645284740/trioll-prod-get-games-2a740f4c-eb18-4316-be07-4be6ba897005?versionId=lO6egNyH1p5J1zZ3w3XLHw.L41MuhvlA&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCU2gElKnaJNLdmBSo5zJpQMPBfrUuTsO5tkXOCMfYgGQIhAPOfbXrBY4RZjAvB6Aja90zPtQEJIuqWZyJ%2BYIjmaKg9KpICCO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzQ5Njc4OTAyODM5IgxRhgHOtU0KYK1QA2wq5gF1lYSRBRFUYY7wQZiaUsAPe1IfRgqu9kQcoGcmVimFoFFN72ryaWi1xKsxvETFPgnJR1xsaKPfNc6BuwyBuew9G0uhA017hO73JcZhyyU4iaw0UlcL7vjHrGb8kGKKvGfpO4cP8nFCAkCkqCv3%2Bx%2BD2DfoF6lFP07SyfDUsK9WgW42llCR335LxCG0dASpAIKpmGpUuFEhMnkGtz20yaMtM%2BsOJ10wWcq%2FQUKAW%2FLvJHlTWjHvyefinKk3qKHNrvmQz4jcovb11KURLw4hKEc60vCCPlX%2FBumd2OIFBjMTYXH%2Fwke4xTCLw5TDBjqOAauLkWefMVqbx2yeedc2bItrKz8zA0kn6R0b2DDLipECPFYrVXLCo9UFNh8rmdCqoxKYOiqH98f4G3ZpAzmjqIWdcECyO6HL0Kpr4AclsIeedTKmtn%2Fs5R1f9BifN7wxwmtYNwxL24TM%2B4UoON9NmkRK4J86%2Ffi9OExhaihb8LiPBFBsLiKczJ6A9FTu4Hg%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250702T124432Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIA25DCYHY3VSQEKSBV%2F20250702%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=00bb597499ec192ec6b8752183bfdb422f9bf598a4b9f79155bf195041ef49c3"
+    }
+}

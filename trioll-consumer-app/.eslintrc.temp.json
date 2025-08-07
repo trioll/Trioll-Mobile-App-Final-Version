@@ -1,0 +1,14 @@
+{
+  "extends": ["expo"],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-unused-expressions": "warn",
+    "react/display-name": "warn",
+    "no-empty": "warn",
+    "no-constant-condition": "warn",
+    "no-case-declarations": "warn",
+    "no-var": "warn",
+    "prefer-const": "warn"
+  }
+}

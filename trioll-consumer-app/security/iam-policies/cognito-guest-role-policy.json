@@ -1,0 +1,44 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ReadOnlyGameAssets",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": [
+        "arn:aws:s3:::trioll-prod-games-us-east-1/*",
+        "arn:aws:s3:::trioll-prod-assets-us-east-1/public/*"
+      ]
+    },
+    {
+      "Sid": "APIGatewayReadOnly",
+      "Effect": "Allow",
+      "Action": "execute-api:Invoke",
+      "Resource": ["arn:aws:execute-api:us-east-1:*:*/prod/GET/*"]
+    },
+    {
+      "Sid": "CognitoGuestAccess",
+      "Effect": "Allow",
+      "Action": ["cognito-identity:GetId", "cognito-identity:GetCredentialsForIdentity"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "MinimalCloudWatchLogs",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "arn:aws:logs:us-east-1:*:log-group:/aws/mobile/trioll/guest/*"
+    },
+    {
+      "Sid": "DenyWriteOperations",
+      "Effect": "Deny",
+      "Action": [
+        "s3:PutObject",
+        "s3:DeleteObject",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

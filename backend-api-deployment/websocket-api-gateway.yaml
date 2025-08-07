@@ -1,0 +1,280 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: WebSocket API Gateway for Trioll real-time features
+
+Parameters:
+  Environment:
+    Type: String
+    Default: prod
+    Description: Environment name (dev, staging, prod)
+
+Resources:
+  # WebSocket API
+  TriollWebSocketApi:
+    Type: AWS::ApiGatewayV2::Api
+    Properties:
+      Name: !Sub 'trioll-${Environment}-websocket-api'
+      ProtocolType: WEBSOCKET
+      RouteSelectionExpression: "$request.body.action"
+      Description: WebSocket API for real-time notifications and game updates
+
+  # Connection Handler
+  ConnectIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${WebSocketConnectFunction.Arn}/invocations'
+
+  ConnectRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      RouteKey: $connect
+      AuthorizationType: NONE
+      OperationName: ConnectRoute
+      Target: !Sub 'integrations/${ConnectIntegration}'
+
+  ConnectPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref WebSocketConnectFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${TriollWebSocketApi}/*/$connect'
+
+  # Disconnect Handler
+  DisconnectIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${WebSocketDisconnectFunction.Arn}/invocations'
+
+  DisconnectRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      RouteKey: $disconnect
+      AuthorizationType: NONE
+      OperationName: DisconnectRoute
+      Target: !Sub 'integrations/${DisconnectIntegration}'
+
+  DisconnectPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref WebSocketDisconnectFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${TriollWebSocketApi}/*/$disconnect'
+
+  # Default Message Handler
+  MessageIntegration:
+    Type: AWS::ApiGatewayV2::Integration
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      IntegrationType: AWS_PROXY
+      IntegrationUri: !Sub 'arn:aws:apigateway:${AWS::Region}:lambda:path/2015-03-31/functions/${WebSocketMessageFunction.Arn}/invocations'
+
+  DefaultRoute:
+    Type: AWS::ApiGatewayV2::Route
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      RouteKey: $default
+      AuthorizationType: NONE
+      OperationName: DefaultRoute
+      Target: !Sub 'integrations/${MessageIntegration}'
+
+  DefaultPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      FunctionName: !Ref WebSocketMessageFunction
+      Action: lambda:InvokeFunction
+      Principal: apigateway.amazonaws.com
+      SourceArn: !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${TriollWebSocketApi}/*/$default'
+
+  # Deployment
+  Deployment:
+    Type: AWS::ApiGatewayV2::Deployment
+    DependsOn:
+      - ConnectRoute
+      - DisconnectRoute
+      - DefaultRoute
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+
+  Stage:
+    Type: AWS::ApiGatewayV2::Stage
+    Properties:
+      ApiId: !Ref TriollWebSocketApi
+      StageName: !Ref Environment
+      DeploymentId: !Ref Deployment
+      StageVariables:
+        environment: !Ref Environment
+
+  # DynamoDB Table for WebSocket Connections
+  WebSocketConnectionsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub 'trioll-${Environment}-websocket-connections'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: connectionId
+          AttributeType: S
+        - AttributeName: userId
+          AttributeType: S
+      KeySchema:
+        - AttributeName: connectionId
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: userId-index
+          KeySchema:
+            - AttributeName: userId
+              KeyType: HASH
+          Projection:
+            ProjectionType: ALL
+      StreamSpecification:
+        StreamViewType: NEW_AND_OLD_IMAGES
+      Tags:
+        - Key: Environment
+          Value: !Ref Environment
+
+  # DynamoDB Table for Notifications
+  NotificationsTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: !Sub 'trioll-${Environment}-notifications'
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: notificationId
+          AttributeType: S
+        - AttributeName: userId
+          AttributeType: S
+        - AttributeName: createdAt
+          AttributeType: S
+      KeySchema:
+        - AttributeName: notificationId
+          KeyType: HASH
+      GlobalSecondaryIndexes:
+        - IndexName: userId-createdAt-index
+          KeySchema:
+            - AttributeName: userId
+              KeyType: HASH
+            - AttributeName: createdAt
+              KeyType: RANGE
+          Projection:
+            ProjectionType: ALL
+      Tags:
+        - Key: Environment
+          Value: !Ref Environment
+
+  # Lambda Functions (these would be defined in detail in practice)
+  WebSocketConnectFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub 'trioll-${Environment}-websocket-connect'
+      Runtime: nodejs20.x
+      Handler: websocket-connect.handler
+      Code:
+        S3Bucket: !Sub 'trioll-${Environment}-deployment'
+        S3Key: lambda/websocket-connect.zip
+      Environment:
+        Variables:
+          CONNECTIONS_TABLE: !Ref WebSocketConnectionsTable
+          ENVIRONMENT: !Ref Environment
+      MemorySize: 256
+      Timeout: 30
+      Role: !GetAtt LambdaExecutionRole.Arn
+
+  WebSocketDisconnectFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub 'trioll-${Environment}-websocket-disconnect'
+      Runtime: nodejs20.x
+      Handler: websocket-disconnect.handler
+      Code:
+        S3Bucket: !Sub 'trioll-${Environment}-deployment'
+        S3Key: lambda/websocket-disconnect.zip
+      Environment:
+        Variables:
+          CONNECTIONS_TABLE: !Ref WebSocketConnectionsTable
+          ENVIRONMENT: !Ref Environment
+      MemorySize: 256
+      Timeout: 30
+      Role: !GetAtt LambdaExecutionRole.Arn
+
+  WebSocketMessageFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: !Sub 'trioll-${Environment}-websocket-message'
+      Runtime: nodejs20.x
+      Handler: websocket-message.handler
+      Code:
+        S3Bucket: !Sub 'trioll-${Environment}-deployment'
+        S3Key: lambda/websocket-message.zip
+      Environment:
+        Variables:
+          CONNECTIONS_TABLE: !Ref WebSocketConnectionsTable
+          NOTIFICATIONS_TABLE: !Ref NotificationsTable
+          USERS_TABLE: !Sub 'trioll-${Environment}-users'
+          ACTIVITIES_TABLE: !Sub 'trioll-${Environment}-activities'
+          ENVIRONMENT: !Ref Environment
+      MemorySize: 512
+      Timeout: 30
+      Role: !GetAtt LambdaExecutionRole.Arn
+
+  # Lambda Execution Role
+  LambdaExecutionRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+      Policies:
+        - PolicyName: DynamoDBAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - dynamodb:GetItem
+                  - dynamodb:PutItem
+                  - dynamodb:UpdateItem
+                  - dynamodb:DeleteItem
+                  - dynamodb:Query
+                  - dynamodb:Scan
+                Resource:
+                  - !GetAtt WebSocketConnectionsTable.Arn
+                  - !GetAtt NotificationsTable.Arn
+                  - !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/trioll-${Environment}-users'
+                  - !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/trioll-${Environment}-activities'
+                  - !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/trioll-${Environment}-users/index/*'
+                  - !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/trioll-${Environment}-websocket-connections/index/*'
+                  - !Sub 'arn:aws:dynamodb:${AWS::Region}:${AWS::AccountId}:table/trioll-${Environment}-notifications/index/*'
+        - PolicyName: WebSocketApiAccess
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action:
+                  - execute-api:ManageConnections
+                Resource:
+                  - !Sub 'arn:aws:execute-api:${AWS::Region}:${AWS::AccountId}:${TriollWebSocketApi}/*'
+
+Outputs:
+  WebSocketUrl:
+    Description: WebSocket API URL
+    Value: !Sub 'wss://${TriollWebSocketApi}.execute-api.${AWS::Region}.amazonaws.com/${Environment}'
+    Export:
+      Name: !Sub '${AWS::StackName}-WebSocketUrl'
+
+  WebSocketApiId:
+    Description: WebSocket API ID
+    Value: !Ref TriollWebSocketApi
+    Export:
+      Name: !Sub '${AWS::StackName}-WebSocketApiId'

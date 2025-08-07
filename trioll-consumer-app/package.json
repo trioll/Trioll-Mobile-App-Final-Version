@@ -1,0 +1,103 @@
+{
+  "name": "trioll-ui",
+  "version": "1.0.0",
+  "main": "expo/AppEntry.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "type-check": "tsc --noEmit",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "@aws-amplify/react-native": "^1.0.0",
+    "@expo/metro-runtime": "~5.0.4",
+    "@expo/vector-icons": "^14.0.4",
+    "@react-native-async-storage/async-storage": "^2.1.2",
+    "@react-native-community/datetimepicker": "8.4.1",
+    "@react-navigation/bottom-tabs": "^7.2.0",
+    "@react-navigation/native": "^7.0.0",
+    "@react-navigation/stack": "^7.2.0",
+    "@tanstack/react-query": "^5.59.20",
+    "amazon-cognito-identity-js": "^6.3.15",
+    "aws-amplify": "^6.0.0",
+    "axios": "^1.7.7",
+    "dotenv": "^17.0.1",
+    "expo": "53.0.20",
+    "expo-av": "~15.1.7",
+    "expo-blur": "~14.1.5",
+    "expo-build-properties": "~0.14.1",
+    "expo-constants": "~17.1.7",
+    "expo-crypto": "~14.1.5",
+    "expo-document-picker": "~13.1.6",
+    "expo-haptics": "~14.1.4",
+    "expo-image": "~2.4.0",
+    "expo-image-picker": "~16.1.4",
+    "expo-linear-gradient": "~14.1.5",
+    "expo-local-authentication": "~16.0.5",
+    "expo-localization": "~16.1.6",
+    "expo-network": "^7.1.5",
+    "expo-notifications": "~0.31.4",
+    "expo-screen-orientation": "~8.1.7",
+    "expo-secure-store": "~14.2.3",
+    "expo-sharing": "~13.1.5",
+    "expo-status-bar": "~2.2.3",
+    "expo-updates": "^0.28.17",
+    "react": "19.0.0",
+    "react-dom": "19.0.0",
+    "react-native": "0.79.5",
+    "react-native-gesture-handler": "~2.24.0",
+    "react-native-reanimated": "~3.17.4",
+    "react-native-safe-area-context": "5.4.0",
+    "react-native-screens": "~4.11.1",
+    "react-native-svg": "15.11.2",
+    "react-native-web": "~0.20.0",
+    "react-native-webview": "13.13.5",
+    "expo-clipboard": "~7.1.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.24.0",
+    "@eslint/js": "^9.30.1",
+    "@types/jest": "^29.5.12",
+    "@types/react": "~19.0.10",
+    "@typescript-eslint/eslint-plugin": "^8.35.0",
+    "@typescript-eslint/parser": "^8.35.0",
+    "eslint": "^8.57.0",
+    "eslint-config-expo": "~9.2.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "eslint-plugin-react": "^7.37.5",
+    "globals": "^16.3.0",
+    "jest": "^29.7.0",
+    "jest-expo": "~53.0.0",
+    "prettier": "^3.6.2",
+    "typescript": "~5.8.3",
+    "typescript-eslint": "^8.35.1"
+  },
+  "private": true,
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "printWidth": 100,
+    "tabWidth": 2
+  },
+  "eslintConfig": {
+    "extends": [
+      "expo",
+      "prettier"
+    ],
+    "plugins": [
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    }
+  }
+}

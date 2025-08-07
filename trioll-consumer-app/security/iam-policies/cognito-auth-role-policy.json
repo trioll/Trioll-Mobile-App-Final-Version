@@ -1,0 +1,54 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "UserS3Access",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject", "s3:DeleteObject"],
+      "Resource": "arn:aws:s3:::trioll-prod-uploads-us-east-1/${cognito-identity.amazonaws.com:sub}/*",
+      "Condition": {
+        "StringEquals": {
+          "s3:x-amz-server-side-encryption": "AES256"
+        }
+      }
+    },
+    {
+      "Sid": "ListUserFolder",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::trioll-prod-uploads-us-east-1",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": ["${cognito-identity.amazonaws.com:sub}/*"]
+        }
+      }
+    },
+    {
+      "Sid": "ReadGameAssets",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": [
+        "arn:aws:s3:::trioll-prod-games-us-east-1/*",
+        "arn:aws:s3:::trioll-prod-assets-us-east-1/*"
+      ]
+    },
+    {
+      "Sid": "APIGatewayAccess",
+      "Effect": "Allow",
+      "Action": "execute-api:Invoke",
+      "Resource": "arn:aws:execute-api:us-east-1:*:*/prod/*"
+    },
+    {
+      "Sid": "CognitoSync",
+      "Effect": "Allow",
+      "Action": ["cognito-sync:*", "cognito-identity:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": ["logs:CreateLogGroup", "logs:CreateLogStream", "logs:PutLogEvents"],
+      "Resource": "arn:aws:logs:us-east-1:*:log-group:/aws/mobile/trioll/*"
+    }
+  ]
+}

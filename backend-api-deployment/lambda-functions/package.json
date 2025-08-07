@@ -1,0 +1,9 @@
+{
+  "name": "trioll-interactions-api",
+  "version": "1.0.0",
+  "description": "Game interactions API with DynamoDB",
+  "main": "index.js",
+  "dependencies": {
+    "aws-sdk": "^2.1691.0"
+  }
+}

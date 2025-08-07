@@ -1,0 +1,60 @@
+{
+    "Configuration": {
+        "FunctionName": "trioll-prod-like-counter",
+        "FunctionArn": "arn:aws:lambda:us-east-1:561645284740:function:trioll-prod-like-counter",
+        "Runtime": "nodejs18.x",
+        "Role": "arn:aws:iam::561645284740:role/trioll-prod-lambda-role",
+        "Handler": "index.handler",
+        "CodeSize": 1087,
+        "Description": "",
+        "Timeout": 15,
+        "MemorySize": 512,
+        "LastModified": "2025-06-27T13:38:27.000+0000",
+        "CodeSha256": "fApK5iejeX5b9m7WPwwl7RYUTtXr5LCIX+T6MHF4wYw=",
+        "Version": "$LATEST",
+        "Environment": {
+            "Variables": {
+                "PLAYCOUNTS_TABLE": "trioll-prod-playcounts",
+                "ANALYTICS_STREAM": "trioll-prod-analytics-stream",
+                "GAMES_BUCKET": "trioll-prod-games-us-east-1",
+                "USERS_TABLE": "trioll-prod-users",
+                "LIKES_TABLE": "trioll-prod-likes",
+                "GAMES_TABLE": "trioll-prod-games",
+                "RATINGS_TABLE": "trioll-prod-ratings",
+                "ENABLE_CACHE": "true",
+                "ANALYTICS_TABLE": "trioll-prod-analytics",
+                "CDN_DOMAIN": "dk72g9i0333mv.cloudfront.net",
+                "SESSIONS_TABLE": "trioll-prod-sessions",
+                "REGION": "us-east-1"
+            }
+        },
+        "TracingConfig": {
+            "Mode": "PassThrough"
+        },
+        "RevisionId": "efab925f-cbd9-46dd-b660-a58b1af5f97d",
+        "State": "Active",
+        "LastUpdateStatus": "Successful",
+        "PackageType": "Zip",
+        "Architectures": [
+            "x86_64"
+        ],
+        "EphemeralStorage": {
+            "Size": 512
+        },
+        "SnapStart": {
+            "ApplyOn": "None",
+            "OptimizationStatus": "Off"
+        },
+        "RuntimeVersionConfig": {
+            "RuntimeVersionArn": "arn:aws:lambda:us-east-1::runtime:65487f7287f6cbcecddd42f370b3113f0a16f3fa301e5b1158f7d924b2ce4425"
+        },
+        "LoggingConfig": {
+            "LogFormat": "Text",
+            "LogGroup": "/aws/lambda/trioll-prod-like-counter"
+        }
+    },
+    "Code": {
+        "RepositoryType": "S3",
+        "Location": "https://prod-04-2014-tasks.s3.us-east-1.amazonaws.com/snapshots/561645284740/trioll-prod-like-counter-0282c733-435c-4284-a584-3efd34367c6c?versionId=bya0cNIQbic0WtI.nkwvySRkg8tHynaT&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEPX%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCnhtr9UVGpuWcO45ZmUKNYAOgz3BJhpIlbjskqkgAs3gIhAJhcLLYjxX7CksqCHZSKEeMgMbq0%2BkpcTry0ntLgGLSaKpICCO3%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMNzQ5Njc4OTAyODM5IgyQ2rfOdGMjjkANn8Eq5gEEoo0VQPdnSCGSR0FOdhghhRJNte62we%2FTXN9vt%2FfhgKiYQ7DEz8eBtZNOPCKBDNIQqsQ7Rs5TKCRSMoVYVI%2Bb%2FIPI7GABbXMWuj1pwSyj0gd%2FYMn3p8th1wfqLmdXlZxtrfUJX5mw%2Bw97XF6oe6X6tIWgOkW%2FcGk%2BT8aUgt9Wow4HgwMZxCdZVvw2KPGBprn4KafmVv%2FleQi2to6DexNH%2BiKJlutJySRjF7hJQtcKBzLCrVS6ujExHkOI8QG1fScHXf82Cu8hvHTHft1qaR4ftjRb%2FpOJHP0zxR1O9omt%2BE8rMisv6TCbxZTDBjqOAYX9qgaUvgY3uNUSuEYulmrAxqF%2FALvfk%2F97WcZtn4lh12N%2B2i8iUNd6jd8gobexDj9f%2FfY%2F%2FYbKoSy2yOZ6ThFISTEeMFFlngiSj1yKOAGQ3n3dmVFnQyHrlnUQL0wCRVwcz0%2FLBygTat4G0v8KYn5jvxUJyLlCjdCIaKrv1EOrsnsP0brd7VbmstkPwCI%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250702T124435Z&X-Amz-SignedHeaders=host&X-Amz-Expires=600&X-Amz-Credential=ASIA25DCYHY36643YZHK%2F20250702%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=0490dad845e79ee2481553eb0fcc722ccedd5250cd2490460782d1a68d81ea63"
+    }
+}

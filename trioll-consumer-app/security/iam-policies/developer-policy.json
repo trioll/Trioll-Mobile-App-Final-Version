@@ -1,0 +1,75 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "IAMManagement",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:CreatePolicy",
+        "iam:AttachRolePolicy",
+        "iam:PutRolePolicy",
+        "iam:GetRole",
+        "iam:GetRolePolicy",
+        "iam:ListRoles",
+        "iam:ListRolePolicies",
+        "iam:ListAttachedRolePolicies",
+        "iam:TagRole"
+      ],
+      "Resource": ["arn:aws:iam::*:role/trioll-*", "arn:aws:iam::*:policy/trioll-*"]
+    },
+    {
+      "Sid": "CognitoManagement",
+      "Effect": "Allow",
+      "Action": ["cognito-idp:*", "cognito-identity:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "S3Management",
+      "Effect": "Allow",
+      "Action": ["s3:*"],
+      "Resource": ["arn:aws:s3:::trioll-*", "arn:aws:s3:::trioll-*/*"]
+    },
+    {
+      "Sid": "DynamoDBAccess",
+      "Effect": "Allow",
+      "Action": ["dynamodb:*"],
+      "Resource": ["arn:aws:dynamodb:*:*:table/trioll-*"]
+    },
+    {
+      "Sid": "APIGatewayAccess",
+      "Effect": "Allow",
+      "Action": ["apigateway:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "CloudWatchAccess",
+      "Effect": "Allow",
+      "Action": ["logs:*", "cloudwatch:*"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "STSAccess",
+      "Effect": "Allow",
+      "Action": ["sts:GetCallerIdentity", "sts:AssumeRole"],
+      "Resource": "*"
+    },
+    {
+      "Sid": "DenyDangerousActions",
+      "Effect": "Deny",
+      "Action": [
+        "iam:CreateAccessKey",
+        "iam:DeleteAccessKey",
+        "iam:UpdateAccessKey",
+        "iam:DeleteUser",
+        "iam:DeleteRole",
+        "iam:DeletePolicy",
+        "iam:DetachRolePolicy"
+      ],
+      "Resource": [
+        "arn:aws:iam::*:user/trioll-backend-service",
+        "arn:aws:iam::*:role/trioll-prod-*"
+      ]
+    }
+  ]
+}

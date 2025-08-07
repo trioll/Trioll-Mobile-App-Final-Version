@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- Base configuration that allows both HTTP and HTTPS -->
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </base-config>
+    
+    <!-- Specific domain configurations -->
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">4ib0hvu1xj.execute-api.us-east-1.amazonaws.com</domain>
+        <domain includeSubdomains="true">amazonaws.com</domain>
+        <domain includeSubdomains="true">trioll.com</domain>
+        <domain includeSubdomains="true">trioll-prod-games-us-east-1.s3.amazonaws.com</domain>
+        <domain includeSubdomains="true">s3.us-east-1.amazonaws.com</domain>
+        <domain includeSubdomains="true">d33yj1oylm0icp.cloudfront.net</domain>
+        <domain includeSubdomains="true">cloudfront.net</domain>
+        <domain includeSubdomains="true">localhost</domain>
+        <domain includeSubdomains="true">10.0.2.2</domain>
+        <domain includeSubdomains="true">10.0.3.2</domain>
+        <domain includeSubdomains="true">gamedistribution.com</domain>
+        <domain includeSubdomains="true">html5.gamedistribution.com</domain>
+        <domain includeSubdomains="true">img.gamedistribution.com</domain>
+        <domain includeSubdomains="true">play-lh.googleusercontent.com</domain>
+        <trust-anchors>
+            <certificates src="system" />
+            <certificates src="user" />
+        </trust-anchors>
+    </domain-config>
+</network-security-config>
