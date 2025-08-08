@@ -17,10 +17,7 @@ import { useHaptics } from '../hooks/useHaptics';
 import { useOrientation } from '../hooks';
 import { useGameSearch, useSearchSuggestions } from '../hooks/useGameSearch';
 import { SPRING_CONFIG, DURATIONS } from '../constants/animations';
-import { getLogger } from '../src/utils/logger';
 import { StackNavigationProp } from '@react-navigation/stack';
-
-const logger = getLogger('SearchScreen');
 
 type RootStackParamList = {
   Search: undefined;
@@ -153,7 +150,13 @@ export const SearchScreen: React.FC = () => {
 
   // Trigger API search when debounced query changes
   useEffect(() => {
-    performApiSearch(debouncedSearchQuery);
+    // Only search if query is at least 2 characters (API requirement)
+    if (debouncedSearchQuery.length >= 2) {
+      performApiSearch(debouncedSearchQuery);
+    } else if (debouncedSearchQuery.length === 0) {
+      // Clear results when query is empty
+      performApiSearch('');
+    }
   }, [debouncedSearchQuery, performApiSearch]);
 
   useEffect(() => {
@@ -182,27 +185,59 @@ export const SearchScreen: React.FC = () => {
         duration: DURATIONS.FAST,
         useNativeDriver: true,
       }).start();
+      // Show suggestions when typing
+      if (isSearchFocused) {
+        setShowSuggestions(true);
+      }
     } else {
       Animated.timing(characterCountAnim, {
         toValue: 0,
         duration: DURATIONS.FAST,
         useNativeDriver: true,
       }).start();
+      // Hide suggestions when no query
+      setShowSuggestions(false);
     }
-  }, [searchQuery]);
+  }, [searchQuery, isSearchFocused]);
 
   const loadInitialData = async () => {
-    // TODO: Add trending searches API endpoint
-    setTrendingSearches([
-      'Battle Royale',
-      'Puzzle Games', 
-      'Racing 2024',
-      'RPG Adventure',
-      'Casual Games',
-      'Strategy War',
-      'Sports Games',
-      'Zombie Survival',
-    ]);
+    try {
+      // Fetch all games to calculate trending (top 5 by play count)
+      const response = await fetch('https://4ib0hvu1xj.execute-api.us-east-1.amazonaws.com/prod/games');
+      const data = await response.json();
+      
+      if (data.games && Array.isArray(data.games)) {
+        // Sort by play count and get top 5 game names
+        const topGames = data.games
+          .sort((a: any, b: any) => (b.playCount || 0) - (a.playCount || 0))
+          .slice(0, 5)
+          .map((game: any) => game.name || game.title);
+        
+        setTrendingSearches(topGames);
+      } else {
+        // Fallback trending searches
+        setTrendingSearches([
+          'Evolution Runner',
+          'Platform Jumper', 
+          'Tap Tap Hero',
+          'Space Shooter',
+          'Casual Games'
+        ]);
+      }
+    } catch (error) {
+      // Safe error logging
+      if (__DEV__) {
+        console.warn('Failed to load trending games:', error);
+      }
+      // Fallback trending searches on error
+      setTrendingSearches([
+        'Evolution Runner',
+        'Platform Jumper', 
+        'Tap Tap Hero',
+        'RPG Adventure',
+        'Racing Games'
+      ]);
+    }
     
     // TODO: Replace with categories API when available
     setCategories([
@@ -231,7 +266,7 @@ export const SearchScreen: React.FC = () => {
       {
         id: 'racing',
         name: 'Racing',
-        icon: 'car-sport',
+        icon: 'car',
         color: '#FFAA00',
         gameCount: 556,
         isPopular: true,
@@ -246,7 +281,7 @@ export const SearchScreen: React.FC = () => {
       {
         id: 'casual',
         name: 'Casual',
-        icon: 'game-controller',
+        icon: 'gamepad-variant',
         color: '#FF66FF',
         gameCount: 1567,
         isPopular: true,
@@ -340,7 +375,9 @@ export const SearchScreen: React.FC = () => {
         }),
       ]).start();
     } catch (error) {
-      logger.error('Search error:', error);
+      if (__DEV__) {
+        console.warn('Search error:', error);
+      }
     } finally {
       setIsLoading(false);
       setIsLoadingMore(false);

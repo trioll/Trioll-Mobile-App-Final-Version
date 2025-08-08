@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Modal, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Modal, ScrollView, Dimensions, Pressable } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -63,6 +63,7 @@ interface Props {
   visible: boolean;
   onClose: () => void;
   onRegister: () => void;
+  onLogin?: () => void;
   onContinueAsGuest?: () => void;
 }
 
@@ -70,6 +71,7 @@ export const RegisterBenefitsModal: React.FC<Props> = ({
   visible,
   onClose,
   onRegister,
+  onLogin,
   onContinueAsGuest,
 }) => {
   const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -87,6 +89,13 @@ export const RegisterBenefitsModal: React.FC<Props> = ({
   const handleRegister = () => {
     Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
     onRegister();
+  };
+
+  const handleLogin = () => {
+    Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Medium);
+    if (onLogin) {
+      onLogin();
+    }
   };
 
   const renderBenefit = (benefit: Benefit, index: number) => (
@@ -136,13 +145,27 @@ export const RegisterBenefitsModal: React.FC<Props> = ({
 
   return (
     <Modal visible={visible} transparent animationType="none" onRequestClose={handleClose}>
-      <View style={styles.backdrop}>
-        <Animated.View entering={SlideInDown.springify()} style={styles.container}>
+      <TouchableOpacity 
+        style={styles.backdrop} 
+        activeOpacity={1} 
+        onPress={handleClose}
+      >
+        <Animated.View 
+          entering={SlideInDown.springify()} 
+          style={styles.container}
+          // Prevent the modal content from closing when tapped
+          onStartShouldSetResponder={() => true}
+          onTouchEnd={(e) => e.stopPropagation()}
+        >
           {/* Header */}
           <View style={styles.header}>
-            <TouchableOpacity style={styles.closeButton} onPress={handleClose} activeOpacity={0.7}>
-              <Ionicons name="close" size={24} color="#666" />
-            </TouchableOpacity>
+            <Pressable 
+              style={styles.closeButton} 
+              onPress={handleClose}
+              hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+            >
+              <Ionicons name="close" size={28} color="#999" />
+            </Pressable>
             <Text style={styles.title}>Unlock Full Experience</Text>
             <Text style={styles.subtitle}>Register to access all features</Text>
           </View>
@@ -168,6 +191,16 @@ export const RegisterBenefitsModal: React.FC<Props> = ({
               <Text style={styles.laterText}>MAYBE LATER</Text>
             </TouchableOpacity>
 
+            {onLogin && (
+              <TouchableOpacity
+                style={styles.loginButton}
+                onPress={handleLogin}
+                activeOpacity={0.7}
+              >
+                <Text style={styles.loginText}>LOGIN</Text>
+              </TouchableOpacity>
+            )}
+
             <TouchableOpacity
               style={styles.registerButton}
               onPress={handleRegister}
@@ -177,7 +210,7 @@ export const RegisterBenefitsModal: React.FC<Props> = ({
             </TouchableOpacity>
           </View>
         </Animated.View>
-      </View>
+      </TouchableOpacity>
     </Modal>
   );
 };
@@ -206,10 +239,11 @@ const createStyles = (SCREEN_WIDTH: number, SCREEN_HEIGHT: number) =>
       position: 'absolute',
       top: 20,
       right: 24,
-      width: 32,
-      height: 32,
+      width: 44,
+      height: 44,
       justifyContent: 'center',
       alignItems: 'center',
+      zIndex: 10,
     },
     title: {
       fontSize: 28,
@@ -315,6 +349,19 @@ const createStyles = (SCREEN_WIDTH: number, SCREEN_HEIGHT: number) =>
       fontSize: 14,
       fontWeight: '600',
       color: '#666',
+      letterSpacing: 1,
+    },
+    loginButton: {
+      flex: 1,
+      height: 56,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: '#6366f1',
+    },
+    loginText: {
+      fontSize: 14,
+      fontWeight: '600',
+      color: '#fff',
       letterSpacing: 1,
     },
     registerButton: {

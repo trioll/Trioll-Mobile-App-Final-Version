@@ -16,6 +16,7 @@ import { configureAmplify } from './src/config/amplifyConfig';
 import { ensureGuestCredentials, testAmplifyConfig } from './src/services/auth/amplifyAuthServiceFix';
 import { GamesLoaderProvider } from './components/providers/GamesLoaderProvider';
 import { WebSocketProvider } from './src/contexts/WebSocketContext';
+import { AuthSyncWrapper } from './components/AuthSyncWrapper';
 import { getLogger } from './src/utils/logger';
 
 const logger = getLogger('App');
@@ -277,14 +278,16 @@ export default function App() {
       <SafeAreaProvider>
         <AuthProvider>
           <AppProvider>
-            <WebSocketProvider autoConnect={true}>
-              <GamesLoaderProvider>
-                <StatusBar style="light" />
-                <NavigationContainer>
-                  <MainNavigator needsCompliance={needsCompliance} />
-                </NavigationContainer>
-              </GamesLoaderProvider>
-            </WebSocketProvider>
+            <AuthSyncWrapper>
+              <WebSocketProvider autoConnect={true}>
+                <GamesLoaderProvider>
+                  <StatusBar style="light" />
+                  <NavigationContainer>
+                    <MainNavigator needsCompliance={needsCompliance} />
+                  </NavigationContainer>
+                </GamesLoaderProvider>
+              </WebSocketProvider>
+            </AuthSyncWrapper>
           </AppProvider>
         </AuthProvider>
       </SafeAreaProvider>

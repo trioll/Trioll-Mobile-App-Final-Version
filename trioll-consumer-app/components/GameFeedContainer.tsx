@@ -25,12 +25,12 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
   onGameChange,
   onShareError,
 }) => {
-  const { games, setGames, likes, bookmarks, toggleLike, toggleBookmark, isGuest } = useApp();
+  const { games, setGames, likes, bookmarks, toggleLike, toggleBookmark, isGuest, addComment, rateGameAsGuest, currentUser } = useApp();
   const [currentDisplayedGame, setCurrentDisplayedGame] = useState<Game | null>(null);
   const [showCommentModal, setShowCommentModal] = useState(false);
   const [selectedGameForComment, setSelectedGameForComment] = useState<Game | null>(null);
   const [gameInteractions, setGameInteractions] = useState<Map<string, { likeCount: number; rating: number; ratingCount: number }>>(new Map());
-  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  // Remove local currentUserId state - we'll use currentUser from AppContext instead
 
   // Initialize games from API or dummy data
   useEffect(() => {
@@ -40,14 +40,7 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
     }
   }, []); // Empty deps to run only once
 
-  // Get current user ID
-  useEffect(() => {
-    safeAuthService.getCurrentUserId().then(userId => {
-      setCurrentUserId(userId);
-    }).catch(error => {
-      logger.error('Failed to get current user ID:', error);
-    });
-  }, []);
+  // No need to get current user ID - we use currentUser from AppContext
 
   // Initialize game interactions from game data
   useEffect(() => {
@@ -156,6 +149,10 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
 
   const handleSubmitComment = useCallback(async (gameId: string, comment: string) => {
     try {
+      // Use addComment from AppContext which includes user data
+      addComment(gameId, comment);
+      
+      // Also call API for persistence
       const TriollAPIModule = await import('../src/services/api/TriollAPI');
       const api = TriollAPIModule.default;
       await api.addGameComment(gameId, comment);
@@ -174,9 +171,12 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
       console.error('Failed to submit comment:', error);
       throw error; // Re-throw to let CommentModal handle the error
     }
-  }, []);
+  }, [addComment]);
 
   const handleRate = useCallback(async (game: Game, rating: number) => {
+    // Use rateGameAsGuest from AppContext which handles both guest and authenticated users
+    await rateGameAsGuest(game.id, rating);
+    
     // Update local rating
     setGameInteractions(prev => {
       const newMap = new Map(prev);
@@ -203,7 +203,7 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
     } catch (error) {
       console.error('Failed to submit rating:', error);
     }
-  }, []);
+  }, [rateGameAsGuest]);
 
   if (games.length === 0) {
     return <View style={styles.emptyContainer} />;
@@ -251,7 +251,7 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
             setSelectedGameForComment(null);
           }}
           onSubmit={handleSubmitComment}
-          currentUserId={currentUserId || undefined}
+          currentUserId={currentUser?.id || currentUser?.username}
           isGuest={isGuest}
         />
       )}

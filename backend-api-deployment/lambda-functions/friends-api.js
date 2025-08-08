@@ -76,8 +76,10 @@ exports.handler = async (event) => {
           isOnline: result.Item.isOnline || false,
           lastActive: result.Item.lastActive || new Date().toISOString(),
           level: result.Item.level || 1,
-          mutualFriends: 0, // TODO: Calculate mutual friends
-          gamesInCommon: 0  // TODO: Calculate games in common
+          // Future feature: Mutual friends calculation - returns 0 for MVP
+          mutualFriends: 0,
+          // Future feature: Games in common calculation - returns 0 for MVP
+          gamesInCommon: 0
         }));
       
       return {
@@ -223,7 +225,8 @@ exports.handler = async (event) => {
         Item: friendRequest
       }));
       
-      // TODO: Send notification to target user
+      // Future feature: Push notifications for friend requests
+      // Currently notifications are handled client-side when users check their requests
       
       return {
         statusCode: 200,
@@ -486,7 +489,8 @@ exports.handler = async (event) => {
         realName: item.displayName,
         avatar: item.avatar || `https://picsum.photos/200/200?random=${item.userId}`,
         level: item.level || 1,
-        isOnline: false, // TODO: Implement online status
+        // Future feature: Real-time online status tracking - returns false for MVP
+        isOnline: false,
         lastActive: new Date().toISOString()
       }));
       
@@ -531,8 +535,10 @@ exports.handler = async (event) => {
           realName: item.displayName,
           avatar: item.avatar || `https://picsum.photos/200/200?random=${item.userId}`,
           level: item.level || 1,
-          mutualFriends: 0, // TODO: Calculate mutual friends
-          gamesInCommon: 0  // TODO: Calculate games in common
+          // Future feature: Mutual friends calculation - returns 0 for MVP
+          mutualFriends: 0,
+          // Future feature: Games in common calculation - returns 0 for MVP
+          gamesInCommon: 0
         }));
       
       return {

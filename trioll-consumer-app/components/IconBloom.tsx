@@ -708,18 +708,25 @@ export const IconBloom: React.FC<IconBloomProps> = ({
               transform: [{ scale: logoScale }],
               justifyContent: 'center',
               alignItems: 'center',
-              backgroundColor: 'rgba(255, 255, 255, 0.2)', // Debug background
+              backgroundColor: 'transparent', // Transparent background to show logo properly
               borderRadius: LOGO_SIZE / 2,
+              borderWidth: 2,
+              borderColor: 'rgba(255, 255, 255, 0.3)',
+              overflow: 'hidden',
+              shadowColor: '#6366f1',
+              shadowOffset: { width: 0, height: 0 },
+              shadowOpacity: 0.3,
+              shadowRadius: 4,
+              elevation: 5,
             }}
           >
             <Image
               source={require('../assets/icon.png')}
               style={{
-                width: LOGO_SIZE,
-                height: LOGO_SIZE,
-                tintColor: '#FFFFFF', // Add white tint to make it visible
+                width: LOGO_SIZE * 0.8,
+                height: LOGO_SIZE * 0.8,
+                resizeMode: 'contain',
               }}
-              resizeMode="contain"
             />
           </Animated.View>
         </TouchableWithoutFeedback>

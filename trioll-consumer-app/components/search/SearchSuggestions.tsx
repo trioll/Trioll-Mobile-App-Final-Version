@@ -27,6 +27,7 @@ export const SearchSuggestions: React.FC<SearchSuggestionsProps> = ({
   const { height: SCREEN_HEIGHT } = Dimensions.get('window');
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(-20)).current;
+  const maxHeight = SCREEN_HEIGHT * 0.5; // Limit to half screen
 
   useEffect(() => {
     Animated.parallel([
@@ -185,24 +186,34 @@ const styles = StyleSheet.create({
     top: 132,
     left: 0,
     right: 0,
-    bottom: 0,
+    // Remove bottom: 0 to not block the whole screen
+    maxHeight: 400, // Limit height
     zIndex: 999,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    elevation: 8,
   },
   backdrop: {
     position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
+    top: -1000,
+    left: -1000,
+    right: -1000,
+    bottom: -1000,
   },
   contentContainer: {
-    flex: 1,
     backgroundColor: '#000000',
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.2)',
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.2)',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
+    overflow: 'hidden',
   },
   scrollView: {
-    flex: 1,
+    maxHeight: 350, // Limit scroll area
   },
   section: {
     paddingVertical: 16,

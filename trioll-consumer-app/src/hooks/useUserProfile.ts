@@ -1,5 +1,6 @@
 
 import { useState, useEffect, useRef } from 'react';
+import { Hub } from 'aws-amplify/utils';
 import triollAPI from '../services/api/TriollAPI';
 import { Config } from '../config/environments';
 import { generateUserAvatar } from '../utils/avatarGenerator';
@@ -189,12 +190,14 @@ export const useUserProfile = (userId?: string) => {
       // Check if this is the current user
       const currentUserId = await safeAuthService.getCurrentUserId();
       const isCurrentUser = !userId || userId === currentUserId;
-      const isGuestUser = currentUserId?.startsWith('guest_');
+      const isAuthenticated = await safeAuthService.isAuthenticated();
+      const isGuestUser = !isAuthenticated || currentUserId?.startsWith('guest_');
       
       logger.info('Profile fetch details', { 
         currentUserId, 
         isCurrentUser, 
         isGuestUser,
+        isAuthenticated,
         profileUserId: userId 
       });
 
@@ -416,11 +419,27 @@ export const useUserProfile = (userId?: string) => {
   useEffect(() => {
     fetchProfile();
     
+    // Listen for auth state changes
+    const authListener = Hub.listen('auth', ({ payload }) => {
+      logger.info('Auth event in profile hook:', payload.event);
+      
+      // Refresh profile when user signs in or signs out
+      if (payload.event === 'signedIn' || payload.event === 'signedOut') {
+        logger.info('Auth state changed, refreshing profile...');
+        // Add a small delay to ensure auth state is fully updated
+        setTimeout(() => {
+          fetchProfile();
+        }, 500);
+      }
+    });
+    
     // Cleanup on unmount
     return () => {
       if (loadingTimeoutRef.current) {
         clearTimeout(loadingTimeoutRef.current);
       }
+      // Remove auth listener
+      authListener();
     };
   }, [userId]);
 

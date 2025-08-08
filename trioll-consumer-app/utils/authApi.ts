@@ -2,6 +2,11 @@
 // Authentication API utilities - Mock implementation for MVP
 // This file consolidates all auth-related API functions
 
+// CRITICAL: This is a mock/development API and must NEVER be used in production
+if (process.env.NODE_ENV === 'production') {
+  throw new Error('Mock auth API cannot be used in production');
+}
+
 import {
   LoginCredentials,
   LoginResponse,

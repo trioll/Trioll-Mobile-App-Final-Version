@@ -7,6 +7,7 @@
 import { apiConfig, API_ENDPOINTS, buildApiUrl } from '../../config/apiConfig';
 import { authTokenStorage } from '../../utils/secureStorage';
 import { getLogger } from '../../utils/logger';
+import { amplifyAuthService } from '../auth/amplifyAuthService';
 
 const logger = getLogger('UserRegistrationAPI');
 
@@ -107,6 +108,18 @@ class UserRegistrationAPI {
       // Store tokens if verification successful
       if (result.tokens) {
         await authTokenStorage.save(result.tokens);
+        
+        // If we have the password, sign in with Amplify to update auth state
+        if (data.password) {
+          try {
+            logger.info('Signing in user with Amplify after verification...');
+            await amplifyAuthService.signInUser(data.email, data.password);
+            logger.info('User signed in successfully after verification');
+          } catch (signInError) {
+            // Log but don't fail - tokens are already stored
+            logger.warn('Could not sign in with Amplify after verification:', signInError);
+          }
+        }
       }
 
       return result;

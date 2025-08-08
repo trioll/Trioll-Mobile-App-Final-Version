@@ -941,6 +941,10 @@ export const FeedScreen: React.FC = () => {
           setShowRegisterBenefitsModal(false);
           navigation.navigate('RegistrationMethod' as never);
         }}
+        onLogin={() => {
+          setShowRegisterBenefitsModal(false);
+          navigation.navigate('Login' as never);
+        }}
         onContinueAsGuest={() => setShowRegisterBenefitsModal(false)}
       />
 

@@ -25,13 +25,28 @@ class CrashReporter {
 
   async initialize() : Promise<void> {
     if (!Config.FEATURES.CRASH_REPORTING || this.initialized) {
+      logger.info('Crash reporting disabled or already initialized');
+      return;
+    }
+
+    // Get Sentry DSN from environment or config
+    const sentryDsn = process.env.REACT_APP_SENTRY_DSN || process.env.EXPO_PUBLIC_SENTRY_DSN;
+    
+    if (!sentryDsn) {
+      logger.info('No Sentry DSN configured, crash reporting disabled');
+      return;
+    }
+
+    // Only initialize Sentry in staging/production environments
+    if (Config.ENV === 'development') {
+      logger.info('Sentry disabled in development environment');
       return;
     }
 
     try {
       Sentry.init({
-        dsn: Config.ENV === 'production' ? 'YOUR_PRODUCTION_SENTRY_DSN' : 'YOUR_STAGING_SENTRY_DSN',
-        debug: Config.DEBUG.ENABLE_LOGGING,
+        dsn: sentryDsn,
+        debug: Config.DEBUG.ENABLE_LOGGING && Config.ENV !== 'production',
         environment: Config.ENV,
         tracesSampleRate: Config.ENV === 'production' ? 0.1 : 1.0,
         release: `trioll-mobile@1.0.0`, // TODO: Import version from config

@@ -27,8 +27,17 @@ export const useGameSearch = (
 
   const performSearch = useCallback(
     async (searchQuery: string) => {
-      if (!searchQuery.trim() && searchQuery !== '') {
+      // Clear results if query is empty or just whitespace
+      if (!searchQuery.trim()) {
         setResults([]);
+        setLoading(false);
+        return;
+      }
+
+      // API requires at least 2 characters for search
+      if (searchQuery.trim().length < 2) {
+        setResults([]);
+        setLoading(false);
         return;
       }
 
@@ -43,12 +52,6 @@ export const useGameSearch = (
           // Map API results to local Game type
           const mappedResults = apiResults.results.map(game => dataMapper.mapApiGameToLocal(game));
           setResults(mappedResults);
-          setIsUsingApiData(true);
-        } else if (searchQuery === '') {
-          // For empty search, get all games
-          const allGames = await triollAPI.getGames(limit);
-          const mappedGames = allGames.games.map(game => dataMapper.mapApiGameToLocal(game));
-          setResults(mappedGames);
           setIsUsingApiData(true);
         } else {
           // No results from API

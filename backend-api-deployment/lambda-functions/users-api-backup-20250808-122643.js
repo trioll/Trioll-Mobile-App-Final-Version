@@ -60,22 +60,7 @@ exports.handler = async (event) => {
   try {
     // User Registration
     if (path === '/users/register' && method === 'POST') {
-      let body;
-      try {
-        body = JSON.parse(event.body || '{}');
-      } catch (parseError) {
-        console.error('JSON parse error:', parseError);
-        return {
-          statusCode: 400,
-          headers,
-          body: JSON.stringify({
-            success: false,
-            message: 'Invalid JSON in request body'
-          })
-        };
-      }
-      
-      const { email, username, password, displayName } = body;
+      const { email, username, password, displayName } = JSON.parse(event.body);
       
       // Check if user already exists in DynamoDB
       try {
