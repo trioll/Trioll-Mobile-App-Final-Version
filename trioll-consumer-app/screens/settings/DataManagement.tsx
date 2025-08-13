@@ -34,22 +34,10 @@ export const DataManagement: React.FC = () => {
 
   const handleExportData = () => {
     Alert.alert(
-      'Export Your Data',
-      "We'll prepare a copy of your data and send it to your email. This may take up to 24 hours.",
+      'Premium Feature',
+      'Data export is available for premium subscribers. Visit trioll.com/dashboard to access your data and analytics.',
       [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Export',
-          onPress: async () => {
-            setIsExporting(true);
-            trigger('success');
-            // Simulate export process
-            setTimeout(() => {
-              setIsExporting(false);
-              showToast('Data export requested. Check your email soon!', 'success');
-            }, 2000);
-          },
-        },
+        { text: 'OK', style: 'default' },
       ]
     );
   };
@@ -72,20 +60,12 @@ export const DataManagement: React.FC = () => {
     );
   };
 
-  const handleDeleteDownloads = () => {
+  const handleStreamingInfo = () => {
     Alert.alert(
-      'Delete Downloads',
-      'This will remove all downloaded game assets. You can re-download them later.',
+      'Streaming Only',
+      'TRIOLL streams games directly to your device. No downloads are stored locally.',
       [
-        { text: 'Cancel', style: 'cancel' },
-        {
-          text: 'Delete',
-          style: 'destructive',
-          onPress: () => {
-            trigger('success');
-            showToast('Downloads deleted', 'success');
-          },
-        },
+        { text: 'OK', style: 'default' },
       ]
     );
   };
@@ -123,36 +103,28 @@ export const DataManagement: React.FC = () => {
 
   const dataSections: DataSection[] = [
     {
-      id: 'storage',
-      title: 'Storage Usage',
-      description: 'Total space used by TRIOLL',
+      id: 'app',
+      title: 'App Size',
+      description: 'TRIOLL app installation',
       icon: 'phone-portrait-outline',
-      size: '1.2 GB',
+      size: '85 MB',
       action: () => {},
     },
     {
       id: 'cache',
       title: 'Cache',
-      description: 'Temporary files for faster loading',
+      description: 'Temporary files for faster streaming',
       icon: 'speedometer-outline',
-      size: '423 MB',
+      size: '12 MB',
       action: handleClearCache,
     },
     {
-      id: 'downloads',
-      title: 'Downloaded Games',
-      description: 'Game assets stored locally',
-      icon: 'download-outline',
-      size: '687 MB',
-      action: handleDeleteDownloads,
-    },
-    {
-      id: 'saves',
-      title: 'Game Saves',
-      description: 'Your progress and saved games',
-      icon: 'save-outline',
-      size: '89 MB',
-      action: () => {},
+      id: 'streaming',
+      title: 'Streaming',
+      description: 'No game downloads stored',
+      icon: 'cloud-outline',
+      size: '0 MB',
+      action: handleStreamingInfo,
     },
   ];
 
@@ -161,7 +133,7 @@ export const DataManagement: React.FC = () => {
       key={section.id}
       style={styles.dataCard}
       onPress={section.action}
-      disabled={section.id === 'storage' || section.id === 'saves'}
+      disabled={section.id === 'app'}
     >
       <View style={styles.dataIcon}>
         <Ionicons name={section.icon as keyof typeof Ionicons.glyphMap} size={24} color="#6366f1" />
@@ -172,7 +144,7 @@ export const DataManagement: React.FC = () => {
       </View>
       <View style={styles.dataRight}>
         <Text style={styles.dataSize}>{section.size}</Text>
-        {(section.id === 'cache' || section.id === 'downloads') && (
+        {(section.id === 'cache' || section.id === 'streaming') && (
           <Ionicons name="chevron-forward" size={20} color="#666" />
         )}
       </View>
@@ -191,34 +163,35 @@ export const DataManagement: React.FC = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        {/* Storage Overview */}
+        {/* App Information */}
         <View style={styles.section}>
-          <Text style={styles.sectionTitle}>Storage</Text>
+          <Text style={styles.sectionTitle}>App Storage</Text>
+          <View style={styles.infoCard}>
+            <Ionicons name="information-circle" size={20} color="#6366f1" />
+            <Text style={styles.infoText}>
+              TRIOLL streams games directly to your device. No game files are downloaded or stored locally.
+            </Text>
+          </View>
           {dataSections.map(renderDataSection)}
         </View>
 
         {/* Data Export */}
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>Your Data</Text>
-          <Pressable onPress={handleExportData} disabled={isExporting}>
-            <LinearGradient
-              colors={['#6366f1', '#7c3aed']}
-              style={styles.exportButton}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 0 }}
-            >
-              {isExporting ? (
-                <ActivityIndicator size="small" color="#FFFFFF" />
-              ) : (
-                <>
-                  <Ionicons name="cloud-download-outline" size={20} color="#FFFFFF" />
-                  <Text style={styles.exportButtonText}>Export Your Data</Text>
-                </>
-              )}
-            </LinearGradient>
+          <Pressable onPress={handleExportData}>
+            <View style={styles.premiumButton}>
+              <View style={styles.premiumIconContainer}>
+                <Ionicons name="star" size={20} color="#FFD700" />
+              </View>
+              <View style={styles.premiumContent}>
+                <Text style={styles.premiumTitle}>Data Export & Analytics</Text>
+                <Text style={styles.premiumText}>Premium Feature</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={20} color="#666" />
+            </View>
           </Pressable>
           <Text style={styles.exportInfo}>
-            Download a copy of your TRIOLL data including profile, game progress, and settings
+            Access your data exports and detailed analytics at trioll.com/dashboard
           </Text>
         </View>
 
@@ -230,8 +203,7 @@ export const DataManagement: React.FC = () => {
             <View style={styles.privacyInfo}>
               <Text style={styles.privacyTitle}>Data Retention</Text>
               <Text style={styles.privacyText}>
-                We keep your data for as long as your account is active. Deleted data is removed
-                within 30 days.
+                Your gameplay data is processed in real-time. Account data is retained while your account is active and removed within 30 days of deletion.
               </Text>
             </View>
           </View>
@@ -391,5 +363,51 @@ const styles = StyleSheet.create({
     color: '#FFFFFF',
     opacity: 0.6,
     marginTop: 8,
+  },
+  infoCard: {
+    flexDirection: 'row',
+    backgroundColor: 'rgba(99, 102, 241, 0.1)',
+    borderRadius: 12,
+    padding: 16,
+    marginBottom: 16,
+    gap: 12,
+    alignItems: 'center',
+  },
+  infoText: {
+    flex: 1,
+    fontSize: 14,
+    color: '#FFFFFF',
+    opacity: 0.8,
+    lineHeight: 20,
+  },
+  premiumButton: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 215, 0, 0.1)',
+    borderRadius: 12,
+    padding: 16,
+    gap: 12,
+  },
+  premiumIconContainer: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(255, 215, 0, 0.2)',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  premiumContent: {
+    flex: 1,
+  },
+  premiumTitle: {
+    fontSize: 16,
+    fontWeight: '600',
+    color: '#FFFFFF',
+    marginBottom: 2,
+  },
+  premiumText: {
+    fontSize: 14,
+    color: '#FFD700',
+    fontWeight: '500',
   },
 });

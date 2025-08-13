@@ -7,6 +7,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
 import { WebView } from 'react-native-webview';
 import { GameControlOverlay } from '../components/game';
+import { PurchaseIntentModal } from '../components/modals/PurchaseIntentModal';
 
 import { Text } from '../components/base/Text';
 import { useApp } from '../context/AppContext';
@@ -24,6 +25,8 @@ import { RouteProp } from '@react-navigation/native';
 import { WebViewMessageEvent } from 'react-native-webview';
 import { detectGameAspectRatio, generateGameScalingCSS, generateGameScalingJS, wrapHTMLWithScaling } from '../utils/html5GameScaling';
 import { generateOrientationAwareCSS, generateOrientationJS, calculateGameDimensions } from '../utils/orientationGameScaling';
+import { analyticsService } from '../src/services/analytics/analyticsService';
+import { purchaseIntentService } from '../src/services/analytics/purchaseIntentService';
 
 const logger = getLogger('TrialPlayerScreen');
 
@@ -68,7 +71,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
   const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
   const isPortrait = screenHeight > screenWidth;
   const { gameId, onClose } = route.params;
-  const { games, toggleLike, toggleBookmark, likes, bookmarks } = useApp();
+  const { games, toggleLike, toggleBookmark, likes, bookmarks, currentUser } = useApp();
   const game = games.find(g => g.id === gameId);
   const insets = useSafeAreaInsets();
   const haptics = useHaptics();
@@ -137,6 +140,10 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
   
   // Control overlay state
   const [showControlOverlay, setShowControlOverlay] = useState(true);
+  
+  // Purchase intent survey
+  const [showPurchaseIntent, setShowPurchaseIntent] = useState(false);
+  const [purchaseIntentShown, setPurchaseIntentShown] = useState(false);
   
   // Recording state
   const [isRecording, setIsRecording] = useState(false);
@@ -225,6 +232,11 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
       </View>
     );
   }
+
+  // Initialize purchase intent service
+  useEffect(() => {
+    purchaseIntentService.initialize();
+  }, []);
 
   // Initialize loading and game URL
   useEffect(() => {
@@ -466,6 +478,12 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
         style: 'destructive',
         onPress: async () => {
           await haptics.selection();
+          
+          // Show purchase intent survey
+          setShowPurchaseIntent(true);
+          setPurchaseIntentShown(true);
+          
+          // Track analytics after showing survey
           trackAnalytics(ANALYTICS_EVENTS.TRIAL_EXIT_EARLY, {
             timeRemaining,
             score: currentScore,
@@ -476,19 +494,45 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
             const duration = Math.floor((Date.now() - trialStartTime.current) / 1000);
             await recordTrialPlay(game.id, duration, false);
           }
-
-          if (onClose) {
-            onClose();
-          } else if (navigation.canGoBack()) {
-            navigation.goBack();
-          } else {
-            // Fallback to Feed screen if no back navigation available
-            navigation.navigate('Feed' as never);
-          }
         },
       },
     ]);
-  }, [onClose, navigation, haptics, isGuest, game, recordTrialPlay, timeRemaining, currentScore]);
+  }, [onClose, navigation, haptics, isGuest, game, recordTrialPlay, timeRemaining, currentScore, purchaseIntentShown]);
+
+  const handlePurchaseIntentResponse = async (response: 'yes' | 'no' | 'skip') => {
+    haptics.impact('light');
+    
+    const timePlayed = Math.floor(((game?.trialDuration || 5) * 60 - timeRemaining));
+    
+    // Track using the dedicated service
+    try {
+      await purchaseIntentService.trackPurchaseIntent({
+        gameId: game.id,
+        gameTitle: game.title,
+        response,
+        timePlayed,
+        userId: currentUser?.id,
+        isGuest,
+        timestamp: new Date().toISOString(),
+      });
+    } catch (error) {
+      logger.error('Failed to track purchase intent:', error);
+    }
+    
+    // Hide modal
+    setShowPurchaseIntent(false);
+    
+    // Navigate back after a short delay to ensure modal closes smoothly
+    setTimeout(() => {
+      if (onClose) {
+        onClose();
+      } else if (navigation.canGoBack()) {
+        navigation.goBack();
+      } else {
+        navigation.navigate('Feed' as never);
+      }
+    }, 300);
+  };
 
   const handleTrialEnd = async () => {
     // Manual trial end (user chooses to stop playing)
@@ -517,7 +561,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
       await recordTrialPlay(game.id, 0, true);
     }
 
-    // Show post-trial screen
+    // Show post-trial screen directly (survey will show on exit)
     setShowPostTrial(true);
   };
 
@@ -590,9 +634,12 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
     setWebViewKey(prev => prev + 1);
   };
 
-  const trackAnalytics = (_event: string, _params?: Record<string, unknown>) => {
-    // Mock analytics tracking
-    // Analytics event: event, params
+  const trackAnalytics = async (event: string, params?: Record<string, unknown>) => {
+    try {
+      await analyticsService.track(event, params);
+    } catch (error) {
+      logger.error('Failed to track analytics event:', error);
+    }
   };
 
   const handleRateTrial = (_rating: number) => {
@@ -1533,6 +1580,13 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
           </View>
         </View>
       )}
+
+      {/* Purchase Intent Modal */}
+      <PurchaseIntentModal
+        visible={showPurchaseIntent}
+        onResponse={handlePurchaseIntentResponse}
+        gameName={game.title}
+      />
     </View>
   );
 };

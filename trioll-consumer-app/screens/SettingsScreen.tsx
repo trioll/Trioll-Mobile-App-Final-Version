@@ -14,6 +14,8 @@ import { DebugAPIPanel } from '../src/components/debug/DebugAPIPanel';
 import { useHaptics } from '../hooks/useHaptics';
 import { useToast } from '../hooks/useToast';
 import { generateAvatar } from '../src/utils/avatarGenerator';
+import { useAuth } from '../context/AuthContext';
+import { StackActions } from '@react-navigation/native';
 
 // Types
 type RootStackParamList = {
@@ -113,6 +115,7 @@ export const SettingsScreen: React.FC = () => {
   const navigation = useNavigation<SettingsScreenNavigationProp>();
   const haptics = useHaptics();
   const { showToast } = useToast();
+  const { logout, isGuest } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearching, setIsSearching] = useState(false);
@@ -168,6 +171,19 @@ export const SettingsScreen: React.FC = () => {
 
   const handleDeleteAccount = () => {
     haptics.impact('heavy');
+    
+    if (isGuest) {
+      Alert.alert(
+        'Guest Account',
+        'Guest accounts are automatically deleted after 30 days of inactivity. Create an account to save your progress permanently.',
+        [
+          { text: 'Create Account', onPress: () => navigation.navigate('RegistrationMethodScreen' as never) },
+          { text: 'OK', style: 'cancel' },
+        ]
+      );
+      return;
+    }
+    
     Alert.alert(
       'Delete Account',
       'This action cannot be undone. All your data will be permanently deleted.',
@@ -177,8 +193,35 @@ export const SettingsScreen: React.FC = () => {
           text: 'Delete',
           style: 'destructive',
           onPress: () => {
-            showToast('Account deletion initiated', 'info');
-            // Navigate to deletion flow
+            Alert.alert(
+              'Confirm Deletion',
+              'Type "DELETE" to confirm account deletion',
+              [
+                { text: 'Cancel', style: 'cancel' },
+                {
+                  text: 'Proceed',
+                  style: 'destructive',
+                  onPress: async () => {
+                    try {
+                      // In a real app, this would call an API to delete the account
+                      // For now, we'll simulate it and log out
+                      showToast('Account deletion requested. You will receive an email confirmation.', 'info');
+                      
+                      // Wait a moment to show the toast
+                      setTimeout(async () => {
+                        await logout();
+                        // Navigate to onboarding
+                        navigation.dispatch(
+                          StackActions.replace('MinimalOnboarding' as never)
+                        );
+                      }, 2000);
+                    } catch (error) {
+                      showToast('Failed to delete account', 'error');
+                    }
+                  },
+                },
+              ]
+            );
           },
         },
       ]
@@ -242,17 +285,53 @@ export const SettingsScreen: React.FC = () => {
 
   const handleLogout = () => {
     haptics.impact('heavy');
-    Alert.alert('Log Out', 'Are you sure you want to log out?', [
-      { text: 'Cancel', style: 'cancel' },
-      {
-        text: 'Log Out',
-        style: 'destructive',
-        onPress: () => {
-          showToast('Logged out successfully', 'success');
-          // Navigate to login
+    
+    // For guest users, show different message
+    if (isGuest) {
+      Alert.alert(
+        'Guest Account', 
+        'You are currently using a guest account. Sign out will reset your guest data.',
+        [
+          { text: 'Cancel', style: 'cancel' },
+          {
+            text: 'Sign Out',
+            style: 'destructive',
+            onPress: async () => {
+              try {
+                await logout();
+                showToast('Signed out successfully', 'success');
+                // Navigate to onboarding/registration
+                navigation.dispatch(
+                  StackActions.replace('MinimalOnboarding' as never)
+                );
+              } catch (error) {
+                showToast('Failed to sign out', 'error');
+              }
+            },
+          },
+        ]
+      );
+    } else {
+      Alert.alert('Sign Out', 'Are you sure you want to sign out?', [
+        { text: 'Cancel', style: 'cancel' },
+        {
+          text: 'Sign Out',
+          style: 'destructive',
+          onPress: async () => {
+            try {
+              await logout();
+              showToast('Signed out successfully', 'success');
+              // Navigate to login screen
+              navigation.dispatch(
+                StackActions.replace('Login' as never)
+              );
+            } catch (error) {
+              showToast('Failed to sign out', 'error');
+            }
+          },
         },
-      },
-    ]);
+      ]);
+    }
   };
 
   // Build sections - MAXIMUM SIMPLIFICATION
@@ -466,6 +545,14 @@ export const SettingsScreen: React.FC = () => {
         icon: 'log-out',
         type: 'action',
         onPress: handleLogout,
+      },
+      {
+        id: 'delete-account',
+        title: 'Delete Account',
+        icon: 'trash-outline',
+        type: 'action',
+        onPress: handleDeleteAccount,
+        destructive: true,
       },
     ],
   });

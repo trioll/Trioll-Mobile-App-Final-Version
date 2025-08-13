@@ -331,8 +331,13 @@ class EnhancedAnalyticsService {
           throw new Error(`Analytics API Error: ${response.status}`);
         }
         
-        // For other errors, log but don't throw to prevent app crashes
-        logger.error(`Analytics API Error: ${response.status}`);
+        // For other errors, log as warning (not error) to prevent console spam
+        // Analytics failures are non-critical and shouldn't pollute error logs
+        if (response.status === 403 || response.status === 500) {
+          logger.debug(`Analytics API returned ${response.status} - this is non-critical`);
+        } else {
+          logger.warn(`Analytics API Error: ${response.status}`);
+        }
         stopMeasure();
         return; // Silently fail for non-critical analytics
       }
@@ -348,8 +353,8 @@ class EnhancedAnalyticsService {
         return this.sendWithRetry(endpoint, data, attempt + 1);
       }
 
-      // After all retries, log but don't throw - analytics shouldn't crash the app
-      logger.error(`Analytics failed after ${this.retryCount} attempts:`, error);
+      // After all retries, log as debug - analytics failures are non-critical
+      logger.debug(`Analytics failed after ${this.retryCount} attempts (non-critical):`, error);
       return;
     }
   }

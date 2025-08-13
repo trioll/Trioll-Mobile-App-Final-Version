@@ -11,9 +11,10 @@ import { Ionicons } from '@expo/vector-icons';
 import { useHaptics } from '../../hooks/useHaptics';
 import { useToast } from '../../hooks/useToast';
 import { DURATIONS } from '../../constants/animations';
+import { purchaseIntentService } from '../../src/services/analytics/purchaseIntentService';
 
 interface GameplaySettings {
-  trialDuration: 'short' | 'default' | 'extended';
+  trialDuration: 'all' | 'short' | 'default' | 'extended';
   autoRotate: boolean;
   hapticFeedback: boolean;
   graphicsQuality: 'low' | 'medium' | 'high' | 'ultra';
@@ -23,6 +24,7 @@ interface GameplaySettings {
   backgroundMusic: boolean;
   screenShake: boolean;
   particleEffects: boolean;
+  purchaseIntentSurvey: boolean;
 }
 
 type RootStackParamList = {
@@ -41,7 +43,7 @@ export const GameplaySettingsScreen: React.FC = () => {
   const fadeAnim = useRef(new Animated.Value(0)).current;
 
   const [settings, setSettings] = useState<GameplaySettings>({
-    trialDuration: 'default',
+    trialDuration: 'all',
     autoRotate: true,
     hapticFeedback: true,
     graphicsQuality: 'high',
@@ -51,6 +53,7 @@ export const GameplaySettingsScreen: React.FC = () => {
     backgroundMusic: true,
     screenShake: true,
     particleEffects: true,
+    purchaseIntentSurvey: true,
   });
 
   useEffect(() => {
@@ -59,21 +62,36 @@ export const GameplaySettingsScreen: React.FC = () => {
       duration: DURATIONS.NORMAL,
       useNativeDriver: true,
     }).start();
+    
+    // Load purchase intent preferences
+    loadPurchaseIntentPreferences();
   }, []);
+  
+  const loadPurchaseIntentPreferences = async () => {
+    await purchaseIntentService.initialize();
+    const prefs = purchaseIntentService.getPreferences();
+    setSettings(prev => ({ ...prev, purchaseIntentSurvey: prefs.enabled }));
+  };
 
   const handleBack = () => {
     haptics.impact('light');
     navigation.goBack();
   };
 
-  const updateSetting = <K extends keyof GameplaySettings>(key: K, value: GameplaySettings[K]) => {
+  const updateSetting = async <K extends keyof GameplaySettings>(key: K, value: GameplaySettings[K]) => {
     haptics.impact('light');
     setSettings(prev => ({ ...prev, [key]: value }));
+    
+    // Update purchase intent service if that setting changed
+    if (key === 'purchaseIntentSurvey') {
+      await purchaseIntentService.setEnabled(value as boolean);
+    }
+    
     showToast('Setting updated', 'success');
   };
 
   const renderTrialDurationOption = (
-    option: 'short' | 'default' | 'extended',
+    option: 'all' | 'short' | 'default' | 'extended',
     label: string,
     duration: string
   ) => (
@@ -146,6 +164,7 @@ export const GameplaySettingsScreen: React.FC = () => {
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>TRIAL DURATION</Text>
           <View style={styles.optionsContainer}>
+            {renderTrialDurationOption('all', 'All Trials', 'All durations')}
             {renderTrialDurationOption('short', 'Quick Try', '3 minutes')}
             {renderTrialDurationOption('default', 'Standard', '5 minutes')}
             {renderTrialDurationOption('extended', 'Deep Dive', '7 minutes')}
@@ -300,6 +319,25 @@ export const GameplaySettingsScreen: React.FC = () => {
           </View>
         </View>
 
+        {/* Purchase Intent Survey */}
+        <View style={styles.section}>
+          <Text style={styles.sectionTitle}>Feedback</Text>
+          <View style={styles.settingRow}>
+            <View style={styles.settingInfo}>
+              <Text style={styles.settingLabel}>Purchase Intent Survey</Text>
+              <Text style={styles.settingDescription}>
+                Show survey after game trials to help improve recommendations
+              </Text>
+            </View>
+            <Switch
+              value={settings.purchaseIntentSurvey}
+              onValueChange={value => updateSetting('purchaseIntentSurvey', value)}
+              trackColor={{ false: '#39393D', true: '#00FF88' }}
+              thumbColor="#FFFFFF"
+            />
+          </View>
+        </View>
+
         {/* Reset Button */}
         <Pressable
           style={styles.resetButton}
@@ -307,7 +345,7 @@ export const GameplaySettingsScreen: React.FC = () => {
             haptics.impact('medium');
             showToast('Settings reset to defaults', 'success');
             setSettings({
-              trialDuration: 'default',
+              trialDuration: 'all',
               autoRotate: true,
               hapticFeedback: true,
               graphicsQuality: 'high',

@@ -50,6 +50,7 @@ export const IconBloom: React.FC<IconBloomProps> = ({
   const [bloomState, setBloomState] = useState<BloomState>('idle');
   const [hoveredIcon, setHoveredIcon] = useState<string | null>(null);
   const [selectedIcon, setSelectedIcon] = useState<string | null>(null);
+  const [logoError, setLogoError] = useState(false);
   const logoScale = useRef(new Animated.Value(1)).current;
   const isHoldSelecting = useRef(false);
 
@@ -720,14 +721,28 @@ export const IconBloom: React.FC<IconBloomProps> = ({
               elevation: 5,
             }}
           >
-            <Image
-              source={require('../assets/icon.png')}
-              style={{
-                width: LOGO_SIZE * 0.8,
-                height: LOGO_SIZE * 0.8,
-                resizeMode: 'contain',
-              }}
-            />
+            {!logoError ? (
+              <Image
+                source={require('../assets/icon.png')}
+                style={{
+                  width: LOGO_SIZE * 0.8,
+                  height: LOGO_SIZE * 0.8,
+                  resizeMode: 'contain',
+                }}
+                onError={(e) => {
+                  console.error('Logo load error:', e.nativeEvent.error);
+                  setLogoError(true);
+                }}
+              />
+            ) : (
+              <Text style={{ 
+                color: '#6366f1', 
+                fontSize: LOGO_SIZE * 0.4, 
+                fontWeight: 'bold' 
+              }}>
+                T
+              </Text>
+            )}
           </Animated.View>
         </TouchableWithoutFeedback>
       </View>
