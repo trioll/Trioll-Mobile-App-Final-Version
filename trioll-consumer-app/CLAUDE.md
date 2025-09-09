@@ -702,4 +702,39 @@ Border radius: 0px (sharp), 12px (cards), 20px (modals)
 
 ---
 
+## Developer Game Upload Workflow
+
+### How Games Get Into The App
+
+Games appear in the Trioll Mobile app through the Developer Portal (https://triolldev.com). Here's the complete flow:
+
+1. **Developer Registration**: Developers sign up at triolldev.com and receive a unique developer ID
+2. **Game Upload**: Through the portal's upload interface, developers:
+   - Fill out game metadata (name, description, category)
+   - Upload HTML5 game files and assets
+   - Upload a thumbnail image
+   - Set game status (active/inactive)
+3. **Instant Availability**: Once uploaded with status "active", games immediately appear in the mobile app
+4. **Game Loading**: When users select a game, the app loads it via:
+   ```javascript
+   // Primary CDN URL
+   const gameUrl = `https://d2wg7sn99og2se.cloudfront.net/${gameId}/index.html`;
+   ```
+
+### Mobile App Integration Points
+
+The app integrates with uploaded games through:
+- `GET /games` - Fetches all active games
+- WebView configuration for HTML5 game playback
+- Real-time updates via WebSocket for new games
+- Analytics tracking for plays, likes, ratings
+
+### Key Technical Details
+- Games stored in S3: `trioll-prod-games-us-east-1/{gameId}/`
+- Metadata in DynamoDB: `trioll-prod-games` table
+- Only games with `status: "active"` shown to users
+- Developer attribution displayed on game cards
+
+---
+
 **NOTE**: This CLAUDE.md file is the primary continuous context for the Trioll frontend. It will be updated after each significant change to maintain accurate project state.

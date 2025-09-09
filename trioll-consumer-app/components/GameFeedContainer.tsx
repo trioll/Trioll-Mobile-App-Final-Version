@@ -205,10 +205,6 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
     }
   }, [rateGameAsGuest]);
 
-  if (games.length === 0) {
-    return <View style={styles.emptyContainer} />;
-  }
-
   // Create enhanced games with updated interaction data - memoized to prevent infinite loops
   const enhancedGames = useMemo(() => {
     return games.map(game => {
@@ -222,6 +218,10 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
       };
     });
   }, [games, gameInteractions]);
+
+  if (games.length === 0) {
+    return <View style={styles.emptyContainer} />;
+  }
 
   return (
     <View style={styles.container}>
