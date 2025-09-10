@@ -81,16 +81,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
     if (callback) callback();
   };
 
-  const handleShareProfile = async () => {
-    try {
-      // await Sharing.shareAsync(`https://trioll.com/profile/${profile.handle}`, {
-      //   dialogTitle: `Check out ${profile.username}'s gaming profile on TRIOLL!`,
-      // });
-      // TODO: Implement sharing when expo-sharing is installed
-    } catch (error) {
-      // TODO: Handle share error
-    }
-  };
 
   const formatMemberSince = (date: Date) => {
     const months = [
@@ -179,13 +169,6 @@ export const ProfileHeader: React.FC<ProfileHeaderProps> = ({
                 </Animated.View>
               </Pressable>
 
-              <Pressable
-                style={styles.secondaryButton}
-                onPress={() => handleButtonPress(handleShareProfile)}
-              >
-                <Ionicons name="share-outline" size={20} color="#00FFFF" />
-                <Text style={styles.secondaryButtonText}>SHARE</Text>
-              </Pressable>
             </>
           ) : (
             <>
