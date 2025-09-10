@@ -14,6 +14,7 @@ const LIKES_TABLE = process.env.LIKES_TABLE || 'trioll-prod-likes';
 const RATINGS_TABLE = process.env.RATINGS_TABLE || 'trioll-prod-ratings';
 const PLAYCOUNTS_TABLE = process.env.PLAYCOUNTS_TABLE || 'trioll-prod-playcounts';
 const COMMENTS_TABLE = process.env.COMMENTS_TABLE || 'trioll-prod-comments';
+const PURCHASE_INTENT_TABLE = process.env.PURCHASE_INTENT_TABLE || 'trioll-prod-purchase-intent';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -80,6 +81,9 @@ exports.handler = async (event) => {
         const commentId = pathParameters.commentId;
         return await handleDeleteComment(gameId, userId, commentId);
       }
+    } else if (path.includes('/purchase-intent')) {
+      const body = JSON.parse(event.body || '{}');
+      return await handlePurchaseIntent(gameId, userId, body);
     }
     
     return {
@@ -510,12 +514,15 @@ async function handleBookmarkGame(gameId, userId) {
       TableName: LIKES_TABLE,
       Item: {
         gameId,  // partition key first
-        userId: `bookmark#${userId}`,  // sort key second
+        userId: `bookmark_${userId}`,  // sort key second - cleaner prefix
         timestamp: new Date().toISOString(),
         type: 'bookmark',
         ttl: Math.floor(Date.now() / 1000) + (90 * 24 * 60 * 60) // 90 days
       }
     }));
+    
+    // Update bookmark count in games table
+    const updateResult = await updateGameBookmarkCount(gameId, 1);
     
     return {
       statusCode: 200,
@@ -525,6 +532,7 @@ async function handleBookmarkGame(gameId, userId) {
         gameId, 
         userId,
         bookmarked: true,
+        bookmarkCount: updateResult.bookmarkCount || 0,
         timestamp: new Date().toISOString()
       })
     };
@@ -544,9 +552,12 @@ async function handleUnbookmarkGame(gameId, userId) {
       TableName: LIKES_TABLE,
       Key: { 
         gameId,  // partition key first
-        userId: `bookmark#${userId}`  // sort key second
+        userId: `bookmark_${userId}`  // sort key second - match the new prefix
       }
     }));
+    
+    // Update bookmark count in games table
+    const updateResult = await updateGameBookmarkCount(gameId, -1);
     
     return {
       statusCode: 200,
@@ -555,7 +566,8 @@ async function handleUnbookmarkGame(gameId, userId) {
         success: true, 
         gameId, 
         userId,
-        bookmarked: false
+        bookmarked: false,
+        bookmarkCount: updateResult.bookmarkCount || 0
       })
     };
   } catch (error) {
@@ -582,7 +594,8 @@ async function getGameStats(gameId) {
       playCount: 0,
       ratingCount: 0,
       totalRating: 0,
-      commentCount: 0
+      commentCount: 0,
+      bookmarkCount: 0
     };
   } catch (error) {
     console.error('Error getting game stats:', error);
@@ -697,10 +710,201 @@ async function updateGameRating(gameId, rating, oldRating, isNewRating) {
           ratingCount: 1,
           totalRating: rating,
           commentCount: 0,
+          bookmarkCount: 0,  // Initialize bookmark count
           createdAt: new Date().toISOString()
         }
       }));
       return { ratingCount: 1, totalRating: rating };
+    }
+    throw error;
+  }
+}
+
+// Get bookmark status
+async function handleGetBookmarkStatus(gameId, userId) {
+  try {
+    const response = await dynamodb.send(new GetCommand({
+      TableName: LIKES_TABLE,
+      Key: { gameId, userId: `bookmark_${userId}` }
+    }));
+    
+    return {
+      statusCode: 200,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({
+        gameId,
+        userId,
+        bookmarked: !!response.Item,
+        timestamp: response.Item?.timestamp || null
+      })
+    };
+  } catch (error) {
+    console.error('Error checking bookmark status:', error);
+    return {
+      statusCode: 500,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({ error: 'Failed to check bookmark status' })
+    };
+  }
+}
+
+// New function to update bookmark count
+async function updateGameBookmarkCount(gameId, increment) {
+  try {
+    const response = await dynamodb.send(new UpdateCommand({
+      TableName: GAMES_TABLE,
+      Key: { gameId: gameId, version: 'v0' },
+      UpdateExpression: 'ADD bookmarkCount :inc',
+      ExpressionAttributeValues: { ':inc': increment },
+      ReturnValues: 'ALL_NEW'
+    }));
+    
+    return response.Attributes || { bookmarkCount: 0 };
+  } catch (error) {
+    if (error.name === 'ValidationException' || error.name === 'ResourceNotFoundException') {
+      // Game doesn't exist, create it
+      await dynamodb.send(new PutCommand({
+        TableName: GAMES_TABLE,
+        Item: {
+          gameId: gameId,
+          version: 'v0',
+          likeCount: 0,
+          playCount: 0,
+          ratingCount: 0,
+          totalRating: 0,
+          commentCount: 0,
+          bookmarkCount: Math.max(0, increment),
+          createdAt: new Date().toISOString()
+        }
+      }));
+      return { bookmarkCount: Math.max(0, increment) };
+    }
+    throw error;
+  }
+}
+
+// PURCHASE INTENT HANDLERS
+async function handlePurchaseIntent(gameId, userId, data) {
+  const { response, sessionId } = data;
+  
+  // Validate response
+  if (!response || !['yes', 'no', 'ask-later'].includes(response)) {
+    return {
+      statusCode: 400,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({ error: 'Invalid response. Must be yes, no, or ask-later' })
+    };
+  }
+  
+  try {
+    const timestamp = new Date().toISOString();
+    const recordId = `${userId}_${Date.now()}`;
+    
+    // Store purchase intent
+    await dynamodb.send(new PutCommand({
+      TableName: PURCHASE_INTENT_TABLE,
+      Item: {
+        gameId,
+        userIdTimestamp: recordId,
+        userId,
+        response,
+        sessionId: sessionId || `session-${Date.now()}`,
+        timestamp,
+        date: timestamp.split('T')[0], // YYYY-MM-DD for potential date-based queries
+        ttl: Math.floor(Date.now() / 1000) + (365 * 24 * 60 * 60) // 1 year retention
+      }
+    }));
+    
+    // Update game stats
+    await updateGamePurchaseIntent(gameId, response);
+    
+    return {
+      statusCode: 200,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({
+        success: true,
+        gameId,
+        userId,
+        response,
+        timestamp
+      })
+    };
+  } catch (error) {
+    console.error('Error recording purchase intent:', error);
+    return {
+      statusCode: 500,
+      headers: CORS_HEADERS,
+      body: JSON.stringify({ error: 'Failed to record purchase intent' })
+    };
+  }
+}
+
+// Update game purchase intent stats
+async function updateGamePurchaseIntent(gameId, intentResponse) {
+  try {
+    let updateExpression = 'ADD ';
+    const expressionValues = {};
+    
+    switch (intentResponse) {
+      case 'yes':
+        updateExpression += 'purchaseIntentYes :inc';
+        expressionValues[':inc'] = 1;
+        break;
+      case 'no':
+        updateExpression += 'purchaseIntentNo :inc';
+        expressionValues[':inc'] = 1;
+        break;
+      case 'ask-later':
+        updateExpression += 'purchaseIntentAskLater :inc';
+        expressionValues[':inc'] = 1;
+        break;
+    }
+    
+    const response = await dynamodb.send(new UpdateCommand({
+      TableName: GAMES_TABLE,
+      Key: { gameId: gameId, version: 'v0' },
+      UpdateExpression: updateExpression,
+      ExpressionAttributeValues: expressionValues,
+      ReturnValues: 'ALL_NEW'
+    }));
+    
+    return response.Attributes || {};
+  } catch (error) {
+    if (error.name === 'ValidationException' || error.name === 'ResourceNotFoundException') {
+      // Game doesn't exist, create it
+      const item = {
+        gameId: gameId,
+        version: 'v0',
+        likeCount: 0,
+        playCount: 0,
+        ratingCount: 0,
+        totalRating: 0,
+        commentCount: 0,
+        bookmarkCount: 0,
+        purchaseIntentYes: 0,
+        purchaseIntentNo: 0,
+        purchaseIntentAskLater: 0,
+        createdAt: new Date().toISOString()
+      };
+      
+      // Set the initial value
+      switch (intentResponse) {
+        case 'yes':
+          item.purchaseIntentYes = 1;
+          break;
+        case 'no':
+          item.purchaseIntentNo = 1;
+          break;
+        case 'ask-later':
+          item.purchaseIntentAskLater = 1;
+          break;
+      }
+      
+      await dynamodb.send(new PutCommand({
+        TableName: GAMES_TABLE,
+        Item: item
+      }));
+      return item;
     }
     throw error;
   }

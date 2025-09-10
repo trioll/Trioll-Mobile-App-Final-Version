@@ -715,11 +715,9 @@ Games appear in the Trioll Mobile app through the Developer Portal (https://trio
    - Upload a thumbnail image
    - Set game status (active/inactive)
 3. **Instant Availability**: Once uploaded with status "active", games immediately appear in the mobile app
-4. **Game Loading**: When users select a game, the app loads it via:
-   ```javascript
-   // Primary CDN URL
-   const gameUrl = `https://d2wg7sn99og2se.cloudfront.net/${gameId}/index.html`;
-   ```
+4. **Game Loading**: When users select a game, the app loads it via CloudFront CDN:
+   - Developer-uploaded games: `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`
+   - Legacy/fallback games: `https://dk72g9i0333mv.cloudfront.net/${gameId}/index.html`
 
 ### Mobile App Integration Points
 
@@ -730,10 +728,12 @@ The app integrates with uploaded games through:
 - Analytics tracking for plays, likes, ratings
 
 ### Key Technical Details
-- Games stored in S3: `trioll-prod-games-us-east-1/{gameId}/`
-- Metadata in DynamoDB: `trioll-prod-games` table
-- Only games with `status: "active"` shown to users
-- Developer attribution displayed on game cards
+- **S3 Storage**: Games stored in `trioll-prod-games-us-east-1/{gameId}/`
+- **Database**: Metadata in DynamoDB `trioll-prod-games` table
+- **CDN Distribution**: Developer portal uses `dgq2nqysbn2z3.cloudfront.net`
+- **Game Status**: Only games with `status: "active"` shown to users
+- **Developer Attribution**: Developer ID and name displayed on game cards
+- **API Filtering**: Games API allows both developer portal and legacy CDN domains
 
 ---
 

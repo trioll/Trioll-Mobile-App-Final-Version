@@ -1,6 +1,7 @@
 import { analyticsService } from './analyticsService';
 import { getLogger } from '../../utils/logger';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import triollAPI from '../api/TriollAPI';
 
 const logger = getLogger('PurchaseIntentService');
 
@@ -51,6 +52,18 @@ class PurchaseIntentService {
         timePlayed: data.timePlayed,
         isGuest: data.isGuest,
       });
+
+      // Map 'skip' to 'ask-later' for API consistency
+      const apiResponse = data.response === 'skip' ? 'ask-later' : data.response;
+
+      // Track to backend API
+      try {
+        await triollAPI.trackPurchaseIntent(data.gameId, apiResponse as 'yes' | 'no' | 'ask-later');
+        logger.info('✅ Purchase intent tracked to backend API');
+      } catch (apiError) {
+        // Don't fail the whole operation if API call fails
+        logger.error('Failed to track purchase intent to API:', apiError);
+      }
 
       // Track the main event
       await analyticsService.track('purchase_intent', {

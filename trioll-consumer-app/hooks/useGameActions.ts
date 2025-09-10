@@ -104,12 +104,13 @@ export const useGameActions = () => {
   // API-connected bookmark method
   const bookmarkGame = useCallback(async (gameId: string, isBookmarked: boolean) => {
     try {
-      // For now, bookmark API only supports adding bookmarks
-      // If already bookmarked, we'll just return success
       if (isBookmarked) {
-        return { success: true };
+        // If already bookmarked, unbookmark it
+        return await safeAPI.unbookmarkGame(gameId);
+      } else {
+        // If not bookmarked, bookmark it
+        return await safeAPI.bookmarkGame(gameId);
       }
-      return await safeAPI.bookmarkGame(gameId);
     } catch (error) {
       logger.error('Error toggling bookmark:', error);
       throw error;

@@ -263,7 +263,7 @@ class TriollAPI {
     });
   }
 
-  async bookmarkGame(gameId: string): Promise<LikeResponse> {
+  async bookmarkGame(gameId: string): Promise<any> {
     // Check if in guest mode
     if (this.isGuestMode) {
       const result = await localStorageService.addGuestBookmark(gameId);
@@ -271,15 +271,38 @@ class TriollAPI {
         success: result.success,
         gameId,
         userId: 'guest',
-        totalLikes: 0, // Bookmarks don't affect likes
-        isLiked: false
+        bookmarked: true,
+        bookmarkCount: 0
       };
     }
 
     const userId = await safeAuthService.getCurrentUserId();
-    // Using likes endpoint as bookmark functionality
-    return this.makeRequest<LikeResponse>(`/games/${gameId}/likes`, {
+    
+    // Using the new bookmarks endpoint
+    return this.makeRequest<any>(`/games/${gameId}/bookmarks`, {
       method: 'POST',
+      body: JSON.stringify({ userId, gameId }),
+    });
+  }
+
+  async unbookmarkGame(gameId: string): Promise<any> {
+    // Check if in guest mode
+    if (this.isGuestMode) {
+      const result = await localStorageService.removeGuestBookmark(gameId);
+      return {
+        success: result.success,
+        gameId,
+        userId: 'guest',
+        bookmarked: false,
+        bookmarkCount: 0
+      };
+    }
+
+    const userId = await safeAuthService.getCurrentUserId();
+    
+    // Using the new bookmarks endpoint
+    return this.makeRequest<any>(`/games/${gameId}/bookmarks`, {
+      method: 'DELETE',
       body: JSON.stringify({ userId, gameId }),
     });
   }
@@ -526,6 +549,23 @@ class TriollAPI {
     if (!userId) throw new Error('Not authenticated');
 
     return this.makeRequest<FriendsResponse>(`/users/${userId}/suggested-friends?limit=${limit}`);
+  }
+
+  // Purchase intent tracking
+  async trackPurchaseIntent(gameId: string, response: 'yes' | 'no' | 'ask-later', sessionId?: string): Promise<{ success: boolean; timestamp: string }> {
+    const userId = await safeAuthService.getCurrentUserId();
+    if (!userId) {
+      logger.error('Cannot track purchase intent without user ID');
+      throw new Error('User ID required for purchase intent tracking');
+    }
+
+    return this.makeRequest<{ success: boolean; timestamp: string }>(`/games/${gameId}/purchase-intent`, {
+      method: 'POST',
+      body: JSON.stringify({
+        response,
+        sessionId: sessionId || `session-${Date.now()}`,
+      }),
+    });
   }
 
   // Guest mode configuration

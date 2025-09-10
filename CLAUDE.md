@@ -283,6 +283,33 @@ aws cloudwatch get-metric-statistics \
 - Check for unnecessary re-renders
 - Profile with React DevTools
 
+## Developer Portal & Game Upload Workflow
+
+### Overview
+The **Trioll Developer Portal** (https://triolldev.com) is the primary way game developers upload and manage their games on the Trioll platform.
+
+### Developer Workflow
+1. **Developer Registration**: Developers sign up at triolldev.com with unique developer IDs
+2. **Game Upload Process**:
+   - Upload HTML5 game files to S3
+   - Provide game metadata (name, description, category, thumbnail)
+   - Set game status (active/inactive)
+   - Games served via CloudFront: `dgq2nqysbn2z3.cloudfront.net`
+3. **Instant Availability**: Active games immediately appear in the mobile app
+4. **Analytics Access**: Developers can view game performance metrics
+
+### Technical Architecture
+- **Frontend**: triolldev.com (HTML/JS/CSS)
+- **Backend**: Same API as mobile app (`4ib0hvu1xj.execute-api.us-east-1.amazonaws.com/prod`)
+- **Storage**: S3 bucket `trioll-prod-games-us-east-1`
+- **CDN**: Developer portal CloudFront `dgq2nqysbn2z3.cloudfront.net`
+- **Database**: DynamoDB `trioll-prod-games` table
+
+### CloudFront Distributions
+1. **Developer Portal CDN**: `dgq2nqysbn2z3.cloudfront.net` - Primary for new games
+2. **Legacy Mobile CDN**: `dk72g9i0333mv.cloudfront.net` - Fallback/legacy games
+3. Both domains are allowed by the games API filter
+
 ## 📈 Project Summary
 
 ### Current Focus Areas
@@ -295,6 +322,6 @@ aws cloudwatch get-metric-statistics \
 
 ---
 
-**🟡 CURRENT STATE**: The app is functional in development. Frontend and backend are connected. Main blockers are code quality issues (TypeScript/ESLint).
+**🟡 CURRENT STATE**: The app is functional in development. Frontend and backend are connected. Developer portal fully integrated. Main blockers are code quality issues (TypeScript/ESLint).
 
 **This CLAUDE.md file serves as the continuous context for the project and will be updated after each significant change.**

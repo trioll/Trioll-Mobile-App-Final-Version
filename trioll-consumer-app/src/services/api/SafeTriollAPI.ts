@@ -218,6 +218,19 @@ class SafeTriollAPI {
     }
   }
 
+  async unbookmarkGame(gameId: string) {
+    try {
+      if (!this.isConnected) {
+        // API not connected, removing bookmark locally
+        return { success: true, stored: 'local' };
+      }
+      return await this.api.unbookmarkGame(gameId);
+    } catch (_error) {
+      // Failed to unbookmark game via API, removing locally
+      return { success: true, stored: 'local' };
+    }
+  }
+
   async rateGame(gameId: string, rating: number) {
     try {
       if (!this.isConnected) {

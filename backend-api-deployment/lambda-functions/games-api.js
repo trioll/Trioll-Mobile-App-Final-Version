@@ -2,7 +2,7 @@
 // Returns game data in the exact format expected by the mobile app
 
 const { DynamoDBClient } = require('@aws-sdk/client-dynamodb');
-const { DynamoDBDocumentClient, ScanCommand, GetCommand } = require('@aws-sdk/lib-dynamodb');
+const { DynamoDBDocumentClient, ScanCommand, GetCommand, QueryCommand } = require('@aws-sdk/lib-dynamodb');
 
 const client = new DynamoDBClient({ region: 'us-east-1' });
 const dynamodb = DynamoDBDocumentClient.from(client);
@@ -18,7 +18,8 @@ const CORS_HEADERS = {
 function filterTriollGames(games) {
   const validDomains = [
     'trioll-prod-games-us-east-1.s3.amazonaws.com',
-    'dk72g9i0333mv.cloudfront.net'
+    'dk72g9i0333mv.cloudfront.net',
+    'dgq2nqysbn2z3.cloudfront.net' // Developer portal CloudFront domain
   ];
   
   return games.filter(game => {
@@ -82,7 +83,7 @@ async function handleGetGames(queryParams) {
   try {
     const params = {
       TableName: GAMES_TABLE,
-      Limit: limit + 1 // Get one extra to check if there are more
+      Limit: limit * 3 // Get more to account for multiple versions
     };
     
     if (nextCursor) {
@@ -93,10 +94,76 @@ async function handleGetGames(queryParams) {
     const items = result.Items || [];
     
     console.log('🔍 DEBUG: DynamoDB scan returned items:', items.length);
-    console.log('🔍 DEBUG: Item titles:', items.map(item => item.title));
     
-    const hasMore = items.length > limit;
-    const games = items.slice(0, limit);
+    // Group items by gameId and pick the best version for each game
+    const gameMap = new Map();
+    items.forEach(item => {
+      const gameId = item.gameId || item.id;
+      // Skip items without any ID or with invalid IDs
+      if (!gameId || gameId === 'undefined' || gameId === 'null') {
+        console.log('⚠️ WARNING: Skipping item with invalid gameId:', gameId, 'title:', item.title || item.name || 'No title');
+        return;
+      }
+      
+      const existing = gameMap.get(gameId);
+      
+      // Always merge data from different versions
+      if (!existing) {
+        gameMap.set(gameId, item);
+      } else {
+        // Merge the records, preferring non-null values
+        const merged = {
+          ...existing,
+          ...item,
+          // Explicitly prefer non-null values for key fields
+          gameId: item.gameId || existing.gameId,
+          id: item.id || existing.id,
+          title: item.title || existing.title,
+          name: item.name || existing.name,
+          status: item.status || existing.status,
+          developerId: item.developerId || existing.developerId,
+          // Aggregate numeric fields
+          likeCount: Math.max(parseInt(item.likeCount) || 0, parseInt(existing.likeCount) || 0),
+          playCount: Math.max(parseInt(item.playCount) || 0, parseInt(existing.playCount) || 0),
+          commentCount: Math.max(parseInt(item.commentCount) || 0, parseInt(existing.commentCount) || 0),
+          bookmarkCount: Math.max(parseInt(item.bookmarkCount) || 0, parseInt(existing.bookmarkCount) || 0),
+          purchaseIntentYes: Math.max(parseInt(item.purchaseIntentYes) || 0, parseInt(existing.purchaseIntentYes) || 0),
+          purchaseIntentNo: Math.max(parseInt(item.purchaseIntentNo) || 0, parseInt(existing.purchaseIntentNo) || 0),
+          purchaseIntentAskLater: Math.max(parseInt(item.purchaseIntentAskLater) || 0, parseInt(existing.purchaseIntentAskLater) || 0)
+        };
+        gameMap.set(gameId, merged);
+      }
+    });
+    
+    const uniqueGames = Array.from(gameMap.values());
+    console.log('🔍 DEBUG: Unique games after deduplication:', uniqueGames.length);
+    console.log('🔍 DEBUG: Game titles:', uniqueGames.map(item => item.title || item.name || 'No title'));
+    
+    // Filter out any games that still don't have proper data
+    const validGames = uniqueGames.filter(game => {
+      const gameId = game.gameId || game.id;
+      const hasTitle = game.title || game.name;
+      const isActive = game.status !== 'inactive' && game.status !== 'deleted';
+      
+      // Skip if no ID at all or if ID is invalid
+      if (!gameId || gameId === 'undefined' || gameId === 'null') {
+        console.log('🚫 Filtering out game with invalid ID:', gameId, 'title:', hasTitle || 'No title');
+        return false;
+      }
+      
+      // Skip if no title/name AND not explicitly active
+      if (!hasTitle && game.status !== 'active') {
+        console.log('🚫 Filtering out game without title:', gameId);
+        return false;
+      }
+      
+      return true;
+    });
+    
+    console.log('🔍 DEBUG: Valid games after filtering:', validGames.length);
+    
+    const hasMore = validGames.length > limit;
+    const games = validGames.slice(0, limit);
     
     // Transform to match mobile app expected format
     const transformedGames = games.map(transformGame);
@@ -104,10 +171,19 @@ async function handleGetGames(queryParams) {
     // Filter to only include games from trioll-prod-games-us-east-1 bucket
     const filteredGames = filterTriollGames(transformedGames);
     
-    console.log(`🎮 DEBUG: Filtered ${transformedGames.length} games to ${filteredGames.length} games from trioll-prod-games bucket`);
+    // Final safety check - remove any games that still have null/undefined IDs
+    const finalGames = filteredGames.filter(game => {
+      if (!game.id || game.id === 'undefined' || game.id === 'null') {
+        console.log('🚫 Final filter removing game with invalid ID:', game.id, 'title:', game.title);
+        return false;
+      }
+      return true;
+    });
+    
+    console.log(`🎮 DEBUG: Filtered ${transformedGames.length} games to ${finalGames.length} games (removed ${filteredGames.length - finalGames.length} with invalid IDs)`);
     
     const responseBody = {
-      games: filteredGames,
+      games: finalGames,
       hasMore: hasMore,
       nextCursor: hasMore && result.LastEvaluatedKey ? 
         Buffer.from(JSON.stringify(result.LastEvaluatedKey)).toString('base64') : null
@@ -242,25 +318,51 @@ async function handleGamesByCategory(category) {
 
 async function handleGetGameById(gameId) {
   try {
-    const params = {
+    // First try to query all versions of this game
+    const queryParams = {
       TableName: GAMES_TABLE,
-      Key: { id: gameId }
+      KeyConditionExpression: 'gameId = :gameId',
+      ExpressionAttributeValues: {
+        ':gameId': gameId
+      }
     };
     
-    const result = await dynamodb.send(new GetCommand(params));
-    
-    if (!result.Item) {
-      return {
-        statusCode: 404,
-        headers: CORS_HEADERS,
-        body: JSON.stringify({ error: 'Game not found' })
+    let result;
+    try {
+      result = await dynamodb.send(new QueryCommand(queryParams));
+      
+      if (result.Items && result.Items.length > 0) {
+        // Pick the best version (prefer ones with title/name)
+        const bestItem = result.Items.find(item => item.title || item.name) || result.Items[0];
+        
+        return {
+          statusCode: 200,
+          headers: CORS_HEADERS,
+          body: JSON.stringify(transformGame(bestItem))
+        };
+      }
+    } catch (queryError) {
+      // If query fails (maybe gameId isn't the partition key), try direct get with id
+      const getParams = {
+        TableName: GAMES_TABLE,
+        Key: { id: gameId }
       };
+      
+      result = await dynamodb.send(new GetCommand(getParams));
+      
+      if (result.Item) {
+        return {
+          statusCode: 200,
+          headers: CORS_HEADERS,
+          body: JSON.stringify(transformGame(result.Item))
+        };
+      }
     }
     
     return {
-      statusCode: 200,
+      statusCode: 404,
       headers: CORS_HEADERS,
-      body: JSON.stringify(transformGame(result.Item))
+      body: JSON.stringify({ error: 'Game not found' })
     };
   } catch (error) {
     console.error('Error fetching game by ID:', error);
@@ -277,9 +379,16 @@ function transformGame(item) {
   // Using CloudFront distribution for optimal game streaming
   // Distribution ID: EYMK0F7V05O2Z - "Trioll Mobile Global CDN"
   const GAME_ASSET_DOMAIN = 'https://dk72g9i0333mv.cloudfront.net';
+  const gameId = item.id || item.gameId || item.name; // Fallback to name if no ID
+  
+  // This should never happen due to filtering, but just in case
+  if (!gameId || gameId === 'undefined' || gameId === 'null') {
+    console.error('⚠️ transformGame called with invalid gameId:', item);
+  }
+  
   return {
-    id: item.id,
-    title: item.title || 'Untitled Game',
+    id: gameId,
+    title: item.title || item.name || 'Untitled Game',
     developerName: item.developerName || item.developer || 'Unknown Developer',
     publisher: item.publisher || item.developerName || 'Unknown Publisher',
     rating: parseFloat(item.rating) || 0,
@@ -291,16 +400,23 @@ function transformGame(item) {
     genre: item.genre || item.category || 'General',
     description: item.description || '',
     tagline: item.tagline || '',
-    trialUrl: item.trialUrl || `${GAME_ASSET_DOMAIN}/${item.id}/index.html`,
-    gameUrl: item.gameUrl || item.trialUrl || `${GAME_ASSET_DOMAIN}/${item.id}/index.html`,
+    trialUrl: item.trialUrl || `${GAME_ASSET_DOMAIN}/${gameId}/index.html`,
+    gameUrl: item.gameUrl || item.trialUrl || `${GAME_ASSET_DOMAIN}/${gameId}/index.html`,
     downloadUrl: item.downloadUrl || '',
     trialType: item.trialType || 'webview', // Add trialType field for WebView rendering
     videoUrl: item.videoUrl || '',
     trialDuration: parseInt(item.trialDuration) || 5,
     playCount: parseInt(item.playCount) || 0,
     likeCount: parseInt(item.likeCount) || 0,
+    bookmarkCount: parseInt(item.bookmarkCount) || 0,
     commentsCount: parseInt(item.commentCount || item.commentsCount) || 0,
     downloads: parseInt(item.downloads) || 0,
+    purchaseIntent: {
+      yes: parseInt(item.purchaseIntentYes) || 0,
+      no: parseInt(item.purchaseIntentNo) || 0,
+      askLater: parseInt(item.purchaseIntentAskLater) || 0,
+      total: (parseInt(item.purchaseIntentYes) || 0) + (parseInt(item.purchaseIntentNo) || 0) + (parseInt(item.purchaseIntentAskLater) || 0)
+    },
     price: parseFloat(item.price) || 0,
     downloadSize: item.downloadSize || '100 MB',
     platform: item.platform || 'both',

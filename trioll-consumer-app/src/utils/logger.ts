@@ -65,10 +65,10 @@ class Logger {
         // Info logs disabled in production
         break;
       case 'warn':
-        console.warn('[' + logEntry.logger + ']', message, data);
+        console.warn(`[${logEntry.logger}]`, message, data);
         break;
       case 'error':
-        console.error('[' + logEntry.logger + ']', message, data);
+        console.error(`[${logEntry.logger}]`, message, data);
         break;
     }
   }
