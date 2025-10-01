@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
-import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, FlatList, TextInput, Dimensions, KeyboardAvoidingView, Platform } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -82,7 +82,10 @@ export const RegionSelection: React.FC<RegionSelectionProps> = ({
   };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView 
+      style={styles.container}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    >
       {/* Question section */}
       <View style={styles.questionSection}>
         <Text style={styles.title}>Where are you located?</Text>
@@ -140,7 +143,7 @@ export const RegionSelection: React.FC<RegionSelectionProps> = ({
           </Text>
         </TouchableOpacity>
       </View>
-    </View>
+    </KeyboardAvoidingView>
   );
 };
 
