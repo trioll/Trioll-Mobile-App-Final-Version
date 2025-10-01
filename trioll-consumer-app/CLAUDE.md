@@ -6,10 +6,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 TRIOLL is a mobile-first game discovery platform that lets users swipe through games and instantly stream 3-7 minute trials. Think TikTok for game discovery. The app is built with React Native/Expo and follows a UI-first development approach.
 
-**Last Updated**: August 4, 2025
-**Current State**: Production-connected MVP with TypeScript/ESLint issues to resolve
+**Last Updated**: October 1, 2025
+**Current State**: Production-connected MVP with comprehensive frontend refactor plan created
+**📄 See**: `/FRONTEND-REFACTOR-PLAN.md` for detailed 4-week implementation plan
 
-## 🚨 PROJECT STATUS (August 4, 2025)
+## 🚨 PROJECT STATUS (October 1, 2025 - Frontend Audit Completed)
 
 ### Code Quality Status
 - ⚠️ **TypeScript errors**: ~942 to resolve
