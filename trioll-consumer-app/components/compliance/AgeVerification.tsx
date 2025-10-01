@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Alert, Platform } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Alert, Platform, ScrollView } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -83,14 +83,19 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
 
   return (
     <View style={styles.container}>
-      {/* Question centered with more space in portrait */}
-      <View style={styles.questionSection}>
-        <Text style={styles.title}>How old are you?</Text>
-        <Text style={styles.subtitle}>We need to verify your age for legal compliance</Text>
-      </View>
+      <ScrollView 
+        contentContainerStyle={styles.scrollContent}
+        keyboardShouldPersistTaps="handled"
+        bounces={false}
+      >
+        {/* Question centered with more space in portrait */}
+        <View style={styles.questionSection}>
+          <Text style={styles.title}>How old are you?</Text>
+          <Text style={styles.subtitle}>We need to verify your age for legal compliance</Text>
+        </View>
 
-      {/* Input in middle with portrait spacing */}
-      <View style={styles.inputSection}>
+        {/* Input in middle with portrait spacing */}
+        <View style={styles.inputSection}>
         <Animated.View style={animatedInputStyle}>
           <TouchableOpacity
             style={[styles.dateInput, dateText && styles.dateInputFilled]}
@@ -122,7 +127,8 @@ export const AgeVerification: React.FC<AgeVerificationProps> = ({ onVerify }) =>
             Your birthday helps us provide age-appropriate content and comply with privacy laws
           </Text>
         </View>
-      </View>
+        </View>
+      </ScrollView>
 
       {/* Fixed bottom navigation */}
       <View style={styles.navigation}>
@@ -145,6 +151,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#000',
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
   questionSection: {
     paddingTop: 80, // More space in portrait
