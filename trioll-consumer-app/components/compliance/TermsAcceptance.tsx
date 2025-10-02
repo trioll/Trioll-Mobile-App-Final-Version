@@ -10,6 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import * as Haptics from 'expo-haptics';
 import { Text } from '../base';
+import { responsivePadding } from '../../utils/responsive';
 
 interface TermsAcceptanceProps {
   onAccept: (termsAccepted: boolean, privacyAccepted: boolean) => void;
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   questionSection: {
-    paddingTop: 80,
+    paddingTop: responsivePadding.xxl,
     paddingBottom: 24,
     alignItems: 'center',
     paddingHorizontal: 40,

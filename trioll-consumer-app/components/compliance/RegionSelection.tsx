@@ -11,6 +11,7 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 import { Text } from '../base';
 import { COUNTRIES, detectUserRegion, Country } from '../../constants/countries';
+import { responsivePadding } from '../../utils/responsive';
 
 interface RegionSelectionProps {
   onSelect: (region: string, isGDPR: boolean) => void;
@@ -153,7 +154,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#000',
   },
   questionSection: {
-    paddingTop: 60,
+    paddingTop: responsivePadding.xl,
     paddingBottom: 24,
     paddingHorizontal: 40,
     alignItems: 'center',

@@ -18,6 +18,7 @@ import { useOrientation } from '../hooks';
 import { useGameSearch, useSearchSuggestions } from '../hooks/useGameSearch';
 import { SPRING_CONFIG, DURATIONS } from '../constants/animations';
 import { StackNavigationProp } from '@react-navigation/stack';
+import { responsivePadding } from '../utils/responsive';
 
 type RootStackParamList = {
   Search: undefined;
@@ -1223,7 +1224,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 100,
+    paddingTop: responsivePadding.xxl + 20,
   },
   loadingText: {
     color: 'rgba(255,255,255,0.5)',
@@ -1235,7 +1236,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     padding: 32,
-    paddingTop: 100,
+    paddingTop: responsivePadding.xxl + 20,
   },
   noResultsTitle: {
     color: '#FFFFFF',

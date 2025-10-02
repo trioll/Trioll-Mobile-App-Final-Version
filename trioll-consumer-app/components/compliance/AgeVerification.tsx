@@ -9,6 +9,7 @@ import Animated, {
 import * as Haptics from 'expo-haptics';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Text } from '../base';
+import { responsivePadding } from '../../utils/responsive';
 
 interface AgeVerificationProps {
   onVerify: (age: number, birthDate: Date) => void;
@@ -156,7 +157,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
   },
   questionSection: {
-    paddingTop: 80, // More space in portrait
+    paddingTop: responsivePadding.xxl,
     paddingHorizontal: 40,
     alignItems: 'center',
   },
