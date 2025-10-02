@@ -27,14 +27,8 @@ export const RegionSelection: React.FC<RegionSelectionProps> = ({
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCountry, setSelectedCountry] = useState<Country | null>(null);
 
-  useEffect(() => {
-    // Auto-detect user's region
-    const detectedRegion = detectUserRegion();
-    const country = COUNTRIES.find(c => c.code === detectedRegion);
-    if (country) {
-      setSelectedCountry(country);
-    }
-  }, []);
+  // Region selection is now MANDATORY - no auto-detection
+  // User must explicitly select their country before continuing
 
   const filteredCountries = useMemo(() => {
     if (!searchQuery) return COUNTRIES;

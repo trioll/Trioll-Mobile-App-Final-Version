@@ -172,9 +172,10 @@ export const SearchScreen: React.FC = () => {
         performSearch();
       }
     } else {
-      // Clear results when no search query or category
-      setSearchResults([]);
-      setResultCount(0);
+      // Show all games when no search query (default view)
+      setSearchResults(apiSearchResults);
+      setResultCount(apiSearchResults.length);
+      setIsLoading(apiSearchLoading);
     }
   }, [debouncedSearchQuery, selectedCategory, apiSearchResults, apiSearchLoading]);
 

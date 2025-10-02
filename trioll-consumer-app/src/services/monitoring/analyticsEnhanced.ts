@@ -331,13 +331,10 @@ class EnhancedAnalyticsService {
           throw new Error(`Analytics API Error: ${response.status}`);
         }
         
-        // For other errors, log as warning (not error) to prevent console spam
+        // For other errors, log as debug (not warning) to prevent console spam
         // Analytics failures are non-critical and shouldn't pollute error logs
-        if (response.status === 403 || response.status === 500) {
-          logger.debug(`Analytics API returned ${response.status} - this is non-critical`);
-        } else {
-          logger.warn(`Analytics API Error: ${response.status}`);
-        }
+        // Common non-critical status codes: 401 (auth), 403 (forbidden), 500 (server error)
+        logger.debug(`Analytics API returned ${response.status} - this is non-critical`);
         stopMeasure();
         return; // Silently fail for non-critical analytics
       }
