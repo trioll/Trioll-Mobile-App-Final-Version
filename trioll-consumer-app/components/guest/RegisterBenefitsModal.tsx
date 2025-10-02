@@ -12,6 +12,7 @@ import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '../base';
 import { useApp } from '../../context/AppContext';
+import { responsivePadding } from '../../utils/responsive';
 
 interface Benefit {
   icon: keyof typeof Ionicons.glyphMap;
@@ -229,9 +230,9 @@ const createStyles = (SCREEN_WIDTH: number, SCREEN_HEIGHT: number) =>
       maxHeight: SCREEN_HEIGHT * 0.85,
     },
     header: {
-      paddingTop: 20,
-      paddingBottom: 24,
-      paddingHorizontal: 24,
+      paddingTop: responsivePadding.md,
+      paddingBottom: responsivePadding.lg,
+      paddingHorizontal: responsivePadding.lg,
       borderBottomWidth: 1,
       borderBottomColor: '#1a1a1a',
     },
@@ -299,8 +300,8 @@ const createStyles = (SCREEN_WIDTH: number, SCREEN_HEIGHT: number) =>
       fontStyle: 'italic',
     },
     transferSection: {
-      marginTop: 16,
-      paddingTop: 24,
+      marginTop: responsivePadding.md,
+      paddingTop: responsivePadding.lg,
       borderTopWidth: 1,
       borderTopColor: '#1a1a1a',
     },

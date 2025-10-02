@@ -5,6 +5,7 @@ import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '../base';
 import { useApp } from '../../context/AppContext';
+import { responsivePadding } from '../../utils/responsive';
 
 interface Props {
   icon: keyof typeof Ionicons.glyphMap;
@@ -101,7 +102,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingTop: 16,
+    paddingTop: responsivePadding.md,
     borderTopWidth: 1,
     borderTopColor: '#1a1a1a',
   },
