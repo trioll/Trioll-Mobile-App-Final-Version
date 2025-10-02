@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -53,7 +53,6 @@ const CONSENT_OPTIONS: ConsentOption[] = [
 ];
 
 export const DataConsent: React.FC<DataConsentProps> = ({ onConsent, onBack, canGoBack }) => {
-  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
   const [consents, setConsents] = useState<Record<string, boolean>>({
     essential: true,
     analytics: false,
