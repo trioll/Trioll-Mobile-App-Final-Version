@@ -11,6 +11,7 @@ import { useHaptics } from '../../hooks/useHaptics';
 import { useToast } from '../../hooks/useToast';
 import { DURATIONS } from '../../constants/animations';
 import { NavigationProp } from '../../navigation/types';
+import { responsivePadding } from '../../utils/responsive';
 
 interface NotificationSettings {
   master: boolean;
@@ -416,7 +417,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   section: {
-    paddingHorizontal: 24,
+    paddingHorizontal: responsivePadding.lg,
     paddingTop: 24,
     paddingBottom: 16,
   },

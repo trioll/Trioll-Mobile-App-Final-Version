@@ -21,6 +21,7 @@ import {
 } from '../../utils/biometricAuth';
 
 import { getLogger } from '../../src/utils/logger';
+import { responsivePadding } from '../../utils/responsive';
 
 const logger = getLogger('LoginScreen');
 
@@ -418,7 +419,7 @@ const styles = StyleSheet.create({
   },
   scrollContent: {
     flexGrow: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: responsivePadding.md,
     paddingVertical: 40,
     justifyContent: 'center',
   },
@@ -583,7 +584,7 @@ const styles = StyleSheet.create({
   biometricSetupContainer: {
     flex: 1,
     justifyContent: 'center',
-    paddingHorizontal: 40,
+    paddingHorizontal: responsivePadding.xl,
   },
   biometricSetupContent: {
     alignItems: 'center',

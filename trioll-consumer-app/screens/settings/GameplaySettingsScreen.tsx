@@ -12,6 +12,7 @@ import { useHaptics } from '../../hooks/useHaptics';
 import { useToast } from '../../hooks/useToast';
 import { DURATIONS } from '../../constants/animations';
 import { purchaseIntentService } from '../../src/services/analytics/purchaseIntentService';
+import { responsivePadding } from '../../utils/responsive';
 
 interface GameplaySettings {
   trialDuration: 'all' | 'short' | 'default' | 'extended';
@@ -398,7 +399,7 @@ const styles = StyleSheet.create({
     paddingBottom: 100,
   },
   section: {
-    paddingHorizontal: 24,
+    paddingHorizontal: responsivePadding.lg,
     paddingTop: 24,
     paddingBottom: 16,
   },

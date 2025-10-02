@@ -10,6 +10,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useHaptics } from '../../hooks/useHaptics';
 import { useToast } from '../../hooks/useToast';
 import { NavigationProp } from '../../navigation/types';
+import { responsivePadding } from '../../utils/responsive';
 
 interface DataSection {
   id: string;
@@ -234,7 +235,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 24,
+    paddingHorizontal: responsivePadding.lg,
     paddingVertical: 16,
   },
   backButton: {
@@ -254,7 +255,7 @@ const styles = StyleSheet.create({
     paddingBottom: 32,
   },
   section: {
-    paddingHorizontal: 24,
+    paddingHorizontal: responsivePadding.lg,
     marginBottom: 32,
   },
   sectionTitle: {
