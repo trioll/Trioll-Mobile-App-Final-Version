@@ -4,7 +4,7 @@ import { View, Text, StyleSheet, FlatList, Pressable, Image, Dimensions, Refresh
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import type { RootStackParamList } from '../../navigation/types';
-
+import { responsivePadding } from '../../utils/responsive';
 import { LoadingSkeleton } from './LoadingSkeleton';
 
 type SortOptionValue = 'relevance' | 'popular' | 'newest' | 'rating' | 'alphabetical';
@@ -486,7 +486,7 @@ const createStyles = (GRID_ITEM_WIDTH: number) =>
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      paddingTop: 100,
+      paddingTop: responsivePadding.xxl + 20,
     },
     emptyTitle: {
       color: '#FFFFFF',

@@ -14,6 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { BlurView } from 'expo-blur';
 import { DS } from '../src/styles/TriollDesignSystem';
 import { useHaptics } from '../hooks';
+import { responsivePadding } from '../utils/responsive';
 import * as ImagePicker from 'expo-image-picker';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
@@ -270,7 +271,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: DS.spacing.sm,
-    paddingTop: 40,
+    paddingTop: responsivePadding.xl,
   },
   durationBadge: {
     position: 'absolute',

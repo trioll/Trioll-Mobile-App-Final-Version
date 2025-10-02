@@ -2,6 +2,7 @@ import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { LinearGradient } from 'expo-linear-gradient';
+import { responsivePadding } from '../../utils/responsive';
 
 interface TrialInfoBannerProps {
   trialDuration?: number;  // Made optional - no longer enforcing time limits
@@ -130,7 +131,7 @@ const styles = StyleSheet.create({
   platformInfo: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingTop: 16,
+    paddingTop: responsivePadding.md,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255,255,255,0.2)',
   },

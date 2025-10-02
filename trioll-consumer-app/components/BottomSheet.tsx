@@ -36,6 +36,7 @@ import { Text } from './base';
 import { useHaptics, useOrientation } from '../hooks';
 import { calculateSnapPoint } from '../utils/bottomSheetHelpers';
 import { getLogger } from '../src/utils/logger';
+import { responsivePadding, responsiveSpacing } from '../utils/responsive';
 
 const logger = getLogger('BottomSheet');
 
@@ -737,8 +738,8 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   header: {
-    paddingTop: 8,
-    paddingBottom: 16,
+    paddingTop: responsiveSpacing.normal,
+    paddingBottom: responsivePadding.md,
   },
   handleContainer: {
     alignItems: 'center',
@@ -809,8 +810,8 @@ const styles = StyleSheet.create({
   landscapeContent: {
     flex: 1,
     flexDirection: 'row',
-    padding: 16, // Reduced padding for landscape
-    paddingTop: 12,
+    padding: responsivePadding.md, // Reduced padding for landscape
+    paddingTop: responsiveSpacing.relaxed,
   },
   landscapeSection: {
     flex: 1,

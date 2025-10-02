@@ -17,6 +17,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useHaptics } from '../hooks';
 import { getLogger } from '../src/utils/logger';
+import { responsiveSpacing } from '../utils/responsive';
 
 const logger = getLogger('CommentSection');
 
@@ -322,7 +323,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.1)',
-    paddingTop: 12,
+    paddingTop: responsiveSpacing.relaxed,
     backgroundColor: 'rgba(0, 0, 0, 0.3)',
     marginHorizontal: -16,
     paddingHorizontal: 16,

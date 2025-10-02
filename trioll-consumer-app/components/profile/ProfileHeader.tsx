@@ -5,7 +5,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 import { GlassContainer, GlassButton } from '../../src/components/core';
 import { DS } from '../../src/styles/TriollDesignSystem';
-
+import { responsivePadding } from '../../utils/responsive';
 import { useHaptics } from '../../hooks/useHaptics';
 import { DURATIONS, SPRING_CONFIGS } from '../../constants/animations';
 // import * as Sharing from 'expo-sharing'; // Not installed yet
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
   userInfo: {
     alignItems: 'center',
     paddingHorizontal: 24,
-    paddingTop: 16,
+    paddingTop: responsivePadding.md,
   },
   username: {
     color: '#FFFFFF',

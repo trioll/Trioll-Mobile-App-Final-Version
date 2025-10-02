@@ -8,6 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import type { RootStackParamList } from '../../navigation/types';
 import { generateAvatar } from '../../src/utils/avatarGenerator';
 import { gamePlaceholderImages } from '../../utils/placeholderImages';
+import { responsivePadding } from '../../utils/responsive';
 
 interface DeveloperSectionProps {
   developer: string;
@@ -220,7 +221,7 @@ const styles = StyleSheet.create({
   bioContainer: {
     borderTopWidth: 1,
     borderTopColor: '#3a3a4e',
-    paddingTop: 16,
+    paddingTop: responsivePadding.md,
   },
   bio: {
     color: '#ccc',
@@ -283,7 +284,7 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     padding: 12,
-    paddingTop: 30,
+    paddingTop: responsivePadding.lg,
   },
   gameTitle: {
     color: '#fff',
