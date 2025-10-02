@@ -23,6 +23,7 @@ import {
 
 import { registrationService } from '../../src/services/api/registrationService';
 import { getLogger } from '../../src/utils/logger';
+import { responsivePadding } from '../../utils/responsive';
 
 const logger = getLogger('EmailRegistrationScreen');
 
@@ -560,8 +561,8 @@ const styles = StyleSheet.create({
     paddingBottom: 40,
   },
   header: {
-    paddingTop: 20,
-    paddingBottom: 32,
+    paddingTop: responsivePadding.md,
+    paddingBottom: responsivePadding.xl,
   },
   backButton: {
     width: 40,

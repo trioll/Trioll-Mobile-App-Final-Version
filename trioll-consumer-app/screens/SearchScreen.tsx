@@ -1375,9 +1375,9 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
   collectionsSection: {
-    paddingHorizontal: 20,
-    paddingTop: 20,
-    paddingBottom: 24,
+    paddingHorizontal: responsivePadding.md,
+    paddingTop: responsivePadding.md,
+    paddingBottom: responsivePadding.lg,
     borderTopWidth: 1,
     borderTopColor: 'rgba(255, 255, 255, 0.08)',
   },

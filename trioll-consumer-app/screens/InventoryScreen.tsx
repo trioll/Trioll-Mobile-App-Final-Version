@@ -24,6 +24,7 @@ import { DS } from '../src/styles/TriollDesignSystem';
 import { useHaptics } from '../hooks/useHaptics';
 import { SafeImage } from '../components/base/SafeImage';
 import { Game } from '../types';
+import { responsivePadding } from '../utils/responsive';
 
 type RootStackParamList = {
   Inventory: undefined;
@@ -562,7 +563,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingHorizontal: 16,
-    paddingTop: 16,
+    paddingTop: responsivePadding.md,
   },
   backButton: {
     padding: 8,

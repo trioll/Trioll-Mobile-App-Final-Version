@@ -400,8 +400,8 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingHorizontal: responsivePadding.lg,
-    paddingTop: 24,
-    paddingBottom: 16,
+    paddingTop: responsivePadding.lg,
+    paddingBottom: responsivePadding.md,
   },
   sectionTitle: {
     color: 'rgba(255,255,255,0.6)',

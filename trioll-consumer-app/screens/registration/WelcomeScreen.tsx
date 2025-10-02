@@ -19,6 +19,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { Text } from '../../components/base';
 import { useApp } from '../../context/AppContext';
 import { useOrientation } from '../../hooks';
+import { responsivePadding } from '../../utils/responsive';
 
 interface TutorialCard {
   icon: keyof typeof Ionicons.glyphMap;
@@ -214,7 +215,7 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    paddingTop: 20,
+    paddingTop: responsivePadding.md,
   },
   header: {
     alignItems: 'center',

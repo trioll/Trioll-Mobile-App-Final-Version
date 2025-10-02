@@ -418,8 +418,8 @@ const styles = StyleSheet.create({
   },
   section: {
     paddingHorizontal: responsivePadding.lg,
-    paddingTop: 24,
-    paddingBottom: 16,
+    paddingTop: responsivePadding.lg,
+    paddingBottom: responsivePadding.md,
   },
   sectionHeader: {
     marginBottom: 16,
