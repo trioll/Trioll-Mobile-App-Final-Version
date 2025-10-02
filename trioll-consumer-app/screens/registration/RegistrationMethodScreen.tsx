@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, TouchableOpacity, Dimensions, SafeAreaView, ActivityIndicator, Alert } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, SafeAreaView, ActivityIndicator, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import Animated, {
@@ -13,6 +13,7 @@ import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '../../components/base';
 import { useAuth } from '../../context/AuthContext';
+import { useOrientation } from '../../hooks';
 import { analyticsService } from '../../src/services/monitoring/analyticsEnhanced';
 
 type RootStackParamList = {
@@ -28,8 +29,7 @@ type RegistrationMethodScreenNavigationProp = StackNavigationProp<
 >;
 
 export const RegistrationMethodScreen = () => {
-  const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
-  const isPortrait = SCREEN_HEIGHT > SCREEN_WIDTH;
+  const { isPortrait } = useOrientation();
   const navigation = useNavigation<RegistrationMethodScreenNavigationProp>();
   const { authenticateAsGuest } = useAuth();
   const [isLoading, setIsLoading] = useState(false);

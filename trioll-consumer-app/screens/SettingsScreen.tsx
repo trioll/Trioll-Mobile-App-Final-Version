@@ -1,6 +1,6 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { View, Text, StyleSheet, SectionList, Pressable, Switch, TextInput, Alert, Platform, Linking, Dimensions, Modal } from 'react-native';
+import { View, Text, StyleSheet, SectionList, Pressable, Switch, TextInput, Alert, Platform, Linking, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -13,6 +13,7 @@ import { DebugAPIPanel } from '../src/components/debug/DebugAPIPanel';
 // Hooks & Utils
 import { useHaptics } from '../hooks/useHaptics';
 import { useToast } from '../hooks/useToast';
+import { useOrientation } from '../hooks';
 import { generateAvatar } from '../src/utils/avatarGenerator';
 import { useAuth } from '../context/AuthContext';
 import { StackActions } from '@react-navigation/native';
@@ -110,8 +111,7 @@ const APP_VERSION = '1.0.0';
 const BUILD_NUMBER = '42';
 
 export const SettingsScreen: React.FC = () => {
-  const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-  const isPortrait = screenHeight > screenWidth;
+  const { width: screenWidth, height: screenHeight, isPortrait } = useOrientation();
   const navigation = useNavigation<SettingsScreenNavigationProp>();
   const haptics = useHaptics();
   const { showToast } = useToast();

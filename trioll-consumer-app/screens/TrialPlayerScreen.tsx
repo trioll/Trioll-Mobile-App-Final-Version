@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
-import { View, StyleSheet, TouchableOpacity, Animated, Pressable, Dimensions, ScrollView, Image, Modal, Alert, AppState, AppStateStatus, ActivityIndicator, StatusBar, PanResponder } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, Animated, Pressable, ScrollView, Image, Modal, Alert, AppState, AppStateStatus, ActivityIndicator, StatusBar, PanResponder } from 'react-native';
 import { BlurView } from 'expo-blur';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
@@ -11,7 +11,7 @@ import { PurchaseIntentModal } from '../components/modals/PurchaseIntentModal';
 
 import { Text } from '../components/base/Text';
 import { useApp } from '../context/AppContext';
-import { useSpringAnimation, useHaptics } from '../hooks';
+import { useSpringAnimation, useHaptics, useOrientation } from '../hooks';
 import { useGuestMode } from '../hooks/useGuestMode';
 import { SPRING_CONFIG, DURATIONS } from '../constants/animations';
 import { gamePresignedUrlService } from '../src/services/api/GamePresignedUrlService';
@@ -68,8 +68,7 @@ const ANALYTICS_EVENTS = {
 };
 
 export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, navigation }) => {
-  const { width: screenWidth, height: screenHeight } = Dimensions.get('window');
-  const isPortrait = screenHeight > screenWidth;
+  const { width: screenWidth, height: screenHeight, isPortrait } = useOrientation();
   const { gameId, onClose } = route.params;
   const { games, toggleLike, toggleBookmark, likes, bookmarks, currentUser } = useApp();
   const game = games.find(g => g.id === gameId);

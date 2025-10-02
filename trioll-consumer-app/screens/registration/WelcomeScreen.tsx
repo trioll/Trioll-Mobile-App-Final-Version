@@ -1,6 +1,6 @@
 
 import React, { useState, useRef } from 'react';
-import { View, StyleSheet, TouchableOpacity, ScrollView, Dimensions } from 'react-native';
+import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation, useRoute, RouteProp } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
@@ -18,6 +18,7 @@ import * as Haptics from 'expo-haptics';
 import { Ionicons } from '@expo/vector-icons';
 import { Text } from '../../components/base';
 import { useApp } from '../../context/AppContext';
+import { useOrientation } from '../../hooks';
 
 interface TutorialCard {
   icon: keyof typeof Ionicons.glyphMap;
@@ -56,7 +57,7 @@ type WelcomeScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Welc
 type WelcomeScreenRouteProp = RouteProp<RootStackParamList, 'Welcome'>;
 
 export const WelcomeScreen = () => {
-  const { width: SCREEN_WIDTH } = Dimensions.get('window');
+  const { width: SCREEN_WIDTH } = useOrientation();
   const navigation = useNavigation<WelcomeScreenNavigationProp>();
   const route = useRoute<WelcomeScreenRouteProp>();
   const { currentUser } = useApp();
