@@ -29,7 +29,6 @@ import { useGameActions } from '../hooks/useGameActions';
 import { GuestIndicator } from '../components/guest/GuestIndicator';
 import { RegisterBenefitsModal } from '../components/guest/RegisterBenefitsModal';
 import { TutorialOverlay } from '../components/TutorialOverlay';
-import { AuthStatusDiagnostic } from '../components/diagnostics/AuthStatusDiagnosticFixed';
 import { WatchTab } from '../components/WatchTab';
 import { CommentSection } from '../components/CommentSection';
 
@@ -877,8 +876,6 @@ export const FeedScreen: React.FC = () => {
         </View>
       )}
 
-      {/* Auth Status Diagnostic - Only in development */}
-      {__DEV__ && <AuthStatusDiagnostic />}
 
       {/* Trial Player Screen - Handled via navigation */}
 
