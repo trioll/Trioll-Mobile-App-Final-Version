@@ -41,13 +41,15 @@ TRIOLL is a mobile-first game discovery platform that lets users swipe through g
 
 ### Code Quality Status
 - ⚠️ **TypeScript errors**: ~942 (to be resolved during feature development)
-- ❌ **ESLint**: ~1,587 problems (1,159 errors, 428 warnings) - **BLOCKING PRODUCTION**
+- ❌ **ESLint**: 777 problems (403 errors, 374 warnings) - **BLOCKING PRODUCTION**
 - ✅ **Console statements**: Minimal (10 files - intentional debug logs)
 - ✅ **Security**: 1 fallback credential (non-critical)
 - ⚠️ **TODO/FIXME**: 57 comments
 - ✅ **Environment variables**: Properly configured
 - ✅ **Archive folders**: Removed (clean project structure)
 - ✅ **Documentation**: Consolidated
+
+**Note**: ESLint errors reduced from 1,159 to 403 due to frontend refactor and code cleanup!
 
 ### Error Breakdown
 
@@ -83,10 +85,12 @@ TRIOLL is a mobile-first game discovery platform that lets users swipe through g
 ## 🔴 CRITICAL PATH TO PRODUCTION (3-4 weeks)
 
 ### Phase 1 - ESLint Errors (CRITICAL - Week 1)
-1. **Fix 1,159 ESLint errors** ❌ - **BLOCKING PRODUCTION BUILDS**
-2. Run `npm run lint:fix` to auto-fix what's possible
-3. Manually fix remaining errors
-4. Lock Prettier/ESLint configuration to prevent regression
+1. **Fix 403 ESLint errors** ❌ - **BLOCKING PRODUCTION BUILDS**
+2. **Address 374 ESLint warnings** ⚠️
+3. Run `npx eslint . --fix` to auto-fix what's possible (1 error auto-fixable)
+4. Manually fix remaining errors
+5. Update package.json lint script (remove deprecated --ext flag)
+6. Lock Prettier/ESLint configuration to prevent regression
 
 ### Phase 2 - Type Safety (Week 2)
 1. Complete type definitions in src/api/adapters
@@ -385,7 +389,7 @@ Border radius: 0px (sharp), 12px (cards), 20px (modals)
 ## ⚠️ PRE-PRODUCTION CHECKLIST
 
 **Required before production deployment:**
-1. ❌ **FIX ALL ESLint errors** (1,159 blocking errors)
+1. ❌ **FIX ALL ESLint errors** (403 blocking errors, down from 1,159!)
 2. ⚠️ Reduce TypeScript errors to <100 (currently 942)
 3. ✅ Console statements minimized (10 intentional debug logs)
 4. ✅ Security audit mostly complete (1 non-critical fallback credential)
@@ -442,7 +446,7 @@ Border radius: 0px (sharp), 12px (cards), 20px (modals)
 
 **🟢 CURRENT STATE**: App is functional and connected to production backend. Main blocker is ESLint errors preventing production builds. TypeScript errors will be resolved during feature development. Clean codebase after archive cleanup.
 
-**📋 NEXT PRIORITY**: Fix ESLint errors (1,159) to unblock production builds.
+**📋 NEXT PRIORITY**: Fix ESLint errors (403 errors, 374 warnings) to unblock production builds.
 
 ---
 
