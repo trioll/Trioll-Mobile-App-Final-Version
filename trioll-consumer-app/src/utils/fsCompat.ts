@@ -17,7 +17,7 @@ export const RNFS = {
     try {
       const info = await FileSystem.getInfoAsync(filepath);
       return info.exists;
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem exists error:', error);
       return false;
     }
@@ -36,7 +36,7 @@ export const RNFS = {
         isFile: () => info.exists && !info.isDirectory,
         isDirectory: () => info.exists && (info.isDirectory || false),
       };
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem stat error:', error);
       throw error;
     }
@@ -73,7 +73,7 @@ export const RNFS = {
       }
 
       return results;
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem readDir error:', error);
       return [];
     }
@@ -88,7 +88,7 @@ export const RNFS = {
   ): Promise<void> {
     try {
       await FileSystem.makeDirectoryAsync(filepath, { intermediates: true });
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem mkdir error:', error);
       throw error;
     }
@@ -100,7 +100,7 @@ export const RNFS = {
   async unlink(filepath: string): Promise<void> {
     try {
       await FileSystem.deleteAsync(filepath, { idempotent: true });
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem unlink error:', error);
       throw error;
     }
@@ -112,7 +112,7 @@ export const RNFS = {
   async moveFile(from: string, to: string): Promise<void> {
     try {
       await FileSystem.moveAsync({ from, to });
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem moveFile error:', error);
       throw error;
     }
@@ -124,7 +124,7 @@ export const RNFS = {
   async copyFile(from: string, to: string): Promise<void> {
     try {
       await FileSystem.copyAsync({ from, to });
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem copyFile error:', error);
       throw error;
     }
@@ -139,7 +139,7 @@ export const RNFS = {
         encoding:
           encoding === 'base64' ? FileSystem.EncodingType.Base64 : FileSystem.EncodingType.UTF8,
       });
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem writeFile error:', error);
       throw error;
     }
@@ -155,7 +155,7 @@ export const RNFS = {
           encoding === 'base64' ? FileSystem.EncodingType.Base64 : FileSystem.EncodingType.UTF8,
       });
       return contents;
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem readFile error:', error);
       throw error;
     }
@@ -195,7 +195,7 @@ export const RNFS = {
         totalSpace: info || 0,
         freeSpace: info || 0,
       };
-    } catch (error) {
+    } catch {
       logger.warn('FileSystem getFSInfo error:', error);
       return { totalSpace: 0, freeSpace: 0 };
     }

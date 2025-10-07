@@ -40,7 +40,7 @@ export class SessionManager {
         method: 'GET',
       });
       return response.sessions || [];
-    } catch (error) {
+    } catch {
       logger.error('Failed to get active sessions:', error);
       return [];
     }
@@ -52,7 +52,7 @@ export class SessionManager {
         method: 'POST',
       });
       return { success: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to revoke session:', error);
       return { success: false };
     }
@@ -66,7 +66,7 @@ export class SessionManager {
         deviceFingerprint: fingerprint,
       };
       await AsyncStorage.setItem(SESSION_METADATA_KEY, JSON.stringify(metadata));
-    } catch (error) {
+    } catch {
       logger.error('Failed to create session:', error);
       throw error;
     }
@@ -99,7 +99,7 @@ export class SessionManager {
       // - Suspicious activity patterns
 
       return { valid: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to validate session:', error);
       return { valid: false, reason: 'Validation error' };
     }
@@ -114,7 +114,7 @@ export class SessionManager {
 
       const metadata: SessionMetadata = JSON.parse(stored);
       return metadata.expiry > Date.now();
-    } catch (error) {
+    } catch {
       logger.error('Failed to check session validity:', error);
       return false;
     }
@@ -128,7 +128,7 @@ export class SessionManager {
         metadata.expiry = Date.now() + 24 * 60 * 60 * 1000; // Extend by 24 hours
         await AsyncStorage.setItem(SESSION_METADATA_KEY, JSON.stringify(metadata));
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to extend session:', error);
     }
   }
@@ -137,7 +137,7 @@ export class SessionManager {
     try {
       await AsyncStorage.removeItem(SESSION_METADATA_KEY);
       await AsyncStorage.removeItem(ACTIVE_SESSIONS_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to clear session:', error);
     }
     return;
@@ -157,7 +157,7 @@ export class SessionManager {
           })
         );
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to track activity:', error);
     }
   }

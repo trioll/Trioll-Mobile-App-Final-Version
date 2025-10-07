@@ -15,7 +15,7 @@ import { useSpringAnimation, useHaptics, useOrientation } from '../hooks';
 import { useGuestMode } from '../hooks/useGuestMode';
 import { SPRING_CONFIG, DURATIONS } from '../constants/animations';
 import { gamePresignedUrlService } from '../src/services/api/GamePresignedUrlService';
-import { GlassContainer, GlassButton, GlassCard } from '../src/components/core';
+import { GlassContainer, GlassButton } from '../src/components/core';
 import { DS } from '../src/styles/TriollDesignSystem';
 
 import { isOfflineUrl, getOfflineGameContent } from '../src/utils/offlineGameAssets';
@@ -23,8 +23,7 @@ import { getLogger } from '../src/utils/logger';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { WebViewMessageEvent } from 'react-native-webview';
-import { detectGameAspectRatio, generateGameScalingCSS, generateGameScalingJS, wrapHTMLWithScaling } from '../utils/html5GameScaling';
-import { generateOrientationAwareCSS, generateOrientationJS, calculateGameDimensions } from '../utils/orientationGameScaling';
+import { detectGameAspectRatio, wrapHTMLWithScaling } from '../utils/html5GameScaling';
 import { analyticsService } from '../src/services/analytics/analyticsService';
 import { purchaseIntentService } from '../src/services/analytics/purchaseIntentService';
 
@@ -82,20 +81,9 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
     [game]
   );
   
-  // Get orientation-aware configuration
-  const orientationConfig = useMemo(() => 
-    calculateGameDimensions(
-      gameScalingConfig.nativeWidth,
-      gameScalingConfig.nativeHeight,
-      screenWidth,
-      screenHeight
-    ),
-    [gameScalingConfig, screenWidth, screenHeight]
-  );
   const trialStartTime = useRef(Date.now());
   const webViewRef = useRef<WebView>(null);
   const appState = useRef(AppState.currentState);
-  const analyticsTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Loading states
   const [isLoading, setIsLoading] = useState(true);
@@ -112,9 +100,6 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
   const [showHUD, setShowHUD] = useState(true);
   const [showPostTrial, setShowPostTrial] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showHowToPlay, setShowHowToPlay] = useState(false);
-  const [showReportIssue, setShowReportIssue] = useState(false);
-  const [showEndingWarning, setShowEndingWarning] = useState(false);
 
   // Game states
   const [currentScore, setCurrentScore] = useState(0);
@@ -195,10 +180,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
   const loadingOpacity = useRef(new Animated.Value(1)).current;
   const pauseMenuOpacity = useRef(new Animated.Value(0)).current;
   const pauseMenuScale = useRef(new Animated.Value(0.9)).current;
-  const warningOpacity = useRef(new Animated.Value(0)).current;
-  const exitButtonScale = useSpringAnimation(1);
   const pauseButtonScale = useSpringAnimation(1);
-  const timerPulse = useRef(new Animated.Value(1)).current;
   const hudAutoHideTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Check if game exists
@@ -289,10 +271,10 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
 
     return () => {
       if (hudAutoHideTimer.current) {
-        hudAutoHideTimer.current && clearTimeout(hudAutoHideTimer.current);
+        clearTimeout(hudAutoHideTimer.current);
       }
     };
-  }, [showHUD, isPaused, isLoading]);
+  }, [showHUD, isPaused, isLoading, hideHUD]);
 
   // Tip carousel
   useEffect(() => {
@@ -345,7 +327,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
           url = await gamePresignedUrlService.getPresignedUrl(s3GameId, 'index.html');
           // Got presigned URL successfully
           setGameUrl(url);
-        } catch (error) {
+        } catch {
           // Failed to get presigned URL, using fallback
           // Fall back to original URL or offline mode
           if (game.id === 'evolution-runner-001' || game.title === 'Evolution Runner') {
@@ -377,23 +359,14 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
       }).start(() => {
         setIsLoading(false);
       });
-    } catch (error) {
+    } catch {
       // Error during loading
       handleGameError('Failed to load game');
     }
   };
 
-  const showTimeWarning = () => {
-    // Timer warning disabled - no time limits
-    return;
-  };
 
-  const pulseTimer = () => {
-    // Timer pulse disabled - no time limits
-    return;
-  };
-
-  const hideHUD = () => {
+  const hideHUD = useCallback(() => {
     Animated.timing(hudOpacity, {
       toValue: 0,
       duration: 300,
@@ -401,7 +374,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
     }).start(() => {
       setShowHUD(false);
     });
-  };
+  }, [hudOpacity]);
 
   const showHUDTemporarily = () => {
     setShowHUD(true);
@@ -533,36 +506,6 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
     }, 300);
   };
 
-  const handleTrialEnd = async () => {
-    // Manual trial end (user chooses to stop playing)
-    setIsPaused(true);
-    haptics.success();
-
-    // Timer removed - no time tracking needed
-    // const timePlayed = Math.floor((Date.now() - trialStartTime.current) / 1000);
-
-    setTrialStats({
-      score: currentScore,
-      timePlayed: 0,  // Kept for compatibility, but not displayed
-      levelsCompleted: levelProgress - 1,
-      achievementsUnlocked: achievements.length,
-    });
-
-    trackAnalytics(ANALYTICS_EVENTS.TRIAL_COMPLETE, {
-      gameId: game?.id,
-      score: currentScore,
-      // timePlayed removed from analytics
-      achievements: achievements.length,
-    });
-
-    // Record for guests - using 0 for time as it's not tracked
-    if (isGuest && game) {
-      await recordTrialPlay(game.id, 0, true);
-    }
-
-    // Show post-trial screen directly (survey will show on exit)
-    setShowPostTrial(true);
-  };
 
   const handleWebViewMessage = (event: WebViewMessageEvent) => {
     try {
@@ -586,7 +529,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
           handleGameError(data.message);
           break;
       }
-    } catch (error) {
+    } catch {
       // Failed to parse WebView message
     }
   };
@@ -857,7 +800,7 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
                   setGameUrl(presignedUrl);
                   setWebViewKey(prev => prev + 1); // Force reload
                   return;
-                } catch (error) {
+                } catch {
                   // Failed to get fallback URL
                 }
               }

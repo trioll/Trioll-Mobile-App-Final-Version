@@ -69,7 +69,7 @@ class EnhancedAPI {
   async getGameProgress(gameId: string): Promise<GameProgress | null> {
     try {
       return await triollAPI.makeRequest<GameProgress>(`/games/${gameId}/progress`);
-    } catch (error) {
+    } catch {
       console.error('Error getting game progress:', error);
       return null;
     }
@@ -88,7 +88,7 @@ class EnhancedAPI {
   async getUserStreak(): Promise<UserStreak | null> {
     try {
       return await triollAPI.makeRequest<UserStreak>('/users/streaks');
-    } catch (error) {
+    } catch {
       console.error('Error getting user streak:', error);
       return null;
     }
@@ -107,7 +107,7 @@ class EnhancedAPI {
     try {
       const response = await triollAPI.makeRequest<{ achievements: Achievement[] }>('/users/achievements');
       return response.achievements || [];
-    } catch (error) {
+    } catch {
       console.error('Error getting achievements:', error);
       return [];
     }
@@ -128,7 +128,7 @@ class EnhancedAPI {
       const params = new URLSearchParams({ limit: limit.toString() });
       const response = await triollAPI.makeRequest<{ games: TrendingGame[] }>(`/games/trending?${params}`);
       return response.games || [];
-    } catch (error) {
+    } catch {
       console.error('Error getting trending games:', error);
       return [];
     }
@@ -139,7 +139,7 @@ class EnhancedAPI {
       const params = new URLSearchParams({ limit: limit.toString() });
       const response = await triollAPI.makeRequest<{ games: TrendingGame[] }>(`/games/recommended?${params}`);
       return response.games || [];
-    } catch (error) {
+    } catch {
       console.error('Error getting recommended games:', error);
       return [];
     }
@@ -169,7 +169,7 @@ class EnhancedAPI {
 
       const response = await triollAPI.makeRequest<{ games: TrendingGame[] }>(`/games/search/advanced?${searchParams}`);
       return response.games || [];
-    } catch (error) {
+    } catch {
       console.error('Error in advanced search:', error);
       return [];
     }
@@ -186,7 +186,7 @@ class EnhancedAPI {
       });
       const response = await triollAPI.makeRequest<{ leaderboard: LeaderboardEntry[] }>(`/games/${gameId}/leaderboard?${params}`);
       return response.leaderboard || [];
-    } catch (error) {
+    } catch {
       console.error('Error getting leaderboard:', error);
       return [];
     }
@@ -212,7 +212,7 @@ class EnhancedAPI {
         body: JSON.stringify({ gameIds }),
       });
       return response.progress || [];
-    } catch (error) {
+    } catch {
       console.error('Error getting batch progress:', error);
       return [];
     }
@@ -232,7 +232,7 @@ class EnhancedAPI {
     try {
       const id = userId || (await safeAuthService.getCurrentUserId());
       return triollAPI.makeRequest(`/users/${id}/stats/detailed`);
-    } catch (error) {
+    } catch {
       console.error('Error getting player stats:', error);
       return {
         totalPlayTime: 0,

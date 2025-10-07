@@ -45,7 +45,7 @@ interface Activity {
   timestamp: string;
 }
 
-interface Suggestion extends Friend {}
+type Suggestion = Friend;
 
 // Helper to check if error is an ApiError
 const isApiError = (error: unknown): error is ApiError => {

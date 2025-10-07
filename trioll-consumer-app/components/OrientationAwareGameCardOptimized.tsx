@@ -1,5 +1,5 @@
 import type { Game } from '../types';
-import React, { useRef, useEffect, useMemo, useCallback, useState } from 'react';
+import React, { useRef, useMemo, useCallback, useState } from 'react';
 import { 
   View, 
   StyleSheet, 
@@ -9,14 +9,12 @@ import {
   ActivityIndicator
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
 import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import FastImage from '../src/utils/fastImageCompat';
 
-import { Text } from './base';
 import { TriollPlayButton } from './TriollPlayButton';
-import { SPRING_CONFIGS, DURATIONS } from '../constants/animations';
+import { SPRING_CONFIGS } from '../constants/animations';
 import { useHaptics, useOrientation } from '../hooks';
 import { useOrientationTransition } from '../hooks/useOrientationTransition';
 
@@ -49,8 +47,8 @@ export const OrientationAwareGameCardOptimized = React.memo<OrientationAwareGame
   showNextCardShadow = false,
 }) => {
   const { width: screenWidth, height: screenHeight } = useOrientation();
-  const windowDimensions = useWindowDimensions();
-  const insets = useSafeAreaInsets();
+  const _windowDimensions = useWindowDimensions();
+  const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   const [imageLoading, setImageLoading] = useState(true);
   
@@ -67,7 +65,7 @@ export const OrientationAwareGameCardOptimized = React.memo<OrientationAwareGame
   const lastTapRef = useRef<number>(0);
 
   // Calculate dimensions based on orientation
-  const imageHeight = isPortrait 
+  const _imageHeight = isPortrait 
     ? screenWidth / PORTRAIT_IMAGE_ASPECT_RATIO 
     : screenHeight;
 

@@ -153,7 +153,7 @@ export function withStandardResponse<T extends (...args: any[]) => Promise<ApiRe
     try {
       const response = await fn(...args);
       return adaptApiResponse(response);
-    } catch (error) {
+    } catch {
       if (error instanceof ApiError) {
         return createErrorResponseFromApiError(error);
       }

@@ -1268,7 +1268,7 @@ export class GameDataTests {
             for (const item of transactionItems) {
               await dynamoDBService.putItem(TABLES.USER_ACTIONS, item);
             }
-          } catch (error) {
+          } catch {
             txSuccess = false;
             // Rollback simulation
             for (const item of transactionItems) {

@@ -180,7 +180,7 @@ export const withErrorHandling = async <T>(
 ): Promise<T | undefined> => {
   try {
     return await asyncFn();
-  } catch (error) {
+  } catch {
     handleError(error as Error, context, options);
     return undefined;
   }
@@ -237,7 +237,7 @@ export const retryWithBackoff = async <T>(
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
       return await fn();
-    } catch (error) {
+    } catch {
       lastError = error as Error;
 
       if (attempt < maxRetries - 1) {
@@ -257,7 +257,7 @@ export const retryWithBackoff = async <T>(
 export const safeJsonParse = <T = unknown>(json: string, fallback?: T): T | undefined => {
   try {
     return JSON.parse(json);
-  } catch (error) {
+  } catch {
     logger.warn('JSON parse error', { error: (error as Error).message });
     return fallback;
   }
@@ -270,7 +270,7 @@ export const safeStorageOperation = async <T>(
 ): Promise<T | undefined> => {
   try {
     return await operation();
-  } catch (error) {
+  } catch {
     logger.error('Storage operation failed', { error: (error as Error).message });
     return fallback;
   }

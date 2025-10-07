@@ -15,18 +15,17 @@ import type { Game } from '../types';
  * - Smooth, natural animations
  * - Adaptive layouts for all orientations
  */
-import React, { useRef, useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { 
   View, 
-  PanResponder, 
   Animated, 
   Dimensions, 
-  Image, 
   TouchableOpacity, 
   ScrollView, 
   StyleSheet, 
   Platform, 
-  Pressable 
+  Pressable,
+  PanResponder
 } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -34,7 +33,6 @@ import { BlurView } from 'expo-blur';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { Text } from './base';
 import { useHaptics, useOrientation } from '../hooks';
-import { calculateSnapPoint } from '../utils/bottomSheetHelpers';
 import { getLogger } from '../src/utils/logger';
 import { responsivePadding, responsiveSpacing } from '../utils/responsive';
 
@@ -62,8 +60,8 @@ const SPRING_CONFIG = {
 type TabType = 'game' | 'developer';
 
 export const BottomSheet: React.FC<BottomSheetProps> = ({ game, isVisible = true, onClose }) => {
-  const insets = useSafeAreaInsets();
-  const safeAreaBottom = Math.max(insets.bottom, 20);
+  const _insets = useSafeAreaInsets();
+  const safeAreaBottom = Math.max(_insets.bottom, 20);
   
   // Safe orientation handling with fallback values
   const orientation = useOrientation();
@@ -77,8 +75,8 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ game, isVisible = true
   
   // State
   const [activeTab, setActiveTab] = useState<TabType>('game');
-  const [isDragging, setIsDragging] = useState(false);
-  const [lastExpansionState, setLastExpansionState] = useState(0);
+  const [, setIsDragging] = useState(false);
+  const [, setLastExpansionState] = useState(0);
   const [isInitialized, setIsInitialized] = useState(false);
   const [currentExpansionProgress, setCurrentExpansionProgress] = useState(0);
 
@@ -91,7 +89,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ game, isVisible = true
 
   // Calculate positions
   // In landscape, we don't need to account for logo position
-  const logoTop = isPortrait ? Math.max(insets.top + 12, 20) : 0;
+  const logoTop = isPortrait ? Math.max(_insets.top + 12, 20) : 0;
   const logoSize = isPortrait ? Math.min(screenWidth * 0.2, 96) : 0;
   const logoBottom = logoTop + logoSize;
   
@@ -105,7 +103,7 @@ export const BottomSheet: React.FC<BottomSheetProps> = ({ game, isVisible = true
     : screenHeight - collapsedHeight - Math.max(safeAreaBottom, 20); // Landscape: ensure visibility
   const minTranslateY = isPortrait 
     ? logoBottom + 20 // Portrait: below logo
-    : Math.max(50, insets.top + 20); // Landscape: near top for max content
+    : Math.max(50, _insets.top + 20); // Landscape: near top for max content
   const totalDistance = maxTranslateY - minTranslateY;
   
   // Initialize position

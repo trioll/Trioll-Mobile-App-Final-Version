@@ -96,7 +96,7 @@ class AmplifyAuthService {
       this.setupAuthListener();
 
       return { ...this.currentState };
-    } catch (error) {
+    } catch {
       logger.error('Failed to initialize auth:', error);
       throw error;
     }
@@ -128,7 +128,7 @@ class AmplifyAuthService {
       }
       
       return null;
-    } catch (error) {
+    } catch {
       logger.error('Failed to get credentials:', error);
       return null;
     }
@@ -153,7 +153,7 @@ class AmplifyAuthService {
       }
       
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Sign in failed:', error);
       throw error;
     }
@@ -176,7 +176,7 @@ class AmplifyAuthService {
       
       logger.info('User signed up:', result.userId);
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Sign up failed:', error);
       throw error;
     }
@@ -190,7 +190,7 @@ class AmplifyAuthService {
       const result = await confirmSignUp({ username: email, confirmationCode: code });
       logger.info('Sign up confirmed for:', email);
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Confirm sign up failed:', error);
       throw error;
     }
@@ -212,7 +212,7 @@ class AmplifyAuthService {
       await this.initialize();
       
       logger.info('User signed out, reverted to guest mode');
-    } catch (error) {
+    } catch {
       logger.error('Sign out failed:', error);
       throw error;
     }
@@ -256,7 +256,7 @@ class AmplifyAuthService {
   async clearGuestIdentity(): Promise<void> {
     try {
       await AsyncStorage.removeItem(GUEST_IDENTITY_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to clear guest identity:', error);
     }
   }

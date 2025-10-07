@@ -47,7 +47,7 @@ class UploadService {
       // Return the public URL
       const publicUrl = `https://${Config.AWS.S3_UPLOADS_BUCKET}.s3.${Config.AWS.REGION}.amazonaws.com/${key}`;
       return publicUrl;
-    } catch (error) {
+    } catch {
       console.error('Upload failed:', error);
       throw error;
     }
@@ -94,7 +94,7 @@ class UploadService {
       // Use Amplify Storage to delete
       const { remove } = await import('aws-amplify/storage');
       await remove({ key });
-    } catch (error) {
+    } catch {
       // Ignore deletion errors
       console.warn('Failed to delete old image:', error);
     }

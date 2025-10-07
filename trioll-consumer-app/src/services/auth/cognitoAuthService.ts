@@ -35,7 +35,7 @@ const loadCognitoModules = () => {
         logger.debug('Cognito modules loaded successfully');
         modulesLoaded = true;
       }
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       logger.error('Failed to load Cognito modules:', error);
       throw error;
@@ -105,7 +105,7 @@ class CognitoAuthService {
         UserPoolId: userPoolId,
         ClientId: clientId,
       });
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       logger.error('Failed to create CognitoUserPool:', error);
       // Create a dummy pool to prevent crashes
@@ -118,7 +118,7 @@ class CognitoAuthService {
     // Verify we're using staging environment
     try {
       this.validateStagingEnvironment();
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       logger.warn('Environment validation failed:', error);
     }
@@ -206,7 +206,7 @@ class CognitoAuthService {
           }
         });
       });
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       performanceMonitor.recordMetric('auth_registration_error', 1);
       throw error;
@@ -239,7 +239,7 @@ class CognitoAuthService {
           resolve(result === 'SUCCESS');
         });
       });
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       performanceMonitor.recordMetric('auth_verification_error', 1);
       throw error;
@@ -345,7 +345,7 @@ class CognitoAuthService {
           },
         });
       });
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       performanceMonitor.recordMetric('auth_login_error', 1);
       throw error;
@@ -550,7 +550,7 @@ class CognitoAuthService {
       this.currentUser = null;
 
       analyticsService.track('auth_logout_success');
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       logger.error('Logout error:', error);
       // Clear session even if Cognito logout fails
@@ -660,7 +660,7 @@ class CognitoAuthServiceWrapper {
     if (!this._instance) {
       try {
         this._instance = new CognitoAuthService();
-      } catch (error) {
+      } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
         logger.error('Failed to initialize CognitoAuthService:', error);
         this._initError = error instanceof Error ? error : new Error(String(error));

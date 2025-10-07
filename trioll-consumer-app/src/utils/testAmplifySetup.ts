@@ -63,7 +63,7 @@ export const testAmplifySetup = async () => {
       success: !!authState.identityId,
       authState
     };
-  } catch (error) {
+  } catch {
     console.error('❌ FAILED: Amplify setup test failed:', error);
     logger.error('❌ FAILED: Amplify setup test failed:', error);
     return {

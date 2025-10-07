@@ -90,7 +90,7 @@ class MockAuthService {
         userId,
         requiresVerification: true,
       };
-    } catch (error) {
+    } catch {
       analyticsService.track('auth_registration_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
         duration: Date.now() - startTime,
@@ -174,7 +174,7 @@ class MockAuthService {
       });
 
       return response;
-    } catch (error) {
+    } catch {
       analyticsService.track('auth_login_failed', {
         error: error instanceof Error ? error.message : 'Unknown error',
         duration: Date.now() - startTime,

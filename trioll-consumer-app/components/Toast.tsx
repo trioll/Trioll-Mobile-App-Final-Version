@@ -19,7 +19,7 @@ export const Toast: React.FC<ToastProps> = ({
   onHide,
   visible,
 }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const opacity = useRef(new Animated.Value(0)).current;
   const translateY = useRef(new Animated.Value(-100)).current;
 

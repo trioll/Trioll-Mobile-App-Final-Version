@@ -81,7 +81,7 @@ class LocalStorageService {
           plays: this.guestData.playHistory.length,
         });
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load guest data:', error);
     }
   }
@@ -93,7 +93,7 @@ class LocalStorageService {
     try {
       this.guestData.lastUpdated = new Date();
       await AsyncStorage.setItem(STORAGE_KEYS.GUEST_DATA, JSON.stringify(this.guestData));
-    } catch (error) {
+    } catch {
       logger.error('Failed to save guest data:', error);
     }
   }
@@ -119,7 +119,7 @@ class LocalStorageService {
       logger.info('Guest like added locally', { gameId });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to add guest like:', error);
       return { success: false, local: true };
     }
@@ -135,7 +135,7 @@ class LocalStorageService {
       logger.info('Guest like removed locally', { gameId });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to remove guest like:', error);
       return { success: false, local: true };
     }
@@ -162,7 +162,7 @@ class LocalStorageService {
       logger.info('Guest bookmark added locally', { gameId });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to add guest bookmark:', error);
       return { success: false, local: true };
     }
@@ -178,7 +178,7 @@ class LocalStorageService {
       logger.info('Guest bookmark removed locally', { gameId });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to remove guest bookmark:', error);
       return { success: false, local: true };
     }
@@ -205,7 +205,7 @@ class LocalStorageService {
       logger.info('Guest play tracked locally', { gameId, duration, score });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to track guest play:', error);
       return { success: false, local: true };
     }
@@ -236,7 +236,7 @@ class LocalStorageService {
       logger.info('Guest rating added locally', { gameId, rating });
       
       return { success: true, local: true };
-    } catch (error) {
+    } catch {
       logger.error('Failed to add guest rating:', error);
       return { success: false, local: true };
     }
@@ -292,7 +292,7 @@ class LocalStorageService {
       try {
         await triollAPI.likeGame(like.gameId);
         merged++;
-      } catch (error) {
+      } catch {
         logger.error('Failed to merge like', { gameId: like.gameId, error });
         failed++;
       }
@@ -303,7 +303,7 @@ class LocalStorageService {
       try {
         await triollAPI.bookmarkGame(bookmark.gameId);
         merged++;
-      } catch (error) {
+      } catch {
         logger.error('Failed to merge bookmark', { gameId: bookmark.gameId, error });
         failed++;
       }
@@ -314,7 +314,7 @@ class LocalStorageService {
       try {
         await triollAPI.rateGame(rating.gameId, rating.rating);
         merged++;
-      } catch (error) {
+      } catch {
         logger.error('Failed to merge rating', { gameId: rating.gameId, error });
         failed++;
       }
@@ -346,7 +346,7 @@ class LocalStorageService {
     try {
       await AsyncStorage.removeItem(STORAGE_KEYS.GUEST_DATA);
       logger.info('Guest data cleared');
-    } catch (error) {
+    } catch {
       logger.error('Failed to clear guest data:', error);
     }
   }

@@ -29,10 +29,10 @@ interface CommentModalProps {
 }
 
 export const CommentModal: React.FC<CommentModalProps> = ({ game, visible, onClose, onSubmit, currentUserId, isGuest = false }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   const { isPortrait } = useOrientation();
-  const windowDimensions = useWindowDimensions();
+  const _windowDimensions = useWindowDimensions();
   const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [comments, setComments] = useState<any[]>([]);
@@ -55,7 +55,7 @@ export const CommentModal: React.FC<CommentModalProps> = ({ game, visible, onClo
       const api = TriollAPIModule.default;
       const response = await api.getGameComments(game.id);
       setComments(response.comments || []);
-    } catch (error) {
+    } catch {
       console.error('Failed to load comments:', error);
       setError('Failed to load comments');
       // Use mock comments as fallback
@@ -112,7 +112,7 @@ export const CommentModal: React.FC<CommentModalProps> = ({ game, visible, onClo
         setComment('');
         haptics.impact('success');
       }
-    } catch (error) {
+    } catch {
       console.error('Failed to submit comment:', error);
       haptics.impact('error');
       setError('Failed to submit comment');
@@ -133,7 +133,7 @@ export const CommentModal: React.FC<CommentModalProps> = ({ game, visible, onClo
       
       // Remove the comment from local state
       setComments(comments.filter(c => c.commentId !== commentId));
-    } catch (error) {
+    } catch {
       console.error('Failed to delete comment:', error);
       haptics.impact('error');
       setError('Failed to delete comment');
@@ -157,7 +157,7 @@ export const CommentModal: React.FC<CommentModalProps> = ({ game, visible, onClo
         
         <View style={[
           styles.modalContent, 
-          { paddingBottom: insets.bottom },
+          { paddingBottom: _insets.bottom },
           !isPortrait && styles.modalContentLandscape
         ]}>
           {/* Header */}

@@ -159,7 +159,7 @@ export class AWSConnectionDiagnostics {
         console.log(`  • CORS Headers:`, corsHeaders);
       }
       
-    } catch (error) {
+    } catch {
       this.results.networkTests.error = error.message;
       console.log(`  ❌ Cannot reach API: ${error.message}`);
       this.results.recommendations.push(
@@ -207,12 +207,12 @@ export class AWSConnectionDiagnostics {
               console.log(`  • Guest Credentials: ❌ (method not available)`);
             }
           }
-        } catch (error) {
+        } catch {
           console.log(`  • Guest Credentials: ❌ ${error.message}`);
         }
       }
       
-    } catch (error) {
+    } catch {
       this.results.authTests.error = error.message;
       console.log(`  ❌ Auth Error: ${error.message}`);
       this.results.recommendations.push(
@@ -245,7 +245,7 @@ export class AWSConnectionDiagnostics {
       });
       this.results.apiTests.healthCheck = healthResponse.ok;
       console.log(`  • Health Check: ${healthResponse.ok ? '✅' : '❌'} (${healthResponse.status})`);
-    } catch (error) {
+    } catch {
       console.log(`  • Health Check: ❌ ${error.message}`);
       this.results.apiTests.errors.push(`Health check failed: ${error.message}`);
     }
@@ -263,7 +263,7 @@ export class AWSConnectionDiagnostics {
         console.log(`    Error: ${errorText}`);
         this.results.apiTests.errors.push(`Games endpoint: ${errorText}`);
       }
-    } catch (error) {
+    } catch {
       console.log(`  • Games Endpoint: ❌ ${error.message}`);
       this.results.apiTests.errors.push(`Games endpoint failed: ${error.message}`);
     }

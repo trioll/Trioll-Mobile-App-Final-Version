@@ -147,7 +147,7 @@ class BackendReadinessValidator {
 
       // Generate recommendations
       this.generateRecommendations();
-    } catch (error) {
+    } catch {
       logger.error('Validation error:', error);
       this.report.overall = 'not-ready';
     }
@@ -367,7 +367,7 @@ class BackendReadinessValidator {
           try {
             await dynamoDBService.scan(table, { limit: 1  });
             accessible.push(table);
-          } catch (error) {
+          } catch {
             this.report.services.dynamodb.issues.push(`Table ${table} not accessible`);
           }
         }

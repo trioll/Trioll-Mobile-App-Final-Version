@@ -46,7 +46,7 @@ class AmplifyAuthAdapter {
           refreshToken: ''
         } : undefined
       };
-    } catch (error) {
+    } catch {
       logger.error('Login failed:', error);
       throw error;
     }
@@ -66,7 +66,7 @@ class AmplifyAuthAdapter {
         userId: result.userId || credentials.email,
         requiresVerification: !result.isSignUpComplete
       };
-    } catch (error) {
+    } catch {
       logger.error('Registration failed:', error);
       throw error;
     }
@@ -83,7 +83,7 @@ class AmplifyAuthAdapter {
       );
       
       return result.isSignUpComplete;
-    } catch (error) {
+    } catch {
       logger.error('Email verification failed:', error);
       throw error;
     }

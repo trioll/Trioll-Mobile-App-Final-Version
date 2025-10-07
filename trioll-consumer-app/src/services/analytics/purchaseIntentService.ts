@@ -38,7 +38,7 @@ class PurchaseIntentService {
       if (stored) {
         this.preferences = { ...this.preferences, ...JSON.parse(stored) };
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load purchase intent preferences:', error);
     }
   }
@@ -87,7 +87,7 @@ class PurchaseIntentService {
       await this.savePreferences();
 
       logger.info('✅ Purchase intent successfully tracked for:', data.gameTitle);
-    } catch (error) {
+    } catch {
       logger.error('❌ Failed to track purchase intent:', error);
       throw error;
     }
@@ -144,7 +144,7 @@ class PurchaseIntentService {
   private async savePreferences() {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(this.preferences));
-    } catch (error) {
+    } catch {
       logger.error('Failed to save purchase intent preferences:', error);
     }
   }

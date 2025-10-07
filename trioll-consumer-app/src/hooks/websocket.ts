@@ -317,7 +317,7 @@ export function useTypingIndicator(channelId: string) {
 
         // Clear existing timeout
         if (typingTimeoutRef.current[userId]) {
-          typingTimeoutRef.current[userId] && clearTimeout(typingTimeoutRef.current[userId]);
+          clearTimeout(typingTimeoutRef.current[userId]);
         }
 
         // Add user to typing list

@@ -68,7 +68,7 @@ class EnhancedAnalyticsService {
 
       // Monitor network state
       this.monitorNetworkState();
-    } catch (error) {
+    } catch {
       logger.error('Failed to initialize analytics:', error);
       crashReporter.captureException(error as Error, {
         tags: { component: 'analytics' },
@@ -109,7 +109,7 @@ class EnhancedAnalyticsService {
 
       // Store locally for offline support
       await this.storeEventLocally(analyticsEvent);
-    } catch (error) {
+    } catch {
       logger.error('Failed to track event:', error);
     }
   }
@@ -147,7 +147,7 @@ class EnhancedAnalyticsService {
 
       // Flush user properties immediately
       await this.flushUserProperties();
-    } catch (error) {
+    } catch {
       logger.error('Failed to identify user:', error);
     }
   }
@@ -234,7 +234,7 @@ class EnhancedAnalyticsService {
 
       // Clear local storage after successful send
       await this.clearStoredEvents(events.length);
-    } catch (error) {
+    } catch {
       // Only log warning for analytics failures, don't crash the app
       logger.warn('Analytics flush failed, will retry later:', error);
       
@@ -262,7 +262,7 @@ class EnhancedAnalyticsService {
       await this.sendWithRetry('/analytics/identify', {
         users: properties,
       });
-    } catch (error) {
+    } catch {
       logger.error('Failed to flush user properties:', error);
       // Re-queue on failure
       this.userPropertiesQueue.unshift(...properties);
@@ -340,7 +340,7 @@ class EnhancedAnalyticsService {
       }
 
       stopMeasure();
-    } catch (error) {
+    } catch {
       if (attempt < this.retryCount) {
         // Exponential backoff
         const delay = Math.min(1000 * Math.pow(2, attempt), 30000);
@@ -464,7 +464,7 @@ class EnhancedAnalyticsService {
       const trimmedList = eventList.slice(-1000);
 
       await AsyncStorage.setItem('analytics_events', JSON.stringify(trimmedList));
-    } catch (error) {
+    } catch {
       logger.warn('Failed to store event locally:', error);
     }
     return;
@@ -478,7 +478,7 @@ class EnhancedAnalyticsService {
         this.queue.push(...eventList);
         await AsyncStorage.removeItem('analytics_events');
       }
-    } catch (error) {
+    } catch {
       logger.warn('Failed to load queued events:', error);
     }
   }
@@ -494,7 +494,7 @@ class EnhancedAnalyticsService {
       const trimmedList = failedList.slice(-500);
 
       await AsyncStorage.setItem('analytics_failed_events', JSON.stringify(trimmedList));
-    } catch (error) {
+    } catch {
       logger.warn('Failed to store failed events:', error);
     }
     return;
@@ -513,7 +513,7 @@ class EnhancedAnalyticsService {
           await AsyncStorage.removeItem('analytics_events');
         }
       }
-    } catch (error) {
+    } catch {
       logger.warn('Failed to clear stored events:', error);
     }
   }
@@ -580,7 +580,7 @@ class EnhancedAnalyticsService {
         currentSession: session ? JSON.parse(session) : null,
         deviceId: this.deviceId,
       };
-    } catch (error) {
+    } catch {
       logger.error('Failed to get analytics summary:', error);
       return null;
     }

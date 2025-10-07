@@ -141,7 +141,7 @@ export class OfflineQueue {
           // Success - remove from queue
           processedIds.push(request.id);
           this.options.onSuccess?.(request);
-         } catch (error) {
+         } catch {
           const apiError =
             error instanceof ApiError
               ? error
@@ -252,7 +252,7 @@ export class OfflineQueue {
       if (typeof window !== 'undefined' && window.localStorage) {
         window.localStorage.setItem(this.storageKey, JSON.stringify(this.queue));
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to save offline queue:', error);
     }
   }
@@ -269,7 +269,7 @@ export class OfflineQueue {
           logger.info(`Loaded ${this.queue.length} queued requests`);
         }
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load offline queue:', error);
       this.queue = [];
     }

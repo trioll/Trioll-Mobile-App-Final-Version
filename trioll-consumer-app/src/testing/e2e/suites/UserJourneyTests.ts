@@ -543,7 +543,7 @@ export class UserJourneyTests {
             if (!passwordChangeResult) {
               errors.push('Password change simulation failed');
             }
-          } catch (error) {
+          } catch {
             // Expected in test environment
           }
 

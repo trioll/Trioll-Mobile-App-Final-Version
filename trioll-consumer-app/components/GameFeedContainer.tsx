@@ -259,6 +259,8 @@ export const GameFeedContainer = React.memo<GameFeedContainerProps>(({
   );
 });
 
+GameFeedContainer.displayName = 'GameFeedContainer';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,

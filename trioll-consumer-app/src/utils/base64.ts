@@ -27,7 +27,7 @@ export const base64Decode = (str: string): string => {
     // Fallback for environments without Buffer
     // This is a simple implementation for basic use cases
     throw new Error('Base64 decoding not supported in this environment');
-  } catch (error) {
+  } catch {
     logger.error('Base64 decode error:', error);
     throw error;
   }
@@ -46,7 +46,7 @@ export const base64Encode = (str: string): string => {
 
     // Fallback for environments without Buffer
     throw new Error('Base64 encoding not supported in this environment');
-  } catch (error) {
+  } catch {
     logger.error('Base64 encode error:', error);
     throw error;
   }
@@ -66,7 +66,7 @@ export const decodeJWT = (token: string): any => {
     const payload = parts[1];
     const decoded = base64Decode(payload);
     return JSON.parse(decoded);
-  } catch (error) {
+  } catch {
     logger.error('JWT decode error:', error);
     throw error;
   }

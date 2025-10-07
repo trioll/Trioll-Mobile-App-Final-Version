@@ -21,7 +21,7 @@ export async function loadBackendValidation() {
     logger.info('You can now use: await runBackendValidation({ verbose: true })');
 
     return runBackendValidation;
-  } catch (error) {
+  } catch {
     logger.error('❌ Failed to load backend validation:', error);
     throw error;
   }

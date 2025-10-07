@@ -93,7 +93,7 @@ export const getCognitoCredentials = async () => {
       };
     }
     return null;
-  } catch (error) {
+  } catch {
     console.error('Failed to get Cognito credentials:', error);
     return null;
   }

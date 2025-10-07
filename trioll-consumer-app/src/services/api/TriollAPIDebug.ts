@@ -153,7 +153,7 @@ class TriollAPIDebug {
       if (!response.ok) {
         console.log(COLORS.ERROR, `HTTP Error: ${response.status}`);
         
-        let errorDetails: any = {
+        const errorDetails: any = {
           status: response.status,
           statusText: response.statusText,
           headers: Object.fromEntries(response.headers.entries()),
@@ -195,7 +195,7 @@ class TriollAPIDebug {
 
       return data;
 
-    } catch (error) {
+    } catch {
       const duration = Date.now() - startTime;
       console.log(COLORS.ERROR, `\n❌ Request #${requestId} failed after ${duration}ms`);
       console.log(COLORS.ERROR, 'Error type:', error.constructor.name);
@@ -231,7 +231,7 @@ class TriollAPIDebug {
     try {
       const url = new URL(this.apiBase);
       console.log(`✅ Domain: ${url.hostname}`);
-    } catch (error) {
+    } catch {
       console.log('❌ Invalid API URL');
       return;
     }
@@ -244,7 +244,7 @@ class TriollAPIDebug {
         mode: 'cors',
       });
       console.log(`✅ Fetch succeeded - Status: ${response.status}`);
-    } catch (error) {
+    } catch {
       console.log(`❌ Fetch failed:`, error.message);
     }
 
@@ -260,7 +260,7 @@ class TriollAPIDebug {
         },
       });
       console.log(`✅ Fetch with headers succeeded - Status: ${response.status}`);
-    } catch (error) {
+    } catch {
       console.log(`❌ Fetch with headers failed:`, error.message);
     }
 
@@ -273,7 +273,7 @@ class TriollAPIDebug {
         console.log(`Token type: ${token.startsWith('guest-') ? 'Guest' : 'User'}`);
         console.log(`Token preview: ${token.substring(0, 30)}...`);
       }
-    } catch (error) {
+    } catch {
       console.log('❌ Could not get auth token:', error.message);
     }
 
@@ -298,7 +298,7 @@ export async function runAPIDebugTest() {
     console.log(COLORS.SUCCESS, '✅ Successfully fetched games!');
     console.log(`Got ${(games as any).games?.length || 0} games`);
     
-  } catch (error) {
+  } catch {
     console.log(COLORS.ERROR, '❌ Debug test failed:', error.message);
   }
 }

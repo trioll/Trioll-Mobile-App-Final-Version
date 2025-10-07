@@ -97,7 +97,7 @@ class AuthServiceAdapter {
       this.useMockAuth = false;
       this.updateAuthMode();
       return true;
-    } catch (error) {
+    } catch {
       logger.error('Failed to switch to real auth:', error);
       return false;
     }
@@ -129,7 +129,7 @@ class AuthServiceAdapter {
 
         return response;
       }
-    } catch (error) {
+    } catch {
       // If real auth fails, optionally fall back to mock
       if (!this.useMockAuth && Config.FEATURES.AUTH_FALLBACK) {
         const errorMessage = error instanceof Error ? error.message : 'Unknown error';
@@ -249,7 +249,7 @@ class AuthServiceAdapter {
         await getCognitoService().refreshTokens();
         return true;
       }
-    } catch (error) {
+    } catch {
       logger.error('Token refresh failed:', error);
       return false;
     }

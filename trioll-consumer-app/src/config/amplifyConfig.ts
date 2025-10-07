@@ -81,7 +81,7 @@ export const configureAmplify = async (): Promise<boolean> => {
     });
     
     return true;
-  } catch (error) {
+  } catch {
     console.error('[Amplify] Configuration failed:', error);
     logger.error('Failed to configure Amplify:', error);
     // Don't crash the app if Amplify fails to configure

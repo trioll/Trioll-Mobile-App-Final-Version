@@ -57,7 +57,7 @@ export async function withRetry<T>(
 
       // Success - return result
       return result;
-    } catch (error) {
+    } catch {
       // Handle the error
       lastError = handleApiError(error, endpoint);
 
@@ -190,7 +190,7 @@ export class CircuitBreaker {
       }
 
       return result;
-    } catch (error) {
+    } catch {
       // Failure - increment counter
       this.failures++;
       this.lastFailureTime = Date.now();

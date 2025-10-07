@@ -51,7 +51,7 @@ class GamePresignedUrlService {
       const directUrl = `https://trioll-prod-games-us-east-1.s3.amazonaws.com/${s3FolderName}/${file}`;
       // Using direct S3 URL
       return directUrl;
-    } catch (error) {
+    } catch {
       // Error getting game URL
 
       // Re-throw the error so it can be handled by the caller
@@ -73,7 +73,7 @@ class GamePresignedUrlService {
       files.map(async file => {
         try {
           urls[file] = await this.getPresignedUrl(gameId, file);
-        } catch (error) {
+        } catch {
           logger.error(`Failed to get URL for ${file}:`, error);
           urls[file] = '';
         }

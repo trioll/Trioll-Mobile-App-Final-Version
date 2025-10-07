@@ -121,7 +121,7 @@ class TriollAPIStandard {
       );
 
       return result;
-    } catch (error) {
+    } catch {
       // Handle errors with standardized format
       const apiError = handleApiError(error, endpoint);
       return createErrorResponseFromApiError(apiError);

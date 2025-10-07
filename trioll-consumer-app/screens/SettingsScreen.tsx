@@ -1,5 +1,5 @@
 
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 import { View, Text, StyleSheet, SectionList, Pressable, Switch, TextInput, Alert, Platform, Linking, Modal } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
@@ -108,24 +108,23 @@ const mockUser = {
 
 // Constants
 const APP_VERSION = '1.0.0';
-const BUILD_NUMBER = '42';
 
 export const SettingsScreen: React.FC = () => {
-  const { width: screenWidth, height: screenHeight, isPortrait } = useOrientation();
+  const { isPortrait } = useOrientation();
   const navigation = useNavigation<SettingsScreenNavigationProp>();
   const haptics = useHaptics();
   const { showToast } = useToast();
   const { logout, isGuest } = useAuth();
 
   const [searchQuery, setSearchQuery] = useState('');
-  const [isSearching, setIsSearching] = useState(false);
+  const [, setIsSearching] = useState(false);
   const [user, setUser] = useState(mockUser);
   const [versionTaps, setVersionTaps] = useState(0);
   const [showDebugMenu, setShowDebugMenu] = useState(true); // Always show in development
   const [showAPIDebugPanel, setShowAPIDebugPanel] = useState(false);
 
   // Toggle handlers
-  const handleToggle = useCallback(
+  const _handleToggle = useCallback(
     (settingPath: string[], value: boolean) => {
       haptics.impact('light');
       setUser(prev => {
@@ -148,7 +147,7 @@ export const SettingsScreen: React.FC = () => {
     navigation.goBack();
   };
 
-  const handleProfilePress = () => {
+  const _handleProfilePress = () => {
     haptics.impact('light');
     navigation.navigate('Profile' as never);
   };
@@ -215,7 +214,7 @@ export const SettingsScreen: React.FC = () => {
                           StackActions.replace('MinimalOnboarding' as never)
                         );
                       }, 2000);
-                    } catch (error) {
+                    } catch {
                       showToast('Failed to delete account', 'error');
                     }
                   },
@@ -269,12 +268,12 @@ export const SettingsScreen: React.FC = () => {
           ]
         );
       }
-    } catch (error) {
+    } catch {
       showToast('Failed to open email app', 'error');
     }
   };
 
-  const handleRateApp = () => {
+  const _handleRateApp = () => {
     haptics.impact('light');
     const storeUrl = Platform.select({
       ios: 'https://apps.apple.com/app/trioll',
@@ -304,7 +303,7 @@ export const SettingsScreen: React.FC = () => {
                 navigation.dispatch(
                   StackActions.replace('MinimalOnboarding' as never)
                 );
-              } catch (error) {
+              } catch {
                 showToast('Failed to sign out', 'error');
               }
             },
@@ -325,7 +324,7 @@ export const SettingsScreen: React.FC = () => {
               navigation.dispatch(
                 StackActions.replace('Login' as never)
               );
-            } catch (error) {
+            } catch {
               showToast('Failed to sign out', 'error');
             }
           },

@@ -275,7 +275,7 @@ class PerformanceMonitor {
       }
 
       return null;
-    } catch (error) {
+    } catch {
       logger.warn('Failed to get memory info:', error);
       return null;
     }
@@ -371,7 +371,7 @@ class PerformanceMonitor {
       if (Config.DEBUG.ENABLE_LOGGING) {
         await this.storeMetricsLocally(metrics);
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to flush performance metrics:', error);
       // Re-queue metrics on failure
       this.metricsQueue.unshift(...metrics);
@@ -412,7 +412,7 @@ class PerformanceMonitor {
       const updatedMetrics = [...allMetrics, ...metrics].slice(-1000);
 
       await AsyncStorage.setItem('performance_metrics', JSON.stringify(updatedMetrics));
-    } catch (error) {
+    } catch {
       if (Config.DEBUG?.ENABLE_LOGGING) {
         logger.warn('Failed to store metrics locally:', error);
       }
@@ -441,7 +441,7 @@ class PerformanceMonitor {
       // Clear in-memory caches
       this.metrics.clear();
       this.metricsQueue = [];
-    } catch (error) {
+    } catch {
       logger.warn('Failed to clear performance caches:', error);
     }
   }
@@ -490,7 +490,7 @@ class PerformanceMonitor {
       };
 
       return summary;
-    } catch (error) {
+    } catch {
       logger.error('Failed to get performance summary:', error);
       return null;
     }

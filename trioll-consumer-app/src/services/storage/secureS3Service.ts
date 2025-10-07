@@ -60,7 +60,7 @@ class SecureS3Service {
             logins,
           }),
         });
-      } catch (error) {
+      } catch {
         crashReporter.captureException(error as Error, {
           tags: { component: 'SecureS3Service', operation: 'initializeS3Client' },
         });
@@ -87,7 +87,7 @@ class SecureS3Service {
         );
 
         this.cognitoIdentityId = response.IdentityId!;
-      } catch (error) {
+      } catch {
         crashReporter.captureException(error as Error, {
           tags: { component: 'SecureS3Service', operation: 'getCognitoIdentityId' },
         });
@@ -137,7 +137,7 @@ class SecureS3Service {
         lastModified: new Date(),
         url: await this.getSecureUrl(fileName),
       };
-    } catch (error) {
+    } catch {
       performanceMonitor.endOperation(operation, false);
       crashReporter.captureException(error as Error, {
         tags: { component: 'SecureS3Service', operation: 's3Upload' },
@@ -179,7 +179,7 @@ class SecureS3Service {
 
       performanceMonitor.endOperation(operation);
       return Buffer.from(data);
-    } catch (error) {
+    } catch {
       performanceMonitor.endOperation(operation, false);
       crashReporter.captureException(error as Error, {
         tags: { component: 'SecureS3Service', operation: 's3Download' },
@@ -203,7 +203,7 @@ class SecureS3Service {
       });
 
       await client.send(command);
-    } catch (error) {
+    } catch {
       crashReporter.captureException(error as Error, {
         tags: { component: 'SecureS3Service', operation: 's3Delete' },
       });
@@ -232,7 +232,7 @@ class SecureS3Service {
         lastModified: object.LastModified!,
         url: `https://${this.getBucketName()}.s3.amazonaws.com/${object.Key}`,
       }));
-    } catch (error) {
+    } catch {
       crashReporter.captureException(error as Error, {
         tags: { component: 'SecureS3Service', operation: 's3List' },
       });

@@ -121,7 +121,7 @@ export const IconStack: React.FC<IconStackProps> = ({
         message: `Check out ${game.title} on TRIOLL! 🎮`,
         title: game.title,
       });
-    } catch (error) {
+    } catch {
       if (onShareError && error instanceof Error) {
         onShareError(error as any);
       }

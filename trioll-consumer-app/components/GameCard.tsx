@@ -112,7 +112,7 @@ export const GameCard: React.FC<GameCardProps> = ({
   const handlePressOut = () => {
     // Clear long press timer
     if (longPressTimer.current) {
-      longPressTimer.current && clearTimeout(longPressTimer.current);
+      clearTimeout(longPressTimer.current);
     }
 
     // Restore scale
@@ -233,7 +233,7 @@ export const GameCard: React.FC<GameCardProps> = ({
         await Sharing.shareAsync('https://trioll.com/game/' + game.id, {
           dialogTitle: `Check out ${game.title} on TRIOLL!`,
         });
-      } catch (error) {
+      } catch {
         logger.error('Share error:', error);
       }
     }

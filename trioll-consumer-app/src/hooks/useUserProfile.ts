@@ -327,7 +327,7 @@ export const useUserProfile = (userId?: string) => {
           } else {
             throw new Error('Invalid profile response');
           }
-        } catch (error) {
+        } catch {
           logger.error('Failed to fetch profile from API:', {
             error,
             errorMessage: error instanceof Error ? error.message : 'Unknown error',
@@ -397,7 +397,7 @@ export const useUserProfile = (userId?: string) => {
           setIsUsingApiData(false);
         }
       }
-    } catch (error) {
+    } catch {
       logger.error('Fatal error in fetchProfile:', {
         error,
         errorMessage: error instanceof Error ? error.message : 'Unknown error',

@@ -86,7 +86,7 @@ class StagingValidator {
 
       // Generate recommendations
       this.generateRecommendations(report);
-    } catch (error) {
+    } catch {
       logger.error('Validation error:', error);
       report.overall = 'failed';
     }

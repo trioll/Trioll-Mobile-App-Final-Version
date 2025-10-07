@@ -82,7 +82,7 @@ export class QueueService {
         ApiErrorCode.NOT_FOUND,
         { queueId }
       );
-    } catch (error) {
+    } catch {
       logger.error('Failed to get queue status:', error);
       return createErrorResponse(
         'Failed to get queue status',
@@ -144,7 +144,7 @@ export class QueueService {
       };
 
       return createSuccessResponse(stats, 200);
-    } catch (error) {
+    } catch {
       logger.error('Failed to get queue statistics:', error);
       return createErrorResponse(
         'Failed to get queue statistics',
@@ -223,7 +223,7 @@ export class QueueService {
       );
 
       return response.success;
-    } catch (error) {
+    } catch {
       logger.error('Failed to cancel queue item:', error);
       return false;
     }
@@ -268,7 +268,7 @@ export class QueueService {
       const paginatedItems = filteredItems.slice(start, start + limit);
 
       return createSuccessResponse(paginatedItems, 200, undefined);
-    } catch (error) {
+    } catch {
       logger.error('Failed to get queue items:', error);
       return createErrorResponse(
         'Failed to get queue items',
@@ -351,7 +351,7 @@ export class QueueService {
       if (cached) {
         this.statusCache = JSON.parse(cached);
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load queue cache:', error);
     }
   }
@@ -365,7 +365,7 @@ export class QueueService {
         QUEUE_STATUS_CACHE_KEY,
         JSON.stringify(this.statusCache)
       );
-    } catch (error) {
+    } catch {
       logger.error('Failed to save queue cache:', error);
     }
   }

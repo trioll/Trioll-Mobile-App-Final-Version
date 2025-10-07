@@ -36,7 +36,7 @@ export const AsyncStorage = {
       }
 
       return mainValue;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore getItem error:', error);
       return null;
     }
@@ -59,7 +59,7 @@ export const AsyncStorage = {
       } else {
         await SecureStore.setItemAsync(KEY_PREFIX + key, value);
       }
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore setItem error:', error);
       throw error;
     }
@@ -84,7 +84,7 @@ export const AsyncStorage = {
 
       // Remove main key
       await SecureStore.deleteItemAsync(KEY_PREFIX + key);
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore removeItem error:', error);
     }
   },

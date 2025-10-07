@@ -60,7 +60,7 @@ export const fixUrlForAndroidEmulator = (url: string): string => {
       // Note: This would need to be handled in the fetch options
       return urlObj.toString();
     }
-  } catch (error) {
+  } catch {
     logger.info('Error fixing URL for Android emulator:', error);
   }
 
@@ -90,7 +90,7 @@ export const createAndroidEmulatorFetchOptions = (
         },
       };
     }
-  } catch (error) {
+  } catch {
     logger.info('Error creating Android emulator fetch options:', error);
   }
 

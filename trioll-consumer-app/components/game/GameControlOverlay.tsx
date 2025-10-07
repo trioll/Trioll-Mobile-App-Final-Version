@@ -44,7 +44,7 @@ export const GameControlOverlay: React.FC<GameControlOverlayProps> = ({
   onReportIssue,
   onFullscreenToggle,
 }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   const hideTimerRef = useRef<NodeJS.Timeout | null>(null);
   
@@ -69,7 +69,7 @@ export const GameControlOverlay: React.FC<GameControlOverlayProps> = ({
       
       if (sound !== null) setSoundEnabled(sound === 'true');
       if (fullscreen !== null) setFullscreenEnabled(fullscreen === 'true');
-    } catch (error) {
+    } catch {
       // Silent fail - use defaults
     }
   };
@@ -77,7 +77,7 @@ export const GameControlOverlay: React.FC<GameControlOverlayProps> = ({
   const savePreference = async (key: string, value: boolean) => {
     try {
       await AsyncStorage.setItem(key, value.toString());
-    } catch (error) {
+    } catch {
       // Silent fail
     }
   };
@@ -173,7 +173,7 @@ export const GameControlOverlay: React.FC<GameControlOverlayProps> = ({
         style={[
           styles.container,
           animatedStyle,
-          { paddingTop: insets.top + DS.spacing.sm }
+          { paddingTop: _insets.top + DS.spacing.sm }
         ]}
         pointerEvents={visible ? 'box-none' : 'none'}
       >
@@ -218,7 +218,7 @@ export const GameControlOverlay: React.FC<GameControlOverlayProps> = ({
           <Pressable
             style={[
               styles.settingsPanel,
-              { marginTop: insets.top + 80 }
+              { marginTop: _insets.top + 80 }
             ]}
             onPress={(e) => e.stopPropagation()}
           >

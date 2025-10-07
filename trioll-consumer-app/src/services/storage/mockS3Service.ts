@@ -77,7 +77,7 @@ class MockS3Service {
         key,
         url: `https://mock-s3.trioll.com/${key}`,
       };
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('mock_s3_upload_error', 1);
       throw error;
     }

@@ -50,7 +50,7 @@ export function useAsyncError(options: UseAsyncErrorOptions = {}) {
     return () => {
       isMountedRef.current = false;
       if (retryTimeoutRef.current) {
-        retryTimeoutRef.current && clearTimeout(retryTimeoutRef.current);
+        clearTimeout(retryTimeoutRef.current);
       }
     };
   }, []);

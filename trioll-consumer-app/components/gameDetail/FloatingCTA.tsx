@@ -11,7 +11,7 @@ interface FloatingCTAProps {
 }
 
 export const FloatingCTA: React.FC<FloatingCTAProps> = ({ onPress, trialDuration, scrollY }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const translateY = useRef(new Animated.Value(100)).current;
   const scale = useRef(new Animated.Value(0.9)).current;
   const [isVisible, setIsVisible] = React.useState(false);
@@ -94,7 +94,7 @@ export const FloatingCTA: React.FC<FloatingCTAProps> = ({ onPress, trialDuration
       style={[
         styles.container,
         {
-          bottom: insets.bottom + 20,
+          bottom: _insets.bottom + 20,
           opacity,
           transform: [{ translateY }, { scale }],
         },

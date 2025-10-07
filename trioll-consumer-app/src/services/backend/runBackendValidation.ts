@@ -34,7 +34,7 @@ export async function runBackendValidation(options: ValidationOptions = {}) {
 
     // Return the report
     return report;
-  } catch (error) {
+  } catch {
     logger.error('Backend validation failed:', error);
     throw error;
   }

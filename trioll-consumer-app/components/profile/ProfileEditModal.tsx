@@ -29,7 +29,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
   currentProfile,
   onUpdate,
 }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const [isLoading, setIsLoading] = useState(false);
   const [isSaving, setIsSaving] = useState(false);
 
@@ -106,7 +106,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
             await uploadService.deleteOldProfileImage(currentProfile.avatar);
           }
           uploadedAvatar = await uploadService.uploadProfileImage(avatar, 'avatar');
-        } catch (error) {
+        } catch {
           // Fallback to local storage
           console.warn('Avatar upload failed, using local storage:', error);
           uploadedAvatar = await uploadService.saveImageLocally(avatar, 'avatar');
@@ -121,7 +121,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
             await uploadService.deleteOldProfileImage(currentProfile.coverImage);
           }
           uploadedCoverImage = await uploadService.uploadProfileImage(coverImage, 'cover');
-        } catch (error) {
+        } catch {
           // Fallback to local storage
           console.warn('Cover image upload failed, using local storage:', error);
           uploadedCoverImage = await uploadService.saveImageLocally(coverImage, 'cover');
@@ -148,7 +148,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
       } else {
         Alert.alert('Error', 'Failed to update profile. Please try again.');
       }
-    } catch (error) {
+    } catch {
       Alert.alert('Error', 'An error occurred while updating your profile.');
     } finally {
       setIsSaving(false);
@@ -166,7 +166,7 @@ export const ProfileEditModal: React.FC<ProfileEditModalProps> = ({
         <View style={styles.modalContent}>
           <BlurView intensity={100} tint="dark" style={styles.blurContainer}>
             {/* Header */}
-            <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+            <View style={[styles.header, { paddingTop: _insets.top + 16 }]}>
               <Pressable onPress={onClose} style={styles.closeButton}>
                 <Ionicons name="close" size={24} color="#fff" />
               </Pressable>

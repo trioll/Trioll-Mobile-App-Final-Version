@@ -43,7 +43,7 @@ export async function cleanupCorruptedStorage(): Promise<void> {
         }
       }
     }
-  } catch (error) {
+  } catch {
     // Don't let cleanup errors crash the app
     if (Config.DEBUG?.ENABLE_LOGGING) {
       logger.error('Storage cleanup error:', error);
@@ -68,7 +68,7 @@ export async function clearPerformanceData(): Promise<void> {
         logger.info(`Cleared ${performanceKeys.length} performance-related keys`);
       }
     }
-  } catch (error) {
+  } catch {
     if (Config.DEBUG?.ENABLE_LOGGING) {
       logger.error('Failed to clear performance data:', error);
     }

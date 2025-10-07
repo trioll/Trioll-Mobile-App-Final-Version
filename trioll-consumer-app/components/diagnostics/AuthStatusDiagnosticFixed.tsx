@@ -118,7 +118,7 @@ export const AuthStatusDiagnostic: React.FC = () => {
             diagnosticInfo.credentialsType = 'mock';
           }
         }
-      } catch (error) {
+      } catch {
         diagnosticInfo.errors.push(`Credentials check error: ${error.message}`);
       }
       
@@ -137,7 +137,7 @@ export const AuthStatusDiagnostic: React.FC = () => {
             diagnosticInfo.credentialsType = 'stored';
           }
         }
-      } catch (error) {
+      } catch {
         logger.error('Error reading stored auth:', error);
       }
       
@@ -152,7 +152,7 @@ export const AuthStatusDiagnostic: React.FC = () => {
         }
       }
       
-    } catch (error) {
+    } catch {
       diagnosticInfo.errors.push(`General error: ${error.message}`);
     }
     
@@ -288,7 +288,7 @@ ${results.recommendations.length > 0 ? '\nRecommendations:\n' + results.recommen
                 ]);
                 
                 logger.info('Diagnostic results:', results);
-              } catch (error) {
+              } catch {
                 logger.error('Diagnostic error:', error);
                 Alert.alert('Diagnostic Error', error.message);
               }

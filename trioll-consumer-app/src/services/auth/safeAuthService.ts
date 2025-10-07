@@ -20,7 +20,7 @@ class SafeAuthService {
       if (userId) {
         return userId;
       }
-    } catch (error) {
+    } catch {
       // Auth service error, using guest mode
     }
 
@@ -38,7 +38,7 @@ class SafeAuthService {
       if (user) {
         return user;
       }
-    } catch (error) {
+    } catch {
       // Auth service error, returning guest user
     }
 
@@ -52,7 +52,7 @@ class SafeAuthService {
   async isAuthenticated(): Promise<boolean> {
     try {
       return await authService.isAuthenticated();
-    } catch (error) {
+    } catch {
       // Auth check failed, assuming guest
       return false;
     }
@@ -67,7 +67,7 @@ class SafeAuthService {
       if (token) {
         return token;
       }
-    } catch (error) {
+    } catch {
       // Auth service error, generate guest token
     }
 
@@ -134,7 +134,7 @@ class SafeAuthService {
   async login(credentials: unknown): Promise<unknown> {
     try {
       return await authService.login(credentials);
-    } catch (error) {
+    } catch {
       // Login failed
       throw error; // Re-throw for UI handling
     }
@@ -146,7 +146,7 @@ class SafeAuthService {
   async logout(): Promise<void> {
     try {
       await authService.logout();
-    } catch (error) {
+    } catch {
       // Logout error
     }
 

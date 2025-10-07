@@ -70,7 +70,7 @@ class EnvironmentSwitcher {
         logger.warn('🚨 Backend health check failed, considering fallback to mock APIs');
         await this.fallbackToMockAPIs();
       }
-    } catch (error) {
+    } catch {
       logger.error('❌ Backend health check error:', error);
       this.backendStatus = {
         available: false,
@@ -117,7 +117,7 @@ class EnvironmentSwitcher {
       logger.info(`🎭 Mock API: ${Config.USE_MOCK_API ? 'Enabled' : 'Disabled'}`);
 
       return true;
-    } catch (error) {
+    } catch {
       logger.error('❌ Error switching environment:', error);
       return false;
     }
@@ -180,7 +180,7 @@ class EnvironmentSwitcher {
       if (savedEnv && ['development', 'staging', 'production'].includes(savedEnv)) {
         await this.switchEnvironment(savedEnv as Environment);
       }
-    } catch (error) {
+    } catch {
       logger.error('Error loading saved environment:', error);
     }
   }

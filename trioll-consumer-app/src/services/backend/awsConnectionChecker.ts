@@ -172,7 +172,7 @@ class AWSConnectionChecker {
             table: tableName,
             status: response.Table?.TableStatus || 'Unknown',
           });
-        } catch (error) {
+        } catch {
           tableStatuses.push({
             table: tableName,
             status: 'Not accessible',
@@ -252,7 +252,7 @@ class AWSConnectionChecker {
             bucket: bucketName,
             status: 'Accessible',
           });
-        } catch (error) {
+        } catch {
           bucketStatuses.push({
             bucket: bucketName,
             status: 'Not accessible',

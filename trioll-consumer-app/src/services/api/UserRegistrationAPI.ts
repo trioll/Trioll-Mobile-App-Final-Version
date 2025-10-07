@@ -76,7 +76,7 @@ class UserRegistrationAPI {
       }
 
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Registration API error:', error);
       throw error;
     }
@@ -123,7 +123,7 @@ class UserRegistrationAPI {
       }
 
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Verification API error:', error);
       throw error;
     }
@@ -171,7 +171,7 @@ class UserRegistrationAPI {
       }
 
       return result;
-    } catch (error) {
+    } catch {
       logger.error('Resend verification error:', error);
       throw error;
     }

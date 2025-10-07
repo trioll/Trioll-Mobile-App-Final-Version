@@ -74,7 +74,7 @@ class CrashReporter {
       this.initialized = true;
       this.setupContextEnrichment();
       this.setupErrorBoundaries();
-    } catch (error) {
+    } catch {
       logger.error('Failed to initialize crash reporter:', error);
     }
   }
@@ -312,12 +312,12 @@ class CrashReporter {
   // Monitor memory usage
   private monitorMemory() {
     setInterval(() => {
-      // @ts-ignore - performance.memory might not be available
+      // @ts-expect-error - performance.memory might not be available
       if (global.performance?.memory) {
-        // @ts-ignore
+        // @ts-expect-error - performance.memory type not defined
         const memoryUsage =
           global.performance.memory.usedJSHeapSize /
-          // @ts-ignore
+          // @ts-expect-error - performance.memory type not defined
           global.performance.memory.totalJSHeapSize;
 
         this.crashContext.memoryUsage = Math.round(memoryUsage * 100);
@@ -409,7 +409,7 @@ class CrashReporter {
 
       // Clear reported crashes
       await AsyncStorage.removeItem('offline_crashes');
-    } catch (error) {
+    } catch {
       logger.error('Failed to report offline crashes:', error);
     }
   }
@@ -436,7 +436,7 @@ class CrashReporter {
       const result = await callback();
       transaction?.setStatus('ok');
       return result;
-    } catch (error) {
+    } catch {
       transaction?.setStatus('internal_error');
       throw error;
     } finally {

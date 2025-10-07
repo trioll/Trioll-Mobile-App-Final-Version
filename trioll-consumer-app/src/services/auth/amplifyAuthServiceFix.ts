@@ -38,7 +38,7 @@ export const ensureGuestCredentials = async () => {
       identityId: session.identityId,
       credentials: session.credentials
     };
-  } catch (error) {
+  } catch {
     logger.error('Failed to get guest credentials:', error);
     
     // Fallback: Generate local guest credentials
@@ -64,7 +64,7 @@ export const testAmplifyConfig = async () => {
     console.log('Is Guest:', !session.tokens);
     console.log('========================');
     return true;
-  } catch (error) {
+  } catch {
     console.error('=== AMPLIFY CONFIG ERROR ===');
     console.error(error);
     console.error('========================');

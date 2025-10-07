@@ -34,7 +34,7 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
   onClose,
   currentUserId,
 }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   const [comment, setComment] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -73,7 +73,7 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
       const api = TriollAPIModule.default;
       const response = await api.getGameComments(gameId);
       setComments(response.comments || []);
-    } catch (error) {
+    } catch {
       logger.error('Failed to load comments:', error);
       // Use mock comments as fallback
       setComments([
@@ -99,7 +99,7 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
       haptics.impact('success');
       // Reload comments
       await loadComments();
-    } catch (error) {
+    } catch {
       logger.error('Failed to submit comment:', error);
       haptics.impact('error');
     } finally {
@@ -132,7 +132,7 @@ export const CommentSection: React.FC<CommentSectionProps> = ({
         styles.container, 
         { 
           height: expandedHeight,
-          paddingBottom: insets.bottom 
+          paddingBottom: _insets.bottom 
         }
       ]}
     >

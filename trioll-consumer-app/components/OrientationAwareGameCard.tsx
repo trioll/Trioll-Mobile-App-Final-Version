@@ -1,23 +1,21 @@
 import type { Game } from '../types';
-import React, { useRef, useEffect, useMemo, useCallback, useState } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import { 
   View, 
   StyleSheet, 
   Animated, 
-  PanResponder,
   Pressable,
   useWindowDimensions,
   Modal
 } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { BlurView } from 'expo-blur';
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { Text } from './base';
 import { SafeImage, DEFAULT_GAME_IMAGE } from './base/SafeImage';
 import { TriollPlayButton } from './TriollPlayButton';
-import { SPRING_CONFIGS, DURATIONS } from '../constants/animations';
+import { SPRING_CONFIGS } from '../constants/animations';
 import { useHaptics, useOrientation } from '../hooks';
 import { useOrientationTransition } from '../hooks/useOrientationTransition';
 
@@ -60,11 +58,11 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
   currentRating = 0,
 }) => {
   const { width: screenWidth, height: screenHeight } = useOrientation();
-  const windowDimensions = useWindowDimensions();
-  const insets = useSafeAreaInsets();
+  const _windowDimensions = useWindowDimensions();
+  const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   
-  const { isPortrait, transitionProgress, portraitValue, landscapeValue } = useOrientationTransition({
+  const { isPortrait } = useOrientationTransition({
     duration: 300,
     enableLayoutAnimation: true,
   });
@@ -75,7 +73,7 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
   const buttonScale = useRef(new Animated.Value(1)).current;
   
   // Double tap tracking
-  const lastTapRef = useRef<number>(0);
+  const _lastTapRef = useRef<number>(0);
   
   // Rating modal state
   const [showRatingModal, setShowRatingModal] = useState(false);
@@ -83,11 +81,11 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
   const [userRating, setUserRating] = useState(0); // Track user's submitted rating
 
   // Calculate dimensions based on orientation
-  const imageHeight = isPortrait 
+  const _imageHeight = isPortrait 
     ? screenWidth / PORTRAIT_IMAGE_ASPECT_RATIO 
     : screenHeight;
 
-  const handleDoubleTap = useCallback(() => {
+  const _handleDoubleTap = useCallback(() => {
     if (!onLike) return;
     
     haptics.impact('medium');
@@ -210,7 +208,7 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
     <View style={[
       styles.actionButtons,
       { 
-        right: isPortrait ? 16 : Math.max(insets.right, 16) + 30, // Add extra padding in landscape for safe area
+        right: isPortrait ? 16 : Math.max(_insets.right, 16) + 30, // Add extra padding in landscape for safe area
         bottom: isPortrait ? 100 : 20, // Adjust bottom position in landscape
         top: isPortrait ? undefined : 60, // Account for top tab bar in landscape
         gap: isPortrait ? 20 : 12, // Reduce gap between buttons in landscape

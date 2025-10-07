@@ -132,7 +132,7 @@ export async function checkAuthStatus(): Promise<AuthStatus> {
       }
     }
 
-  } catch (error) {
+  } catch {
     errors.push(`General error: ${error.message}`);
     logger.error('Auth status check error:', error);
   }

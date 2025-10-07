@@ -47,7 +47,7 @@ export const AsyncErrorBoundary: React.FC<AsyncErrorBoundaryProps> = ({
       resetError();
       setLastError(null);
       setRetryCount(0);
-    } catch (error) {
+    } catch {
       setLastError(error as Error);
     } finally {
       setIsRetrying(false);

@@ -116,7 +116,7 @@ class EnvironmentActivator {
     };
 
     if (this.status.isTransitioning) {
-      (result as any).errors.push('Environment transition already in progress');
+      result.errors?.push('Environment transition already in progress');
       return result;
     }
 
@@ -130,7 +130,7 @@ class EnvironmentActivator {
       const validation = await this.validateEnvironment('staging');
 
       if (!validation.isValid) {
-        (result as any).errors.push(...(validation as any).errors);
+        result.errors?.push(...(validation.errors || []));
         throw new Error('Staging environment validation failed');
       }
 
@@ -143,13 +143,13 @@ class EnvironmentActivator {
       result.services = connectivity.services;
 
       if (!connectivity.allServicesAvailable) {
-        (result as any).errors.push('Not all staging services are available');
+        result.errors?.push('Not all staging services are available');
         if (!connectivity.services.api)
-          (result as any).errors.push('API Gateway not accessible');
+          result.errors?.push('API Gateway not accessible');
         if (!connectivity.services.auth)
-          (result as any).errors.push('Cognito service not accessible');
+          result.errors?.push('Cognito service not accessible');
         if (!(connectivity.services as unknown).database)
-          (result as any).errors.push('DynamoDB not accessible');
+          result.errors?.push('DynamoDB not accessible');
         throw new Error('Service connectivity check failed');
       }
 
@@ -165,14 +165,14 @@ class EnvironmentActivator {
       logger.info('\n✅ Phase 5: Verifying functionality...\n');
       const verification = await this.verifyFunctionality();
 
-      if (!(verification as any).success) {
-        (result as any).errors.push('Functionality verification failed');
+      if (!verification.success) {
+        result.errors?.push('Functionality verification failed');
         await this.rollbackToDevelopment();
         throw new Error('Post-switch verification failed');
       }
 
       // Success!
-      (result as any).success = true;
+      result.success = true;
       result.environment = 'staging';
       this.status.current = 'staging';
       this.status.fallbackActive = false;
@@ -190,8 +190,8 @@ class EnvironmentActivator {
         services: result.services,
       });
     } catch (error: unknown) {
-      logger.error('❌ Environment activation failed:', error);
-      (result as any).errors.push(error.message);
+      logger.error('❌ Environment activation failed:');
+      result.errors?.push(error instanceof Error ? error.message : String(error));
 
       // Ensure we're back in development mode
       await this.rollbackToDevelopment();
@@ -225,7 +225,7 @@ class EnvironmentActivator {
     // Prevent production activation
     if (env === 'production') {
       validation.isValid = false;
-      (validation as any).errors.push(
+      validation.errors.push(
         'Production environment activation not allowed through this interface'
       );
       return validation;
@@ -235,7 +235,7 @@ class EnvironmentActivator {
     const netInfo = await Network.getNetworkStateAsync();
     if (!netInfo.isConnected || !netInfo.isInternetReachable) {
       validation.isValid = false;
-      (validation as any).errors.push('No network connectivity');
+      validation.errors.push('No network connectivity');
       return validation;
     }
 
@@ -245,17 +245,17 @@ class EnvironmentActivator {
 
       // Check required endpoints
       if (!stagingConfig.API_BASE_URL) {
-        (validation as any).errors.push('Missing API base URL');
+        validation.errors.push('Missing API base URL');
         validation.isValid = false;
       }
 
       if (!stagingConfig.USER_POOL_ID || !stagingConfig.USER_POOL_CLIENT_ID) {
-        (validation as any).errors.push('Missing Cognito configuration');
+        validation.errors.push('Missing Cognito configuration');
         validation.isValid = false;
       }
 
       if (!stagingConfig.GAMES_TABLE || !stagingConfig.USERS_TABLE) {
-        (validation as any).errors.push('Missing DynamoDB table names');
+        validation.errors.push('Missing DynamoDB table names');
         validation.isValid = false;
       }
 
@@ -342,9 +342,9 @@ class EnvironmentActivator {
     try {
       logger.info('Testing DynamoDB access...');
       // This would be a lightweight query through the API
-      (services as any).database = services.api; // If API is available, assume DynamoDB is accessible
-      (this.status.services as unknown).database = { available: (services as any).database };
-      logger.info(`✅ DynamoDB: ${(services as any).database ? 'Available' : 'Unavailable'}`);
+      const database = services.api; // If API is available, assume DynamoDB is accessible
+      (this.status.services as Record<string, unknown>).database = { available: database };
+      logger.info(`✅ DynamoDB: ${database ? 'Available' : 'Unavailable'}`);
     } catch (error: unknown) {
       logger.info(`❌ DynamoDB: ${error.message}`);
       (this.status.services as unknown).database = { available: false, error: error.message };
@@ -364,7 +364,7 @@ class EnvironmentActivator {
       }
     }
 
-    const allServicesAvailable = services.api && services.auth && (services as any).database;
+    const allServicesAvailable = services.api && services.auth && (this.status.services as Record<string, unknown>).database;
     this.status.lastCheck = Date.now();
 
     return { allServicesAvailable, services };
@@ -416,22 +416,22 @@ class EnvironmentActivator {
       if (!Config.USE_MOCK_API) {
         const testResponse = await fetch(`${Config.API_BASE_URL}/health`);
         if (!testResponse.ok && testResponse.status !== 404) {
-          (verification as any).success = false;
-          (verification as any).errors.push('API health check failed');
+          verification.success = false;
+          verification.errors.push('API health check failed');
         }
       }
 
       // Verify auth service is responsive
       const authMode = safeAuthService.getAuthMode();
       if (Config.USE_MOCK_API && authMode !== 'mock') {
-        (verification as any).success = false;
-        (verification as any).errors.push('Auth service not in expected mode');
+        verification.success = false;
+        verification.errors.push('Auth service not in expected mode');
       }
 
       logger.info('✅ Functionality verification passed');
     } catch (error: unknown) {
-      (verification as any).success = false;
-      (verification as any).errors.push(error.message);
+      verification.success = false;
+      verification.errors.push(error instanceof Error ? error.message : String(error));
     }
 
     return verification;
@@ -464,8 +464,8 @@ class EnvironmentActivator {
         to: 'development',
         reason: 'activation_failed',
       });
-    } catch (error) {
-      logger.error('Rollback error:', error);
+    } catch {
+      logger.error('Rollback error:');
     }
   }
 
@@ -561,8 +561,8 @@ class EnvironmentActivator {
       }
 
       logger.info('🧹 Caches cleared');
-    } catch (error) {
-      logger.error('Cache clear error:', error);
+    } catch {
+      logger.error('Cache clear error:');
     }
   }
 
@@ -572,8 +572,8 @@ class EnvironmentActivator {
   private async saveEnvironmentPreference(env: Environment) {
     try {
       await AsyncStorage.setItem(ENVIRONMENT_STORAGE_KEY, env);
-    } catch (error) {
-      logger.error('Failed to save environment preference:', error);
+    } catch {
+      logger.error('Failed to save environment preference:');
     }
     return;
 }
@@ -585,8 +585,8 @@ class EnvironmentActivator {
     try {
       const saved = await AsyncStorage.getItem(ENVIRONMENT_STORAGE_KEY);
       return saved as Environment | null;
-    } catch (error) {
-      logger.error('Failed to load environment preference:', error);
+    } catch {
+      logger.error('Failed to load environment preference:');
       return null;
     }
   }
@@ -608,8 +608,8 @@ class EnvironmentActivator {
       const recentLogs = activationLogs.slice(-50);
 
       await AsyncStorage.setItem(ACTIVATION_LOG_KEY, JSON.stringify(recentLogs));
-    } catch (error) {
-      logger.error('Failed to log activation attempt:', error);
+    } catch {
+      logger.error('Failed to log activation attempt:');
     }
   }
 
@@ -620,8 +620,8 @@ class EnvironmentActivator {
     try {
       const logs = await AsyncStorage.getItem(ACTIVATION_LOG_KEY);
       return logs ? JSON.parse(logs) : [];
-    } catch (error) {
-      logger.error('Failed to get activation history:', error);
+    } catch {
+      logger.error('Failed to get activation history:');
       return [];
     }
   }

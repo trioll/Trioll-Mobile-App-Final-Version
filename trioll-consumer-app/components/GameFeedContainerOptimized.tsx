@@ -58,7 +58,7 @@ export const GameFeedContainerOptimized = React.memo<GameFeedContainerOptimizedP
       });
       
       logger.debug('Shared game:', game.title);
-    } catch (error) {
+    } catch {
       if (error instanceof Error && error.message !== 'User did not share') {
         logger.error('Share error:', error);
         if (onShareError) {

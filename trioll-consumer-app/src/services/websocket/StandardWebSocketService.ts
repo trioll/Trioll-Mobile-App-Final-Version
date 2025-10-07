@@ -53,7 +53,7 @@ export class StandardWebSocketService extends WebSocketService {
     try {
       this.connectionState = WebSocketConnectionState.CONNECTING;
       await super.connect(url || this.config.url);
-    } catch (error) {
+    } catch {
       this.connectionState = WebSocketConnectionState.ERROR;
       throw error;
     }
@@ -240,7 +240,7 @@ export class StandardWebSocketService extends WebSocketService {
       try {
         const standardMessage = adaptToStandardMessage(rawMessage);
         this.handleStandardMessage(standardMessage);
-      } catch (error) {
+      } catch {
         logger.error('Failed to process WebSocket message:', error);
       }
     });
@@ -256,7 +256,7 @@ export class StandardWebSocketService extends WebSocketService {
       typeHandlers.forEach(handler => {
         try {
           handler(message);
-        } catch (error) {
+        } catch {
           logger.error(`Error in ${message.type} handler:`, error);
         }
       });
@@ -268,7 +268,7 @@ export class StandardWebSocketService extends WebSocketService {
       channelHandlers.forEach(handler => {
         try {
           handler(message);
-        } catch (error) {
+        } catch {
           logger.error(`Error in ${message.channel} handler:`, error);
         }
       });

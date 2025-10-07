@@ -84,7 +84,7 @@ export const Config: EnvironmentConfig = environments[getEnvironment()];
 // Export helper to switch environments (for testing)
 export function setEnvironment(env: Environment): void {
   if (__DEV__) {
-    // @ts-ignore - Allow reassignment in dev
+    // @ts-expect-error - Allow reassignment in dev
     Object.assign(Config, environments[env]);
   }
 }

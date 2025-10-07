@@ -190,7 +190,7 @@ export class E2ETestFramework {
         summary: this.currentReport.summary,
         duration: Date.now() - this.testStartTime,
       });
-    } catch (error) {
+    } catch {
       console.error('E2E test execution error:', error);
       this.currentReport.overall = 'failed';
 
@@ -215,7 +215,7 @@ export class E2ETestFramework {
     if (suite.setup) {
       try {
         await suite.setup();
-      } catch (error) {
+      } catch {
         console.error(`Suite setup failed: ${error}`);
         return;
       }
@@ -238,7 +238,7 @@ export class E2ETestFramework {
     if (suite.teardown) {
       try {
         await suite.teardown();
-      } catch (error) {
+      } catch {
         console.error(`Suite teardown failed: ${error}`);
       }
     }
@@ -457,7 +457,7 @@ export class E2ETestFramework {
           // TODO: Implement user deletion when authService.deleteAccount is available
           // await authService.deleteAccount();
           console.log(`Skipping cleanup for user ${userId} - deleteAccount not implemented`);
-        } catch (error) {
+        } catch {
           console.error(`Failed to cleanup user ${userId}:`, error);
         }
       }
@@ -468,7 +468,7 @@ export class E2ETestFramework {
         const gameId = gameIds[i];
         try {
           await dynamoDBService.deleteItem('games', { id: gameId });
-        } catch (error) {
+        } catch {
           console.error(`Failed to cleanup game ${gameId}:`, error);
         }
       }
@@ -479,7 +479,7 @@ export class E2ETestFramework {
       this.testInteractions.clear();
 
       console.log('Test data cleanup completed');
-    } catch (error) {
+    } catch {
       console.error('Test data cleanup error:', error);
     }
   }

@@ -146,7 +146,7 @@ class CrashReportingService {
         // TODO: Implement actual crash reporting service integration
         // e.g., Sentry, Bugsnag, Firebase Crashlytics
         logger.info(`Would send ${reports.length} crash reports to service`);
-      } catch (error) {
+      } catch {
         logger.error('Failed to send crash reports', error);
         // Re-queue failed reports
         this.queue.unshift(...reports);
@@ -160,7 +160,7 @@ class CrashReportingService {
       try {
         // TODO: Implement actual crash reporting service integration
         logger.info('Would send crash report to service', report);
-      } catch (error) {
+      } catch {
         logger.error('Failed to send crash report', error);
       }
     }

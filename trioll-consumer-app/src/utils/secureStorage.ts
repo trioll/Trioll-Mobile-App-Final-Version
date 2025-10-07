@@ -20,7 +20,7 @@ export const secureSet = async (key: string, value: any): Promise<void> => {
   try {
     const stringValue = typeof value === 'string' ? value : JSON.stringify(value);
     await SecureStore.setItemAsync(key, stringValue);
-  } catch (error) {
+  } catch {
     logger.error(`Failed to store ${key}:`, error);
     throw error;
   }
@@ -40,7 +40,7 @@ export const secureGet = async <T = any>(key: string): Promise<T | null> => {
       // If parsing fails, return as string
       return value as unknown as T;
     }
-  } catch (error) {
+  } catch {
     logger.error(`Failed to get ${key}:`, error);
     return null;
   }
@@ -52,7 +52,7 @@ export const secureGet = async <T = any>(key: string): Promise<T | null> => {
 export const secureRemove = async (key: string): Promise<void> => {
   try {
     await SecureStore.deleteItemAsync(key);
-  } catch (error) {
+  } catch {
     logger.error(`Failed to remove ${key}:`, error);
     throw error;
   }
@@ -65,7 +65,7 @@ export const secureExists = async (key: string): Promise<boolean> => {
   try {
     const value = await SecureStore.getItemAsync(key);
     return value !== null;
-  } catch (error) {
+  } catch {
     logger.error(`Failed to check ${key}:`, error);
     return false;
   }
@@ -79,7 +79,7 @@ export const secureClear = async (): Promise<void> => {
     // Clear known keys
     const keys = Object.values(STORAGE_KEYS);
     await Promise.all(keys.map(key => secureRemove(key)));
-  } catch (error) {
+  } catch {
     logger.error('Failed to clear secure storage:', error);
     throw error;
   }

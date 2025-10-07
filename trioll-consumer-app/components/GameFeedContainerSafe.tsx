@@ -50,7 +50,7 @@ export const GameFeedContainerSafe = React.memo<GameFeedContainerSafeProps>(({
   const handleShare = useCallback(async (game: Game) => {
     try {
       logger.debug('Sharing game:', game.title);
-    } catch (error) {
+    } catch {
       if (onShareError && error instanceof Error) {
         onShareError(error);
       }

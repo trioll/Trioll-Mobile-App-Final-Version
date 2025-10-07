@@ -29,11 +29,11 @@ class SafeTriollAPI {
         clearTimeout(timeoutId);
         this.isConnected = true;
         return true;
-      } catch (error) {
+      } catch {
         clearTimeout(timeoutId);
-        throw error;
+        throw new Error("API connection failed");
       }
-    } catch (_error) {
+    } catch {
       // API connection check failed, will use fallback data
       this.isConnected = false;
       return false;
@@ -56,7 +56,7 @@ class SafeTriollAPI {
         ...response,
         games: response.games,
       };
-    } catch (_error) {
+    } catch {
       // Failed to fetch games from API
       this.isConnected = false;
       // Return Evolution Runner for testing
@@ -116,7 +116,7 @@ class SafeTriollAPI {
         ...response,
         games: response.games,
       };
-    } catch (_error) {
+    } catch {
       // Failed to fetch featured games from API
       this.isConnected = false;
       return { games: [], isUsingFallback: false };
@@ -137,7 +137,7 @@ class SafeTriollAPI {
         ...response,
         games: response.games,
       };
-    } catch (_error) {
+    } catch {
       // Failed to search games from API
       this.isConnected = false;
       // If searching for evolution, return Evolution Runner
@@ -164,7 +164,7 @@ class SafeTriollAPI {
 
       // Return the game without filtering
       return response;
-    } catch (_error) {
+    } catch {
       // Failed to fetch game details from API
       this.isConnected = false;
 
@@ -185,8 +185,8 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.likeGame(gameId);
-    } catch (error) {
-      console.error('[SafeTriollAPI] Like game error:', error);
+    } catch {
+      // Failed to like game via API
       // Failed to like game via API, storing locally
       return { success: true, stored: 'local' };
     }
@@ -199,7 +199,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.unlikeGame(gameId);
-    } catch (_error) {
+    } catch {
       // Failed to unlike game via API, storing locally
       return { success: true, stored: 'local' };
     }
@@ -212,7 +212,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.bookmarkGame(gameId);
-    } catch (_error) {
+    } catch {
       // Failed to bookmark game via API, storing locally
       return { success: true, stored: 'local' };
     }
@@ -225,7 +225,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.unbookmarkGame(gameId);
-    } catch (_error) {
+    } catch {
       // Failed to unbookmark game via API, removing locally
       return { success: true, stored: 'local' };
     }
@@ -238,7 +238,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local', rating };
       }
       return await this.api.rateGame(gameId, rating);
-    } catch (_error) {
+    } catch {
       // Failed to rate game via API, storing locally
       return { success: true, stored: 'local', rating };
     }
@@ -251,7 +251,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.playGame(gameId, sessionId, duration);
-    } catch (_error) {
+    } catch {
       // Failed to record play via API, storing locally
       return { success: true, stored: 'local' };
     }
@@ -264,7 +264,7 @@ class SafeTriollAPI {
         return [];
       }
       return await this.api.getFriends(userId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return [];
     }
@@ -276,7 +276,7 @@ class SafeTriollAPI {
         return [];
       }
       return await this.api.getFriendRequests();
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return [];
     }
@@ -288,7 +288,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.sendFriendRequest(targetUserId, message);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -300,7 +300,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.acceptFriendRequest(requestId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -312,7 +312,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.rejectFriendRequest(requestId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -324,7 +324,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.removeFriend(friendUserId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -336,7 +336,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.blockUser(targetUserId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -348,7 +348,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local' };
       }
       return await this.api.unblockUser(targetUserId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local' };
     }
@@ -360,7 +360,7 @@ class SafeTriollAPI {
         return [];
       }
       return await this.api.getFriendActivity(limit);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return [];
     }
@@ -372,7 +372,7 @@ class SafeTriollAPI {
         return [];
       }
       return await this.api.searchFriends(query);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return [];
     }
@@ -384,7 +384,7 @@ class SafeTriollAPI {
         return [];
       }
       return await this.api.getSuggestedFriends(limit);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return [];
     }
@@ -396,7 +396,7 @@ class SafeTriollAPI {
         return { success: false };
       }
       return await this.api.getUserProfile(userId);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: false };
     }
@@ -408,7 +408,7 @@ class SafeTriollAPI {
         return { success: true, stored: 'local', data };
       }
       return await this.api.updateUserProfile(data);
-    } catch (_error) {
+    } catch {
       this.isConnected = false;
       return { success: true, stored: 'local', data };
     }

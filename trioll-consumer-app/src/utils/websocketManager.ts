@@ -128,7 +128,7 @@ export class WebSocketManager {
       });
 
       this.setupEventHandlers();
-    } catch (error) {
+    } catch {
       logger.error('Failed to create WebSocket', error);
       this.handleError(error as Error);
     }
@@ -265,7 +265,7 @@ export class WebSocketManager {
 
       // Track message received
       performanceMonitor.trackWebSocketMessage('received', message.type);
-    } catch (error) {
+    } catch {
       logger.error('Failed to parse WebSocket message', error);
     }
   }
@@ -313,7 +313,7 @@ export class WebSocketManager {
       subscribers.forEach((callback) => {
         try {
           callback(data);
-        } catch (error) {
+        } catch {
           logger.error(`Subscriber error for channel ${channel}`, error);
         }
       });
@@ -375,7 +375,7 @@ export class WebSocketManager {
         
         // Track message sent
         performanceMonitor.trackWebSocketMessage('sent', message.type);
-      } catch (error) {
+      } catch {
         logger.error('Failed to send message', error);
         this.queueMessage(queuedMessage);
       }
@@ -421,7 +421,7 @@ export class WebSocketManager {
       try {
         this.ws?.send(JSON.stringify(queuedMessage.message));
         await this.delay(100); // Rate limiting
-      } catch (error) {
+      } catch {
         logger.error('Failed to send queued message', error);
         
         queuedMessage.retryCount++;
@@ -441,7 +441,7 @@ export class WebSocketManager {
         'websocket_message_queue',
         JSON.stringify(this.messageQueue)
       );
-    } catch (error) {
+    } catch {
       logger.error('Failed to save message queue', error);
     }
   }
@@ -453,7 +453,7 @@ export class WebSocketManager {
         this.messageQueue = JSON.parse(data);
         logger.info(`Loaded ${this.messageQueue.length} queued messages`);
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load message queue', error);
     }
   }
@@ -517,7 +517,7 @@ export class WebSocketManager {
     this.stateChangeListeners.forEach(listener => {
       try {
         listener(state);
-      } catch (error) {
+      } catch {
         logger.error('Error in state change listener:', error);
       }
     });

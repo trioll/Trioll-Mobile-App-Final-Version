@@ -136,7 +136,7 @@ class HealthCheckService {
 
       // Track health check
       performanceMonitor.recordMetric('health_check_duration', Date.now() - result.timestamp);
-    } catch (error) {
+    } catch {
       logger.error('Health check error:', error);
       result.overall = 'unavailable';
       result.recommendations.push('Health check system error');

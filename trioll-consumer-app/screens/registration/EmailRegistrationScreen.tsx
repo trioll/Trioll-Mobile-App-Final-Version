@@ -109,7 +109,9 @@ export const EmailRegistrationScreen = () => {
         setEmailSuggestion(suggestion);
 
         // Check availability
-        emailCheckTimer.current && clearTimeout(emailCheckTimer.current);
+        if (emailCheckTimer.current) {
+          clearTimeout(emailCheckTimer.current);
+        }
         emailCheckTimer.current = window.setTimeout(async () => {
           setCheckingEmail(true);
           const result = await registrationService.checkEmailAvailability(formData.email);
@@ -136,7 +138,9 @@ export const EmailRegistrationScreen = () => {
       setUsernameSuggestions([]);
 
       if (!usernameError) {
-        usernameCheckTimer.current && clearTimeout(usernameCheckTimer.current);
+        if (usernameCheckTimer.current) {
+          clearTimeout(usernameCheckTimer.current);
+        }
         usernameCheckTimer.current = window.setTimeout(async () => {
           setCheckingUsername(true);
           const result = await registrationService.checkUsernameAvailability(formData.username);

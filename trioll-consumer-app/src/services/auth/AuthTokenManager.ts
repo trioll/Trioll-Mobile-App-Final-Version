@@ -24,7 +24,7 @@ export class AuthTokenManager {
       if (tokens.idToken) {
         await SecureStore.setItemAsync(ID_TOKEN_KEY, tokens.idToken);
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to save tokens:', error);
       throw error;
     }
@@ -33,7 +33,7 @@ export class AuthTokenManager {
   static async getAccessToken(): Promise<string | null> {
     try {
       return await SecureStore.getItemAsync(ACCESS_TOKEN_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to get access token:', error);
       return null;
     }
@@ -42,7 +42,7 @@ export class AuthTokenManager {
   static async getRefreshToken(): Promise<string | null> {
     try {
       return await SecureStore.getItemAsync(REFRESH_TOKEN_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to get refresh token:', error);
       return null;
     }
@@ -51,7 +51,7 @@ export class AuthTokenManager {
   static async getIdToken(): Promise<string | null> {
     try {
       return await SecureStore.getItemAsync(ID_TOKEN_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to get ID token:', error);
       return null;
     }
@@ -62,7 +62,7 @@ export class AuthTokenManager {
       await SecureStore.deleteItemAsync(ACCESS_TOKEN_KEY);
       await SecureStore.deleteItemAsync(REFRESH_TOKEN_KEY);
       await SecureStore.deleteItemAsync(ID_TOKEN_KEY);
-    } catch (error) {
+    } catch {
       logger.error('Failed to clear tokens:', error);
     }
     return;

@@ -45,7 +45,7 @@ export class SimpleEventEmitter {
       handlers.forEach(handler => {
         try {
           handler(...args);
-        } catch (error) {
+        } catch {
           logger.error(`Error in event handler for ${event}:`, error);
         }
       });

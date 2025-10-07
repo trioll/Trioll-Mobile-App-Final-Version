@@ -44,7 +44,7 @@ export const IconBloom: React.FC<IconBloomProps> = ({
   onSettingsPress,
   onInventoryPress,
 }) => {
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
   const { width: screenWidth } = useOrientation();
   const haptics = useHaptics();
   const [bloomState, setBloomState] = useState<BloomState>('idle');
@@ -80,7 +80,7 @@ export const IconBloom: React.FC<IconBloomProps> = ({
   ).current;
 
   // Logo position with safe area
-  const logoTop = Math.max(insets.top + 12, 20);
+  const logoTop = Math.max(_insets.top + 12, 20);
   const logoLeft = isSmallScreen ? 12 : 16;
 
   // Create pan responder for drag selection

@@ -29,7 +29,7 @@ export const GuestModeDiagnostic = () => {
       console.log('Is Guest:', !session.tokens);
       console.log('===========================');
       
-    } catch (error) {
+    } catch {
       console.error('Diagnostic error:', error);
       setDiagnosticInfo({ error: error.message });
     }
@@ -55,7 +55,7 @@ export const GuestModeDiagnostic = () => {
       } else {
         setApiTestResult(`❌ Error: ${response.status} - ${JSON.stringify(data)}`);
       }
-    } catch (error) {
+    } catch {
       setApiTestResult(`❌ Failed: ${error.message}`);
     }
   };

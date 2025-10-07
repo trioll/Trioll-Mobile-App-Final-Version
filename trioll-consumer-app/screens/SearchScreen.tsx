@@ -1,6 +1,6 @@
 import type { Game } from './../src/types/api.types';
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, TextInput, Animated, Dimensions, ActivityIndicator, KeyboardAvoidingView, Platform, Modal, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { View, Text, StyleSheet, SafeAreaView, ScrollView, Pressable, TextInput, Animated, ActivityIndicator, KeyboardAvoidingView, Platform, Modal, TouchableOpacity } from 'react-native';
 import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -65,19 +65,19 @@ export const SearchScreen: React.FC = () => {
   const { width: screenWidth, height: screenHeight } = useOrientation();
   const insets = useSafeAreaInsets();
   const isPortrait = screenHeight > screenWidth;
-  const isCompact = screenWidth < 375;
+  const _isCompact = screenWidth < 375;
   
   const navigation = useNavigation<SearchScreenNavigationProp>();
   const haptics = useHaptics();
   const searchInputRef = useRef<TextInput>(null);
-  const resultsScrollRef = useRef<ScrollView>(null);
+  const _resultsScrollRef = useRef<ScrollView>(null);
 
   // Search states
   const [searchQuery, setSearchQuery] = useState('');
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [showFiltersSheet, setShowFiltersSheet] = useState(false);
   const [showCategoryBrowse, setShowCategoryBrowse] = useState(false);
-  const [searchMode, setSearchMode] = useState<SearchMode>('instant');
+  const [, setSearchMode] = useState<SearchMode>('instant');
   // PHASE 2 - Removed selectedMood state
 
   // Display states
@@ -97,7 +97,7 @@ export const SearchScreen: React.FC = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [resultCount, setResultCount] = useState(0);
   const [hasMore, setHasMore] = useState(true);
-  const [page, setPage] = useState(1);
+  const [, setPage] = useState(1);
 
   const [filters, setFilters] = useState<SearchFilters>({
     genres: [],
@@ -326,7 +326,7 @@ export const SearchScreen: React.FC = () => {
 
       // PHASE 2 - Removed mood filter logic
       // Apply category filter
-      const updatedFilters = selectedCategory
+      const _updatedFilters = selectedCategory
         ? {
             ...filters,
             genres: [selectedCategory.charAt(0).toUpperCase() + selectedCategory.slice(1)],
@@ -488,7 +488,7 @@ export const SearchScreen: React.FC = () => {
     return count;
   };
 
-  const highlightSearchTerms = (text: string) => {
+  const _highlightSearchTerms = (text: string) => {
     if (!searchQuery) return text;
     const regex = new RegExp(`(${searchQuery})`, 'gi');
     return text.split(regex).map((part, index) =>

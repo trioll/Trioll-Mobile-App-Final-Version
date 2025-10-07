@@ -142,7 +142,7 @@ class DynamoDBService {
         items: data.Items || [],
         nextToken: data.LastEvaluatedKey ? JSON.stringify(data.LastEvaluatedKey) : undefined,
       };
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_query_error', 1);
       throw error;
     }
@@ -180,7 +180,7 @@ class DynamoDBService {
       performanceMonitor.recordMetric('dynamodb_get_duration', Date.now() - startTime);
 
       return data.Item || null;
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_get_error', 1);
       throw error;
     }
@@ -232,7 +232,7 @@ class DynamoDBService {
         table: tableName,
         duration: Date.now() - startTime,
       });
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_put_error', 1);
       throw error;
     }
@@ -284,7 +284,7 @@ class DynamoDBService {
       }
 
       performanceMonitor.recordMetric('dynamodb_update_duration', Date.now() - startTime);
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_update_error', 1);
       throw error;
     }
@@ -331,7 +331,7 @@ class DynamoDBService {
       }
 
       performanceMonitor.recordMetric('dynamodb_delete_duration', Date.now() - startTime);
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_delete_error', 1);
       throw error;
     }
@@ -407,7 +407,7 @@ class DynamoDBService {
         itemCount: items.length,
         duration: Date.now() - startTime,
       });
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_batch_write_error', 1);
       throw error;
     }
@@ -469,7 +469,7 @@ class DynamoDBService {
         items: data.Items || [],
         nextToken: data.LastEvaluatedKey ? JSON.stringify(data.LastEvaluatedKey) : undefined,
       };
-    } catch (error) {
+    } catch {
       performanceMonitor.recordMetric('dynamodb_scan_error', 1);
       throw error;
     }
@@ -518,7 +518,7 @@ class DynamoDBService {
 
       logger.info(`Cleaned up ${deletedCount} test records from ${tableName}`);
       return deletedCount;
-    } catch (error) {
+    } catch {
       logger.error('Cleanup error:', error);
       throw error;
     }

@@ -49,7 +49,7 @@ class AuthAPI {
       }
 
       return response;
-    } catch (error) {
+    } catch {
       logger.error('Login error:', error);
       const message = error instanceof Error ? error.message : 'Login failed';
       return {
@@ -84,7 +84,7 @@ class AuthAPI {
       }
 
       return response;
-    } catch (error) {
+    } catch {
       logger.error('2FA verification error:', error);
       const message = error instanceof Error ? error.message : 'Verification failed';
       return {
@@ -107,7 +107,7 @@ class AuthAPI {
 
       const response = await authService.register(credentials);
       return response;
-    } catch (error) {
+    } catch {
       logger.error('Registration error:', error);
       const message = error instanceof Error ? error.message : 'Registration failed';
       return {
@@ -126,7 +126,7 @@ class AuthAPI {
     try {
       const response = await authService.verifyEmail(credentials);
       return response;
-    } catch (error) {
+    } catch {
       logger.error('Email verification error:', error);
       const message = error instanceof Error ? error.message : 'Verification failed';
       return {
@@ -145,7 +145,7 @@ class AuthAPI {
     try {
       const response = await authService.forgotPassword(credentials);
       return response;
-    } catch (error) {
+    } catch {
       logger.error('Forgot password error:', error);
       const message = error instanceof Error ? error.message : 'Failed to send reset code';
       return {
@@ -164,7 +164,7 @@ class AuthAPI {
     try {
       const response = await authService.resetPassword(credentials);
       return response;
-    } catch (error) {
+    } catch {
       logger.error('Reset password error:', error);
       const message = error instanceof Error ? error.message : 'Failed to reset password';
       return {
@@ -181,7 +181,7 @@ class AuthAPI {
     try {
       await authService.logout();
       await sessionManager.clearSession();
-    } catch (error) {
+    } catch {
       logger.error('Logout error:', error);
       // Clear session even if logout fails
       await sessionManager.clearSession();
@@ -195,7 +195,7 @@ class AuthAPI {
     try {
       const user = await safeAuthService.getCurrentUser();
       return user;
-    } catch (error) {
+    } catch {
       logger.error('Get current user error:', error);
       return null;
     }
@@ -207,7 +207,7 @@ class AuthAPI {
   async isAuthenticated(): Promise<boolean> {
     try {
       return await safeAuthService.isAuthenticated();
-    } catch (error) {
+    } catch {
       logger.error('Auth check error:', error);
       return false;
     }
@@ -220,7 +220,7 @@ class AuthAPI {
     try {
       const success = await authService.refreshTokens();
       return success;
-    } catch (error) {
+    } catch {
       logger.error('Token refresh error:', error);
       return false;
     }
@@ -233,7 +233,7 @@ class AuthAPI {
     try {
       // Not implemented in authService, always return true for now
       return true;
-    } catch (error) {
+    } catch {
       logger.error('Username check error:', error);
       // Assume unavailable on error
       return false;
@@ -247,7 +247,7 @@ class AuthAPI {
     try {
       // Not implemented in authService, always return true for now
       return true;
-    } catch (error) {
+    } catch {
       logger.error('Email check error:', error);
       // Assume unavailable on error
       return false;

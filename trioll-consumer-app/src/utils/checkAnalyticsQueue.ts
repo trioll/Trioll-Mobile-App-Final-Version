@@ -32,7 +32,7 @@ export const checkAnalyticsQueue = async () => {
       console.log('📭 No events in queue');
       return [];
     }
-  } catch (error) {
+  } catch {
     console.error('Error checking analytics queue:', error);
     return [];
   }

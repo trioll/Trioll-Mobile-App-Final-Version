@@ -57,13 +57,13 @@ export async function testAuthFlow() {
       // Make a simple API call
       const response = await api.getGames({ limit: 1 });
       console.log('   ✅ API call successful, got', response.games?.length || 0, 'games');
-    } catch (error) {
+    } catch {
       console.log('   ❌ API call failed:', error.message);
     }
     
     console.log('\n✅ Auth flow test complete!\n');
     
-  } catch (error) {
+  } catch {
     console.error('\n❌ Auth flow test failed:', error);
     logger.error('Test failed:', error);
   }

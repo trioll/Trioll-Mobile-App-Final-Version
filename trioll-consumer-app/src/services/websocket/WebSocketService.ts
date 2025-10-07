@@ -23,7 +23,7 @@ export class WebSocketService extends SimpleEventEmitter {
         try {
           const message = JSON.parse(event.data);
           this.handleMessage(message);
-        } catch (error) {
+        } catch {
           console.error('Failed to parse WebSocket message:', error);
         }
       };
@@ -38,7 +38,7 @@ export class WebSocketService extends SimpleEventEmitter {
         this.emit('disconnected');
         this.scheduleReconnect();
       };
-    } catch (error) {
+    } catch {
       throw error;
     }
   }

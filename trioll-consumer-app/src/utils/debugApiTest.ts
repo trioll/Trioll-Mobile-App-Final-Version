@@ -93,11 +93,11 @@ export async function runComprehensiveAPITest(): Promise<DebugTestResult> {
       result.apiTest.responseValid = true;
       result.apiTest.gameCount = games.games?.length || 0;
       result.success = true;
-    } catch (error) {
+    } catch {
       result.errors.push(`Games endpoint failed: ${error.message}`);
     }
 
-  } catch (error) {
+  } catch {
     result.errors.push(`Test failed: ${error.message}`);
   } finally {
     // Restore console methods

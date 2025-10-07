@@ -68,7 +68,7 @@ class OfflineQueueManager {
         this.queue = JSON.parse(data);
         logger.info(`Loaded ${this.queue.length} queued requests`);
       }
-    } catch (error) {
+    } catch {
       logger.error('Failed to load queued requests', error);
     }
   }
@@ -78,7 +78,7 @@ class OfflineQueueManager {
 
     try {
       await AsyncStorage.setItem(this.storageKey, JSON.stringify(this.queue));
-    } catch (error) {
+    } catch {
       logger.error('Failed to save queued requests', error);
     }
   }
@@ -160,7 +160,7 @@ class OfflineQueueManager {
         if (success) {
           processedRequests.push(request.id);
         }
-      } catch (error) {
+      } catch {
         logger.error(`Failed to process request ${request.id}`, error);
       }
 
@@ -203,7 +203,7 @@ class OfflineQueueManager {
         status: response.status,
       });
       return true; // Remove from queue
-    } catch (error) {
+    } catch {
       // Network error, retry
       return this.handleRetry(request);
     }

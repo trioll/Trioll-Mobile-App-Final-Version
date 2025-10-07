@@ -72,6 +72,8 @@ export const SafeImage = React.memo<SafeImageProps>(({
   return <Image {...props} source={optimizedSource} onError={handleError} />;
 });
 
+SafeImage.displayName = 'SafeImage';
+
 // Default placeholder image
 export const DEFAULT_GAME_IMAGE = {
   uri: 'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg',

@@ -29,7 +29,7 @@ export const DebugAPIPanel: React.FC = () => {
         result ? 'API is reachable!' : 'API connection failed',
         [{ text: 'OK' }]
       );
-    } catch (error) {
+    } catch {
       setLogs(prev => [...prev, `Error: ${error.message}`]);
     } finally {
       setIsRunning(false);
@@ -50,7 +50,7 @@ export const DebugAPIPanel: React.FC = () => {
         result.success ? 'API is working properly!' : 'API test failed - check logs',
         [{ text: 'OK' }]
       );
-    } catch (error) {
+    } catch {
       setLogs(prev => [...prev, `Error: ${error.message}`]);
     } finally {
       setIsRunning(false);
@@ -72,7 +72,7 @@ export const DebugAPIPanel: React.FC = () => {
     try {
       await runAPIDebugTest();
       setLogs(tempLogs);
-    } catch (error) {
+    } catch {
       setLogs(prev => [...prev, `Error: ${error.message}`]);
     } finally {
       console.log = originalLog;

@@ -30,7 +30,7 @@ export class BiometricAuthManager {
       const hasHardware = await LocalAuthentication.hasHardwareAsync();
       const isEnrolled = await LocalAuthentication.isEnrolledAsync();
       return hasHardware && isEnrolled;
-    } catch (error) {
+    } catch {
       logger.error('Error checking biometric availability:', error);
       return false;
     }
@@ -61,7 +61,7 @@ export class BiometricAuthManager {
         success: false,
         error: (result as any).error || 'Authentication failed',
       };
-    } catch (error) {
+    } catch {
       logger.error('Failed to enroll biometric:', error);
       return {
         success: false,
@@ -74,7 +74,7 @@ export class BiometricAuthManager {
     try {
       const enabled = await SecureStore.getItemAsync(`${BIOMETRIC_ENABLED_KEY_PREFIX}${userId}`);
       return enabled === 'true';
-    } catch (error) {
+    } catch {
       logger.error('Error checking biometric status:', error);
       return false;
     }
@@ -89,7 +89,7 @@ export class BiometricAuthManager {
         `${BIOMETRIC_CREDENTIALS_KEY_PREFIX}${userId}`,
         JSON.stringify(credentials)
       );
-    } catch (error) {
+    } catch {
       logger.error('Failed to save biometric credentials:', error);
       throw error;
     }
@@ -99,7 +99,7 @@ export class BiometricAuthManager {
     try {
       const stored = await SecureStore.getItemAsync(`${BIOMETRIC_CREDENTIALS_KEY_PREFIX}${userId}`);
       return stored ? JSON.parse(stored) : null;
-    } catch (error) {
+    } catch {
       logger.error('Failed to get stored credentials:', error);
       return null;
     }
@@ -128,7 +128,7 @@ export class BiometricAuthManager {
         success: false,
         error: (result as any).error || 'Authentication failed',
       };
-    } catch (error) {
+    } catch {
       logger.error('Biometric authentication error:', error);
       return {
         success: false,
@@ -141,7 +141,7 @@ export class BiometricAuthManager {
     try {
       await SecureStore.deleteItemAsync(`${BIOMETRIC_ENABLED_KEY_PREFIX}${userId}`);
       await SecureStore.deleteItemAsync(`${BIOMETRIC_CREDENTIALS_KEY_PREFIX}${userId}`);
-    } catch (error) {
+    } catch {
       logger.error('Failed to disable biometric:', error);
       throw error;
     }

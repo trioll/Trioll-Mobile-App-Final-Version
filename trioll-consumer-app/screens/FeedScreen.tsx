@@ -8,7 +8,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { GlassContainer, GlassButton, GlassCard } from '../src/components/core';
 import { DS } from '../src/styles/TriollDesignSystem';
 import { useApp } from '../context/AppContext';
 import { BottomSheet } from '../components/BottomSheet';
@@ -30,7 +29,6 @@ import { GuestIndicator } from '../components/guest/GuestIndicator';
 import { RegisterBenefitsModal } from '../components/guest/RegisterBenefitsModal';
 import { TutorialOverlay } from '../components/TutorialOverlay';
 import { WatchTab } from '../components/WatchTab';
-import { CommentSection } from '../components/CommentSection';
 
 import { getLogger } from '../src/utils/logger';
 
@@ -108,7 +106,7 @@ export const FeedScreen: React.FC = () => {
   const { isGuest } = useGuestMode();
 
   // API data hooks - get all games from S3 bucket
-  const { games: apiGames, isUsingApiData } = useGames(null, 100); // Get all games
+  const { games: apiGames } = useGames(null, 100); // Get all games
   const { featuredGames: apiFeaturedGames } = useFeaturedGames(5);
   const { likeGame: apiLikeGame, bookmarkGame: apiBookmarkGame, playGame } = useGameActions();
 
@@ -131,7 +129,7 @@ export const FeedScreen: React.FC = () => {
     x: screenWidth / 2,
     y: screenHeight / 2,
   });
-  const [currentGameId, setCurrentGameId] = useState<string | null>(null);
+  const [, setCurrentGameId] = useState<string | null>(null);
   // const [showTrialPlayer, setShowTrialPlayer] = useState(false);
   const [currentDisplayedGame, setCurrentDisplayedGame] = useState<Game | null>(null);
   const [isBottomSheetVisible, setIsBottomSheetVisible] = useState(true);
@@ -157,7 +155,7 @@ export const FeedScreen: React.FC = () => {
   const [showHeartAnimation, setShowHeartAnimation] = useState(false);
   const [heartAnimationPosition, setHeartAnimationPosition] = useState({ x: 0, y: 0 });
   const [showDailyFeatureModal, setShowDailyFeatureModal] = useState(false);
-  const [currentUserId, setCurrentUserId] = useState<string | null>(null);
+  const [, setCurrentUserId] = useState<string | null>(null);
   const [showTutorial, setShowTutorial] = useState(false);
 
   // Refs
@@ -647,7 +645,7 @@ export const FeedScreen: React.FC = () => {
   };
 
   // Render spotlight section
-  const renderSpotlightSection = (section: FeedSection) => (
+  const _renderSpotlightSection = (section: FeedSection) => (
     <View key={section.id} style={[styles.section, isPortrait && styles.sectionPortrait]}>
       <View style={[styles.sectionHeader, isPortrait && styles.sectionHeaderPortrait]}>
         <View>
@@ -685,7 +683,7 @@ export const FeedScreen: React.FC = () => {
   );
 
   // Render horizontal section
-  const renderHorizontalSection = (section: FeedSection) => (
+  const _renderHorizontalSection = (section: FeedSection) => (
     <View key={section.id} style={[styles.section, isPortrait && styles.sectionPortrait]}>
       <View style={[styles.sectionHeader, isPortrait && styles.sectionHeaderPortrait]}>
         <View>
@@ -712,7 +710,7 @@ export const FeedScreen: React.FC = () => {
   );
 
   // Render grid section
-  const renderGridSection = (section: FeedSection) => (
+  const _renderGridSection = (section: FeedSection) => (
     <View key={section.id} style={styles.section}>
       <View style={styles.sectionHeader}>
         <View>

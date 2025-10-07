@@ -120,7 +120,7 @@ if (__DEV__) {
       if (!validation.valid) {
         logger.warn('⚠️  Missing required environment variables:', validation.missing.join(', '));
       }
-    } catch (error) {
+    } catch {
       // If logger is not available, use console as fallback
                               
       const validation = validateEnvironment();

@@ -18,7 +18,7 @@ export const Keychain = {
       const value = JSON.stringify({ username, password });
       await SecureStore.setItemAsync(key, value);
       return true;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore setInternetCredentials error:', error);
       return false;
     }
@@ -37,7 +37,7 @@ export const Keychain = {
 
       const credentials = JSON.parse(value);
       return credentials;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore getInternetCredentials error:', error);
       return false;
     }
@@ -51,7 +51,7 @@ export const Keychain = {
       const key = `keychain_${server}`;
       await SecureStore.deleteItemAsync(key);
       return true;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore resetInternetCredentials error:', error);
       return false;
     }
@@ -71,7 +71,7 @@ export const Keychain = {
       const value = JSON.stringify({ username, password });
       await SecureStore.setItemAsync(key, value);
       return true;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore setGenericPassword error:', error);
       return false;
     }
@@ -91,7 +91,7 @@ export const Keychain = {
 
       const credentials = JSON.parse(value);
       return { ...credentials, service };
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore getGenericPassword error:', error);
       return false;
     }
@@ -106,7 +106,7 @@ export const Keychain = {
       const key = `keychain_generic_${service}`;
       await SecureStore.deleteItemAsync(key);
       return true;
-    } catch (error) {
+    } catch {
       logger.warn('SecureStore resetGenericPassword error:', error);
       return false;
     }

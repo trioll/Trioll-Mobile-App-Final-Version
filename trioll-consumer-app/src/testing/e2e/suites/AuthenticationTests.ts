@@ -101,7 +101,7 @@ export class AuthenticationTests {
               if (!confirmResult) {
                 errors.push('Email verification failed');
               }
-            } catch (error) {
+            } catch {
               // Expected in real environment without valid code
               errors.push('Cannot test email verification without real code');
             }
@@ -119,7 +119,7 @@ export class AuthenticationTests {
             if ((loginResult as unknown).success && registerResult.confirmationRequired) {
               errors.push('User able to login without email confirmation');
             }
-          } catch (error) {
+          } catch {
             // Expected behavior
           }
 
@@ -467,7 +467,7 @@ export class AuthenticationTests {
             if (!confirmResult) {
               errors.push('Password reset confirmation failed (expected with mock code)');
             }
-          } catch (error) {
+          } catch {
             // Expected without real code
           }
 
@@ -824,7 +824,7 @@ export class AuthenticationTests {
               if (!mfaResult) {
                 errors.push('MFA confirmation failed (expected with mock code)');
               }
-            } catch (error) {
+            } catch {
               // Expected without real MFA code
             }
 
@@ -896,7 +896,7 @@ export class AuthenticationTests {
               if (!oauthUrl.includes(provider)) {
                 errors.push(`${provider} OAuth URL generation failed`);
               }
-            } catch (error) {
+            } catch {
               errors.push(`${provider} OAuth setup failed`);
             }
           }
@@ -968,7 +968,7 @@ export class AuthenticationTests {
               if ((result as unknown).success) {
                 errors.push(`Weak password accepted: ${weakPass}`);
               }
-            } catch (error) {
+            } catch {
               // Expected - weak password rejected
             }
           }

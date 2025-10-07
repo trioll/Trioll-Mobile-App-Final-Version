@@ -228,7 +228,7 @@ class TriollAPI {
       
       // If response already has correct format, return as is
       return response as LikeResponse;
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       // Queue for offline processing if network error
       if (error instanceof ApiError && error.code === ApiErrorCode.NETWORK_ERROR) {
@@ -405,7 +405,7 @@ class TriollAPI {
           timestamp: new Date().toISOString(),
         }),
       });
-    } catch (error) {
+    } catch {
     const errorMessage = error instanceof Error ? error.message : String(error);
       // Only log analytics errors once per event type
       if (!this.loggedAnalyticsErrors.has(eventType)) {

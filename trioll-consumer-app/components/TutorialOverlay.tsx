@@ -35,7 +35,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({
   const pulseAnim = useRef(new Animated.Value(1)).current;
   const arrowAnim = useRef(new Animated.Value(0)).current;
   const haptics = useHaptics();
-  const insets = useSafeAreaInsets();
+  const _insets = useSafeAreaInsets();
 
   const TUTORIAL_STEPS: TutorialStep[] = [
     {
@@ -72,7 +72,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({
     },
     {
       id: 'menu_button',
-      target: { x: 20, y: insets.top + 20, width: 50, height: 50 },
+      target: { x: 20, y: _insets.top + 20, width: 50, height: 50 },
       title: 'Menu & Profile',
       description: 'Tap the logo to access menu options',
       icon: 'menu',
@@ -175,7 +175,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({
       case 'bottom': {
         const bottomTop = step.target.y + step.target.height + 30;
         tooltipStyle = {
-          top: Math.min(bottomTop, SCREEN_HEIGHT - tooltipHeight - insets.bottom - margin),
+          top: Math.min(bottomTop, SCREEN_HEIGHT - tooltipHeight - _insets.bottom - margin),
           left: Math.max(
             margin,
             Math.min(
@@ -193,7 +193,7 @@ export const TutorialOverlay: React.FC<TutorialOverlayProps> = ({
       case 'top': {
         const topBottom = step.target.y - tooltipHeight - 30;
         tooltipStyle = {
-          top: Math.max(insets.top + margin, topBottom),
+          top: Math.max(_insets.top + margin, topBottom),
           left: Math.max(
             margin,
             Math.min(
