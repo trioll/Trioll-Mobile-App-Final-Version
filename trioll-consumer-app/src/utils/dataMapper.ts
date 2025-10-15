@@ -23,15 +23,12 @@ const getGameCDNUrl = (gameId: string, gameUrl?: string): string => {
     return url;
   }
   
-  // Priority 3: New games with version pattern (e.g., deep-miner-v3-timestamp)
-  if (gameId.includes('-v')) {
-    const versionMatch = gameId.match(/^(.+?)-v\d+/);
-    if (versionMatch) {
-      const baseName = versionMatch[1].replace(/-/g, '_');
-      const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/${baseName}_game.html`;
-      console.log(`[CDN Router] New versioned game ${gameId}: ${url}`);
-      return url;
-    }
+  // Priority 3: For now, use index.html for ALL new games (including versioned ones)
+  // The developer portal might be using index.html as the standard entry point
+  if (!LEGACY_GAMES.includes(gameId)) {
+    const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
+    console.log(`[CDN Router] New game ${gameId}: ${url}`);
+    return url;
   }
   
   // Default: New CDN with index.html
