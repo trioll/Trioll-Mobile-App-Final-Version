@@ -211,10 +211,10 @@ export const mapGameData = (apiGame: ApiGame): Game => ({
   // Trial info
   // trialDuration: Number(apiGame.trialDuration || apiGame.minPlayTime || 5),
   trialType: (apiGame.trialType as 'webview' | 'native') || 'webview',
-  // Use smart CDN routing for trial URL
+  // Use smart CDN routing for trial URL - don't pass API URLs to force our routing logic
   trialUrl: getGameCDNUrl(
-    apiGame.gameId || apiGame.id || '', 
-    apiGame.trialUrl || apiGame.gameUrl || apiGame.downloadUrl
+    apiGame.gameId || apiGame.id || ''
+    // Intentionally not passing existing URLs to force our CDN routing
   ),
 
   // Release info
