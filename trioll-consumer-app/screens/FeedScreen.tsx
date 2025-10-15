@@ -113,6 +113,14 @@ export const FeedScreen: React.FC = () => {
 
   // Use API games if available, otherwise fallback to dummy games (which should contain all S3 games)
   const allGames = apiGames.length > 0 ? apiGames : dummyGames;
+  
+  // Debug logging
+  console.log('[FeedScreen] Games source:', {
+    apiGamesCount: apiGames.length,
+    usingAPI: apiGames.length > 0,
+    totalGames: allGames.length,
+    firstGame: allGames[0]?.title
+  });
 
   // Enable LayoutAnimation on Android (disabled for new architecture)
   useEffect(() => {
@@ -199,6 +207,7 @@ export const FeedScreen: React.FC = () => {
 
     // Use API data if available, otherwise use dummy data
     const dataSource = allGames;
+    console.log('[FeedScreen] Creating sections, dataSource length:', dataSource.length);
     const featuredSource =
       apiFeaturedGames.length > 0 ? apiFeaturedGames : dataSource.filter((_, idx) => idx % 3 === 0);
 
@@ -319,25 +328,33 @@ export const FeedScreen: React.FC = () => {
       type: 'horizontal',
     });
 
+    console.log('[FeedScreen] Total sections created:', sections.length, sections.map(s => ({id: s.id, games: s.games.length})));
     return sections;
-  }, []);
+  }, [allGames, apiFeaturedGames]);
 
   // Filter sections based on active filter
-  useMemo(() => {
+  const filteredSections = useMemo(() => {
+    let filtered: FeedSection[];
     switch (activeFilter) {
       case 'new':
-        return getFeedSections.filter(s => s.id === 'new_arrivals' || s.id === 'daily_featured');
+        filtered = getFeedSections.filter(s => s.id === 'new_arrivals' || s.id === 'daily_featured');
+        break;
       case 'trending':
-        return getFeedSections.filter(s => s.id === 'trending' || s.id === 'daily_featured');
+        filtered = getFeedSections.filter(s => s.id === 'trending' || s.id === 'daily_featured');
+        break;
       case 'friends':
-        return getFeedSections.filter(s => s.id === 'friends_playing' || s.id === 'daily_featured');
+        filtered = getFeedSections.filter(s => s.id === 'friends_playing' || s.id === 'daily_featured');
+        break;
       case 'genre':
-        return getFeedSections.filter(
+        filtered = getFeedSections.filter(
           s => s.id === 'popular_genre' || s.id === 'genre_spotlight' || s.id === 'daily_featured'
         );
+        break;
       default:
-        return getFeedSections;
+        filtered = getFeedSections;
     }
+    console.log('[FeedScreen] Filtered sections:', filtered.length, activeFilter);
+    return filtered;
   }, [activeFilter, getFeedSections]);
 
   // Get scale animation
@@ -449,6 +466,16 @@ export const FeedScreen: React.FC = () => {
     const scaleAnim = getScaleAnim(game.id);
     const isLiked = likes.has(game.id);
     const isBookmarked = bookmarks.has(game.id);
+    
+    // Debug logging
+    if (game.id.includes('-v')) {
+      console.log('[FeedScreen] Rendering game card:', {
+        id: game.id,
+        title: game.title,
+        thumbnailUrl: game.thumbnailUrl,
+        hasThumbnail: !!game.thumbnailUrl
+      });
+    }
 
     const friendsPlaying: FriendActivity[] = []; // TODO: Fetch from API when friends feature is implemented
     const isTrending = Math.random() > 0.7;

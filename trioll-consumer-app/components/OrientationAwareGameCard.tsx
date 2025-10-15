@@ -62,6 +62,19 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
   const _insets = useSafeAreaInsets();
   const haptics = useHaptics();
   
+  // Debug logging for thumbnails
+  React.useEffect(() => {
+    if (game.id.includes('-v')) {
+      console.log('[OrientationAwareGameCard] Game data:', {
+        id: game.id,
+        title: game.title,
+        thumbnailUrl: game.thumbnailUrl,
+        coverImageUrl: game.coverImageUrl,
+        imageSource: game.coverImageUrl || game.thumbnailUrl
+      });
+    }
+  }, [game]);
+  
   const { isPortrait } = useOrientationTransition({
     duration: 300,
     enableLayoutAnimation: true,
@@ -309,7 +322,7 @@ export const OrientationAwareGameCard: React.FC<OrientationAwareGameCardProps> =
       >
         <View style={StyleSheet.absoluteFillObject} pointerEvents="box-none">
           <SafeImage
-            source={{ uri: game.coverImageUrl || game.thumbnailUrl }}
+            source={{ uri: game.thumbnailUrl || game.coverImageUrl }}
             fallbackSource={DEFAULT_GAME_IMAGE}
             style={styles.gameImage}
             resizeMode="cover"

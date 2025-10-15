@@ -20,8 +20,10 @@ export const useGamesLoader = () => {
       
       const data = await response.json();
       if (data.games && Array.isArray(data.games)) {
+        console.log('[useGamesLoader] Raw API response for first game:', data.games[0]);
         // Map the games data to use correct CDN URLs
         const mappedGames = dataMapper.mapGamesArray(data.games);
+        console.log('[useGamesLoader] Mapped first game:', mappedGames[0]);
         setGames(mappedGames);
       }
     } catch (error) {
