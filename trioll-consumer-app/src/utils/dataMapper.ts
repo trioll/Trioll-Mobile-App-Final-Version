@@ -163,9 +163,33 @@ interface ApiStats {
 }
 
 // Maps API game response to existing Game type structure
-export const mapGameData = (apiGame: ApiGame): Game => ({
+export const mapGameData = (apiGame: ApiGame): Game => {
+  // Debug logging for new games
+  if ((apiGame.gameId || apiGame.id || '').includes('-v')) {
+    console.log('[DataMapper] Processing new game:', {
+      gameId: apiGame.gameId || apiGame.id,
+      apiTrialUrl: apiGame.trialUrl,
+      apiGameUrl: apiGame.gameUrl,
+      apiDownloadUrl: apiGame.downloadUrl
+    });
+  }
+  
+  const gameId = apiGame.gameId || apiGame.id || '';
+  const mappedTrialUrl = getGameCDNUrl(gameId);
+  
+  // Log the URL transformation
+  if (gameId.includes('-v')) {
+    console.log('[DataMapper] URL Transformation:', {
+      gameId,
+      originalTrialUrl: apiGame.trialUrl,
+      mappedTrialUrl,
+      willUse: mappedTrialUrl
+    });
+  }
+  
+  return {
   // Core fields
-  id: apiGame.gameId || apiGame.id || '',
+  id: gameId,
   title: apiGame.title || apiGame.name || 'Untitled Game',
 
   // Description fields
@@ -208,11 +232,8 @@ export const mapGameData = (apiGame: ApiGame): Game => ({
   // Trial info
   // trialDuration: Number(apiGame.trialDuration || apiGame.minPlayTime || 5),
   trialType: (apiGame.trialType as 'webview' | 'native') || 'webview',
-  // Use smart CDN routing for trial URL - don't pass API URLs to force our routing logic
-  trialUrl: getGameCDNUrl(
-    apiGame.gameId || apiGame.id || ''
-    // Intentionally not passing existing URLs to force our CDN routing
-  ),
+  // Use our pre-calculated mapped URL
+  trialUrl: mappedTrialUrl,
 
   // Release info
   releaseDate:
