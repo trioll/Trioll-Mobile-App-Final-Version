@@ -367,13 +367,12 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
 
 
   const hideHUD = useCallback(() => {
+    setShowHUD(false);
     Animated.timing(hudOpacity, {
       toValue: 0,
       duration: 300,
       useNativeDriver: true,
-    }).start(() => {
-      setShowHUD(false);
-    });
+    }).start();
   }, [hudOpacity]);
 
   const showHUDTemporarily = () => {

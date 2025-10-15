@@ -12,12 +12,15 @@ const LEGACY_GAMES = ['Evolution-Runner']; // Add more legacy games as needed
 const getGameCDNUrl = (gameId: string, gameUrl?: string): string => {
   // Priority 1: Use provided gameUrl if available
   if (gameUrl && gameUrl.length > 0) {
+    console.log(`[CDN Router] Using provided URL for ${gameId}: ${gameUrl}`);
     return gameUrl;
   }
   
   // Priority 2: Check if it's a legacy game
   if (LEGACY_GAMES.includes(gameId)) {
-    return `https://dk72g9i0333mv.cloudfront.net/${gameId}/index.html`;
+    const url = `https://dk72g9i0333mv.cloudfront.net/${gameId}/index.html`;
+    console.log(`[CDN Router] Legacy game ${gameId}: ${url}`);
+    return url;
   }
   
   // Priority 3: New games with version pattern (e.g., deep-miner-v3-timestamp)
@@ -25,12 +28,16 @@ const getGameCDNUrl = (gameId: string, gameUrl?: string): string => {
     const versionMatch = gameId.match(/^(.+?)-v\d+/);
     if (versionMatch) {
       const baseName = versionMatch[1].replace(/-/g, '_');
-      return `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/${baseName}_game.html`;
+      const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/${baseName}_game.html`;
+      console.log(`[CDN Router] New versioned game ${gameId}: ${url}`);
+      return url;
     }
   }
   
   // Default: New CDN with index.html
-  return `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
+  const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
+  console.log(`[CDN Router] Default new game ${gameId}: ${url}`);
+  return url;
 };
 
 // API Response Types
