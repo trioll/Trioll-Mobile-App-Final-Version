@@ -234,6 +234,22 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
       // Set the game URL from the game object - ALWAYS prioritize CloudFront (trialUrl)
       const finalUrl = game.trialUrl || game.gameUrl || '';
       const urlType = game.trialUrl ? 'CloudFront' : (game.gameUrl ? 'S3' : 'Fallback');
+      
+      console.log('🎮 [TrialPlayer] Loading game:', {
+        gameId: game.id,
+        gameTitle: game.title,
+        trialUrl: game.trialUrl,
+        gameUrl: game.gameUrl,
+        finalUrl: finalUrl || 'EMPTY - Will fallback to example.com!',
+        urlType: urlType
+      });
+      
+      // Extra logging for new games
+      if (game.id.includes('-v')) {
+        console.log('🎮 [TrialPlayer] New versioned game detected:', game.id);
+        console.log('🎮 [TrialPlayer] Generated URL:', finalUrl);
+      }
+      
       logger.debug('🎮 Initial game URL setup:', {
         gameId: game.id,
         gameTitle: game.title,
@@ -752,8 +768,13 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
             onMessage={handleWebViewMessage}
             onError={syntheticEvent => {
               const { nativeEvent } = syntheticEvent;
-              // WebView error: nativeEvent
-              // Failed URL: nativeEvent.url
+              console.error('❌ [WebView] Error loading game:', {
+                url: nativeEvent.url,
+                description: nativeEvent.description,
+                domain: nativeEvent.domain,
+                code: nativeEvent.code,
+                gameId: game?.id
+              });
 
               // If DNS error, fall back to offline game
               if (
@@ -779,7 +800,12 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
             }}
             onHttpError={async syntheticEvent => {
               const { nativeEvent } = syntheticEvent;
-              // WebView HTTP error: nativeEvent
+              console.error('❌ [WebView] HTTP Error:', {
+                url: nativeEvent.url,
+                statusCode: nativeEvent.statusCode,
+                description: nativeEvent.description,
+                gameId: game?.id
+              });
 
               // If we get a 403 error from CloudFront, retry with direct S3 URL
               if (nativeEvent.statusCode === 403 && nativeEvent.url?.includes('cloudfront')) {
@@ -817,6 +843,11 @@ export const TrialPlayerScreen: React.FC<TrialPlayerScreenProps> = ({ route, nav
             onLoadStart={(syntheticEvent) => {
               const { nativeEvent } = syntheticEvent;
               const actualLoadingUrl = nativeEvent.url;
+              console.log('🌐 [WebView] Started loading:', {
+                url: actualLoadingUrl,
+                gameId: game?.id,
+                gameTitle: game?.title
+              });
               const expectedUrl = game.trialUrl || gameUrl || 'NO URL';
               const isUsingCloudFront = actualLoadingUrl.includes('cloudfront.net');
               const isUsingS3 = actualLoadingUrl.includes('.s3.amazonaws.com');
