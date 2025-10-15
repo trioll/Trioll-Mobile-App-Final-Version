@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import { useApp } from '../context/AppContext';
 import { getLogger } from '../src/utils/logger';
+import { dataMapper } from '../src/utils/dataMapper';
 
 const logger = getLogger('useGamesLoader');
 const API_BASE_URL = 'https://4ib0hvu1xj.execute-api.us-east-1.amazonaws.com/prod';
@@ -19,7 +20,9 @@ export const useGamesLoader = () => {
       
       const data = await response.json();
       if (data.games && Array.isArray(data.games)) {
-        setGames(data.games);
+        // Map the games data to use correct CDN URLs
+        const mappedGames = dataMapper.mapGamesArray(data.games);
+        setGames(mappedGames);
       }
     } catch (error) {
       logger.debug('Fetch failed:', error);

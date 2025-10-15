@@ -9,31 +9,29 @@ import type { Game } from '../types/api.types';
 const LEGACY_GAMES = ['Evolution-Runner']; // Add more legacy games as needed
 
 // Smart CDN routing for game URLs
-const getGameCDNUrl = (gameId: string, gameUrl?: string): string => {
-  // Priority 1: Use provided gameUrl if available
-  if (gameUrl && gameUrl.length > 0) {
-    console.log(`[CDN Router] Using provided URL for ${gameId}: ${gameUrl}`);
-    return gameUrl;
-  }
-  
-  // Priority 2: Check if it's a legacy game
+const getGameCDNUrl = (gameId: string, gameUrl?: string, trialUrl?: string): string => {
+  // Priority 1: Check if it's a legacy game - use old CDN
   if (LEGACY_GAMES.includes(gameId)) {
     const url = `https://dk72g9i0333mv.cloudfront.net/${gameId}/index.html`;
     console.log(`[CDN Router] Legacy game ${gameId}: ${url}`);
     return url;
   }
   
-  // Priority 3: For now, use index.html for ALL new games (including versioned ones)
-  // The developer portal might be using index.html as the standard entry point
-  if (!LEGACY_GAMES.includes(gameId)) {
-    const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
-    console.log(`[CDN Router] New game ${gameId}: ${url}`);
-    return url;
+  // Priority 2: For new games, prefer gameUrl from new CDN
+  if (gameUrl && gameUrl.includes('dgq2nqysbn2z3.cloudfront.net')) {
+    console.log(`[CDN Router] Using new CDN gameUrl for ${gameId}: ${gameUrl}`);
+    return gameUrl;
   }
   
-  // Default: New CDN with index.html
+  // Priority 3: If trialUrl exists and is from old CDN, keep it as fallback
+  if (trialUrl && trialUrl.includes('dk72g9i0333mv.cloudfront.net')) {
+    console.log(`[CDN Router] Using old CDN as fallback for ${gameId}: ${trialUrl}`);
+    return trialUrl;
+  }
+  
+  // Priority 4: Default to new CDN with index.html
   const url = `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
-  console.log(`[CDN Router] Default new game ${gameId}: ${url}`);
+  console.log(`[CDN Router] Default new CDN for ${gameId}: ${url}`);
   return url;
 };
 
@@ -175,13 +173,14 @@ export const mapGameData = (apiGame: ApiGame): Game => {
   }
   
   const gameId = apiGame.gameId || apiGame.id || '';
-  const mappedTrialUrl = getGameCDNUrl(gameId);
+  const mappedTrialUrl = getGameCDNUrl(gameId, apiGame.gameUrl || apiGame.url, apiGame.trialUrl);
   
   // Log the URL transformation
   if (gameId.includes('-v')) {
     console.log('[DataMapper] URL Transformation:', {
       gameId,
       originalTrialUrl: apiGame.trialUrl,
+      originalGameUrl: apiGame.gameUrl,
       mappedTrialUrl,
       willUse: mappedTrialUrl
     });
@@ -266,7 +265,8 @@ export const mapGameData = (apiGame: ApiGame): Game => {
   status: apiGame.status || 'active',
   version: apiGame.version || '1.0.0',
   gameType: apiGame.gameType || 'html5',
-};};
+  };
+};
 
 // Maps array of games
 export const mapGamesArray = (apiResponse: unknown): Game[] => {
