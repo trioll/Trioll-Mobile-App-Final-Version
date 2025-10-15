@@ -5,18 +5,32 @@ import type { Game } from '../types/api.types';
  * Preserves backward compatibility with dummy data format
  */
 
-// Convert CloudFront URLs to S3 URLs to avoid 403 errors
-// NOTE: This is only used for gameUrl and image URLs, NOT for trialUrl
-// trialUrl should use CloudFront for optimal CDN performance
-const convertCloudFrontToS3Url = (url: string | undefined): string => {
-  if (!url) return '';
-  
-  // Replace CloudFront domain with S3 domain
-  if (url.includes('d33yj1oylm0icp.cloudfront.net')) {
-    return url.replace('d33yj1oylm0icp.cloudfront.net', 'trioll-prod-games-us-east-1.s3.amazonaws.com');
+// Legacy games list - hardcoded for performance
+const LEGACY_GAMES = ['Evolution-Runner']; // Add more legacy games as needed
+
+// Smart CDN routing for game URLs
+const getGameCDNUrl = (gameId: string, gameUrl?: string): string => {
+  // Priority 1: Use provided gameUrl if available
+  if (gameUrl && gameUrl.length > 0) {
+    return gameUrl;
   }
   
-  return url;
+  // Priority 2: Check if it's a legacy game
+  if (LEGACY_GAMES.includes(gameId)) {
+    return `https://dk72g9i0333mv.cloudfront.net/${gameId}/index.html`;
+  }
+  
+  // Priority 3: New games with version pattern (e.g., deep-miner-v3-timestamp)
+  if (gameId.includes('-v')) {
+    const versionMatch = gameId.match(/^(.+?)-v\d+/);
+    if (versionMatch) {
+      const baseName = versionMatch[1].replace(/-/g, '_');
+      return `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/${baseName}_game.html`;
+    }
+  }
+  
+  // Default: New CDN with index.html
+  return `https://dgq2nqysbn2z3.cloudfront.net/${gameId}/index.html`;
 };
 
 // API Response Types
@@ -153,21 +167,19 @@ export const mapGameData = (apiGame: ApiGame): Game => ({
   // Description fields
   description: apiGame.description || apiGame.desc || '',
 
-  // Image/Media fields - Convert CloudFront URLs to S3 to avoid 403 errors
-  thumbnailUrl: convertCloudFrontToS3Url(
+  // Image/Media fields - Keep as-is (don't convert)
+  thumbnailUrl: 
     apiGame.thumbnailUrl ||
     apiGame.thumbnail ||
     apiGame.image ||
     apiGame.imageUrl ||
-    'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg'
-  ),
-  coverImage: convertCloudFrontToS3Url(
+    'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg',
+  coverImageUrl: 
     apiGame.coverImage ||
     apiGame.thumbnailUrl ||
     apiGame.image ||
-    'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg'
-  ),
-  trailerUrl: convertCloudFrontToS3Url(apiGame.videoUrl || apiGame.video || ''),
+    'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg',
+  trailerUrl: apiGame.videoUrl || apiGame.video || '',
 
   // Category/Genre - Map category to genre for consistency
   genre: apiGame.genre || apiGame.category || 'General',
@@ -181,23 +193,22 @@ export const mapGameData = (apiGame: ApiGame): Game => ({
   // Developer info
   developer:
     apiGame.developer || (apiGame as any).developerName || apiGame.publisher || 'Unknown Developer',
-  publisherName:
+  publisher:
     apiGame.publisher || apiGame.publisherName || apiGame.developer || 'Unknown Publisher',
 
-  // Game details - Convert CloudFront URLs to S3
-  gameUrl: convertCloudFrontToS3Url(apiGame.gameUrl || apiGame.url || apiGame.downloadUrl || ''),
-  downloadUrl: convertCloudFrontToS3Url(apiGame.downloadUrl || apiGame.gameUrl || ''),
+  // Game details - Keep original URLs
+  gameUrl: apiGame.gameUrl || apiGame.url || apiGame.downloadUrl || '',
+  downloadUrl: apiGame.downloadUrl || apiGame.gameUrl || '',
   downloadSize: apiGame.size || apiGame.downloadSize || '100 MB',
 
   // Trial info
   // trialDuration: Number(apiGame.trialDuration || apiGame.minPlayTime || 5),
-  playCount: Number(apiGame.trialPlays || 0),
   trialType: (apiGame.trialType as 'webview' | 'native') || 'webview',
-  // DO NOT convert trialUrl - keep CloudFront URLs as-is for optimal CDN performance
-  trialUrl: apiGame.trialUrl ||
-    apiGame.gameUrl ||
-    apiGame.downloadUrl ||
-    `https://html5.gamedistribution.com/a55c9cc9c21e4fc683c8c6b7b3a5b6d7/?gdpr-targeting=1&gdpr-tracking=1&gdpr-third-party=0&fullscreen=1`,
+  // Use smart CDN routing for trial URL
+  trialUrl: getGameCDNUrl(
+    apiGame.gameId || apiGame.id || '', 
+    apiGame.trialUrl || apiGame.gameUrl || apiGame.downloadUrl
+  ),
 
   // Release info
   releaseDate:
