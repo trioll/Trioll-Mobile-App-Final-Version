@@ -266,7 +266,7 @@ export const mapGameData = (apiGame: ApiGame): Game => {
   status: apiGame.status || 'active',
   version: apiGame.version || '1.0.0',
   gameType: apiGame.gameType || 'html5',
-});
+};};
 
 // Maps array of games
 export const mapGamesArray = (apiResponse: unknown): Game[] => {
