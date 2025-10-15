@@ -195,12 +195,17 @@ export const mapGameData = (apiGame: ApiGame): Game => {
   description: apiGame.description || apiGame.desc || '',
 
   // Image/Media fields - Keep as-is (don't convert)
-  thumbnailUrl: 
-    apiGame.thumbnailUrl ||
-    apiGame.thumbnail ||
-    apiGame.image ||
-    apiGame.imageUrl ||
-    'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg',
+  thumbnailUrl: (() => {
+    const url = apiGame.thumbnailUrl ||
+      apiGame.thumbnail ||
+      apiGame.image ||
+      apiGame.imageUrl ||
+      'https://img.gamedistribution.com/07326c59e55a4796b087aa7c3ac51204-512x512.jpeg';
+    if (gameId.includes('-v')) {
+      console.log(`[DataMapper] Thumbnail for ${gameId}: ${url}`);
+    }
+    return url;
+  })(),
   coverImageUrl: 
     apiGame.coverImage ||
     apiGame.thumbnailUrl ||
