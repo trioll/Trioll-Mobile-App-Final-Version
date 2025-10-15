@@ -25,6 +25,7 @@ import { dummyGames } from '../data/dummyGames';
 import * as SecureStore from 'expo-secure-store';
 import { useGames, useFeaturedGames } from '../src/hooks/useGames';
 import { useGameActions } from '../hooks/useGameActions';
+import { SafeImage, DEFAULT_GAME_IMAGE } from '../components/base/SafeImage';
 import { GuestIndicator } from '../components/guest/GuestIndicator';
 import { RegisterBenefitsModal } from '../components/guest/RegisterBenefitsModal';
 import { TutorialOverlay } from '../components/TutorialOverlay';
@@ -489,7 +490,11 @@ export const FeedScreen: React.FC = () => {
       >
         <Animated.View style={{ transform: [{ scale: scaleAnim }] }}>
           <View style={styles.cardImageContainer}>
-            <Image source={{ uri: game.thumbnailUrl }} style={styles.cardImage} />
+            <SafeImage 
+              source={{ uri: game.thumbnailUrl }} 
+              fallbackSource={DEFAULT_GAME_IMAGE}
+              style={styles.cardImage} 
+            />
 
             <LinearGradient
               colors={['transparent', 'rgba(0,0,0,0.8)']}
@@ -742,7 +747,7 @@ export const FeedScreen: React.FC = () => {
         {previewGame && (
           <View style={styles.previewCard}>
             <Image
-              source={{ uri: previewGame.coverUrl || previewGame.thumbnailUrl }}
+              source={{ uri: previewGame.coverUrl || previewGame.thumbnailUrl || previewGame.coverImageUrl }}
               style={styles.previewImage}
             />
             <View style={styles.previewContent}>
@@ -791,7 +796,7 @@ export const FeedScreen: React.FC = () => {
         <View style={styles.featureModalOverlay}>
           <View style={styles.featureModal}>
             <Image
-              source={{ uri: featuredGame.coverUrl || featuredGame.thumbnailUrl }}
+              source={{ uri: featuredGame.coverUrl || featuredGame.thumbnailUrl || featuredGame.coverImageUrl }}
               style={styles.featureModalImage}
             />
             <LinearGradient

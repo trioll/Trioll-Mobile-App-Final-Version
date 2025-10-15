@@ -34,7 +34,8 @@ export const SafeImage = React.memo<SafeImageProps>(({
 
   const handleError = useCallback(
     (error: unknown) => {
-      // Image failed to load: (source as any).uri
+      const originalUri = typeof source === 'object' && 'uri' in source ? source.uri : '';
+      console.log(`[SafeImage] Error loading image: ${originalUri}`, error);
 
       // If source has a CloudFront URL, try direct S3 URL
       if (!hasError && typeof source === 'object' && 'uri' in source && source.uri) {
@@ -47,7 +48,7 @@ export const SafeImage = React.memo<SafeImageProps>(({
           if (pathMatch && pathMatch[1]) {
             const s3Path = pathMatch[1];
             const s3Url = `https://trioll-prod-games-us-east-1.s3.amazonaws.com/${s3Path}`;
-            // Trying S3 fallback
+            console.log(`[SafeImage] Trying S3 fallback: ${s3Url}`);
             setImageSource({ uri: s3Url });
             setHasError(true);
             return;
@@ -57,7 +58,7 @@ export const SafeImage = React.memo<SafeImageProps>(({
 
       // If we already tried S3 or it's not a CloudFront URL, use fallback
       if (fallbackSource) {
-        // Using fallback image
+        console.log(`[SafeImage] Using fallback image for: ${originalUri}`);
         setImageSource(fallbackSource);
       }
 
@@ -69,7 +70,18 @@ export const SafeImage = React.memo<SafeImageProps>(({
     [source, fallbackSource, hasError, onError]
   );
 
-  return <Image {...props} source={optimizedSource} onError={handleError} />;
+  return (
+    <Image 
+      {...props} 
+      source={optimizedSource} 
+      onError={handleError}
+      onLoad={() => {
+        if (typeof optimizedSource === 'object' && 'uri' in optimizedSource) {
+          console.log(`[SafeImage] Successfully loaded: ${optimizedSource.uri}`);
+        }
+      }}
+    />
+  );
 });
 
 SafeImage.displayName = 'SafeImage';
